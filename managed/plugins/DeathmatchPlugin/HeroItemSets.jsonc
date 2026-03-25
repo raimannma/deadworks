@@ -1,0 +1,708 @@
+// Item Set Recorder configuration
+{
+  "hero_item_sets": {
+    "6": {
+      "hero_id": 6,
+      "hero_name": "Abrams",
+      "items": [
+        "upgrade_imbued_duration_extender",
+        "upgrade_warp_stone",
+        "upgrade_bullet_armor_reduction_aura",
+        "upgrade_tech_purge",
+        "upgrade_phantom_strike",
+        "upgrade_absorbing_armor",
+        "upgrade_deflecting_armor",
+        "upgrade_banshee_slugs",
+        "upgrade_inhibitor",
+        "upgrade_cardio_calibrator",
+        "upgrade_weapon_backstabber",
+        "upgrade_bullet_resist_shredder"
+      ],
+      "gold_remaining": 1000
+    },
+    "77": {
+      "hero_id": 77,
+      "hero_name": "Apollo",
+      "items": [
+        "upgrade_superior_stamina",
+        "upgrade_health_stealing_magic",
+        "upgrade_tech_damage_pulse",
+        "upgrade_boundless_spirit",
+        "upgrade_mystic_reverb",
+        "upgrade_magic_shock",
+        "upgrade_tech_range",
+        "upgrade_transcendent_cooldown",
+        "upgrade_tech_purge",
+        "upgrade_debuff_reducer",
+        "upgrade_warp_stone",
+        "upgrade_arctic_blast"
+      ],
+      "gold_remaining": 2600
+    },
+    "15": {
+      "hero_id": 15,
+      "hero_name": "Bebop",
+      "items": [
+        "upgrade_trophy_collector",
+        "upgrade_cardio_calibrator",
+        "upgrade_ability_power_shard",
+        "upgrade_magic_storm",
+        "upgrade_boundless_spirit",
+        "upgrade_mystic_reverb",
+        "upgrade_cooldown_reduction",
+        "upgrade_magic_shock",
+        "upgrade_tech_range",
+        "upgrade_tech_purge",
+        "upgrade_superior_stamina",
+        "upgrade_resonant_healing"
+      ],
+      "gold_remaining": 4200
+    },
+    "72": {
+      "hero_id": 72,
+      "hero_name": "Hero #72",
+      "items": [
+        "upgrade_colossus",
+        "upgrade_fervor",
+        "upgrade_damage_recycler",
+        "upgrade_banshee_slugs",
+        "upgrade_tech_damage_pulse",
+        "upgrade_bullet_resist_shredder",
+        "upgrade_tech_purge",
+        "upgrade_spirit_snatch",
+        "upgrade_tech_range",
+        "upgrade_crushing_fists",
+        "upgrade_vex_barrier",
+        "upgrade_spirit_bubble"
+      ],
+      "gold_remaining": 1000
+    },
+    "16": {
+      "hero_id": 16,
+      "hero_name": "Calico",
+      "items": [
+        "upgrade_arctic_blast",
+        "upgrade_boundless_spirit",
+        "upgrade_magic_shock",
+        "upgrade_transcendent_cooldown",
+        "upgrade_tech_damage_pulse",
+        "upgrade_cardio_calibrator",
+        "upgrade_spirit_snatch",
+        "upgrade_boxing_glove",
+        "upgrade_bullet_armor_reduction_aura",
+        "upgrade_counterspell",
+        "upgrade_chonky",
+        "upgrade_escalating_exposure"
+      ],
+      "gold_remaining": 1000
+    },
+    "81": {
+      "hero_id": 81,
+      "hero_name": "Celeste",
+      "items": [
+        "upgrade_kinetic_sash",
+        "upgrade_superior_stamina",
+        "upgrade_enchanted_holsters",
+        "upgrade_tech_range",
+        "upgrade_damage_recycler",
+        "upgrade_ricochet",
+        "upgrade_ultimate_burst",
+        "upgrade_boundless_spirit",
+        "upgrade_arctic_blast",
+        "upgrade_healbane",
+        "upgrade_magic_vulnerability",
+        "upgrade_high_velocity_mag"
+      ],
+      "gold_remaining": 200
+    },
+    "69": {
+      "hero_id": 69,
+      "hero_name": "The Doorman",
+      "items": [
+        "upgrade_magic_shield",
+        "upgrade_guardian_ward",
+        "upgrade_kinetic_sash",
+        "upgrade_rapid_recharge",
+        "upgrade_counterspell",
+        "upgrade_target_stun",
+        "upgrade_ability_power_shard",
+        "upgrade_cheat_death",
+        "upgrade_transcendent_cooldown",
+        "upgrade_tech_range",
+        "upgrade_magic_shock",
+        "upgrade_arctic_blast"
+      ],
+      "gold_remaining": 4200
+    },
+    "64": {
+      "hero_id": 64,
+      "hero_name": "Drifter",
+      "items": [
+        "upgrade_chonky",
+        "upgrade_fleetfoot_boots",
+        "upgrade_hollow_point_rounds",
+        "upgrade_blitz_bullets",
+        "upgrade_burst_fire",
+        "upgrade_close_quarter_combat",
+        "upgrade_critshot",
+        "upgrade_inhibitor",
+        "upgrade_ricochet",
+        "upgrade_banshee_slugs",
+        "upgrade_fervor",
+        "upgrade_regenerating_bullet_shield"
+      ],
+      "gold_remaining": 1000
+    },
+    "11": {
+      "hero_id": 11,
+      "hero_name": "Dynamo",
+      "items": [
+        "upgrade_ability_refresher",
+        "upgrade_tech_range",
+        "upgrade_imbued_duration_extender",
+        "upgrade_transcendent_cooldown",
+        "upgrade_warp_stone",
+        "upgrade_rapid_recharge",
+        "upgrade_headhunter",
+        "upgrade_magic_storm",
+        "upgrade_magic_shock",
+        "upgrade_tech_purge",
+        "upgrade_rescue_beam",
+        "upgrade_arctic_blast"
+      ],
+      "gold_remaining": 2600
+    },
+    "76": {
+      "hero_id": 76,
+      "hero_name": "Graves",
+      "items": [
+        "upgrade_ricochet",
+        "upgrade_damage_recycler",
+        "upgrade_boundless_spirit",
+        "upgrade_rechargingbullets",
+        "upgrade_toxic_bullets",
+        "upgrade_superior_stamina",
+        "upgrade_rapid_recharge",
+        "upgrade_imbued_duration_extender",
+        "upgrade_tech_purge",
+        "upgrade_capacitor",
+        "upgrade_cooldown_reduction",
+        "upgrade_reinforcing_casings"
+      ],
+      "gold_remaining": 1000
+    },
+    "17": {
+      "hero_id": 17,
+      "hero_name": "Grey Talon",
+      "items": [
+        "upgrade_hollow_point_rounds",
+        "upgrade_burst_fire",
+        "upgrade_surging_power",
+        "upgrade_critshot",
+        "upgrade_glass_cannon",
+        "upgrade_regenerating_bullet_shield",
+        "upgrade_blitz_bullets",
+        "upgrade_kinetic_sash",
+        "upgrade_slowing_bullets",
+        "upgrade_sharpshooter",
+        "upgrade_ricochet",
+        "upgrade_fervor"
+      ],
+      "gold_remaining": 2600
+    },
+    "13": {
+      "hero_id": 13,
+      "hero_name": "Haze",
+      "items": [
+        "upgrade_active_reload",
+        "upgrade_fury_trance",
+        "upgrade_magic_storm",
+        "upgrade_toxic_bullets",
+        "upgrade_blood_tribute",
+        "upgrade_siphon_bullets",
+        "upgrade_reinforcing_casings",
+        "upgrade_tech_purge",
+        "upgrade_ricochet",
+        "upgrade_unstoppable",
+        "upgrade_imbued_duration_extender",
+        "upgrade_proc_silence"
+      ],
+      "gold_remaining": 200
+    },
+    "14": {
+      "hero_id": 14,
+      "hero_name": "Holliday",
+      "items": [
+        "upgrade_rapid_recharge",
+        "upgrade_superior_stamina",
+        "upgrade_rechargingbullets",
+        "upgrade_thermal_detonator",
+        "upgrade_magic_shock",
+        "upgrade_tech_range",
+        "upgrade_boundless_spirit",
+        "upgrade_imbued_duration_extender",
+        "upgrade_target_stun",
+        "upgrade_transcendent_cooldown",
+        "upgrade_arctic_blast",
+        "upgrade_aoe_root"
+      ],
+      "gold_remaining": 1000
+    },
+    "1": {
+      "hero_id": 1,
+      "hero_name": "Infernus",
+      "items": [
+        "upgrade_imbued_duration_extender",
+        "upgrade_infuser",
+        "upgrade_escalating_exposure",
+        "upgrade_juggernaut",
+        "upgrade_toxic_bullets",
+        "upgrade_rapid_recharge",
+        "upgrade_boundless_spirit",
+        "upgrade_warp_stone",
+        "upgrade_tech_purge",
+        "upgrade_resonant_healing",
+        "upgrade_cooldown_reduction",
+        "upgrade_vex_barrier"
+      ],
+      "gold_remaining": 1000
+    },
+    "20": {
+      "hero_id": 20,
+      "hero_name": "Ivy",
+      "items": [
+        "upgrade_capacitor",
+        "upgrade_blitz_bullets",
+        "upgrade_bullet_resist_shredder",
+        "upgrade_siphon_bullets",
+        "upgrade_tech_purge",
+        "upgrade_colossus",
+        "upgrade_juggernaut",
+        "upgrade_ricochet",
+        "upgrade_burst_fire",
+        "upgrade_weighted_shots",
+        "upgrade_toxic_bullets",
+        "upgrade_active_reload"
+      ],
+      "gold_remaining": 1000
+    },
+    "4": {
+      "hero_id": 4,
+      "hero_name": "Lady Geist",
+      "items": [
+        "upgrade_tech_purge",
+        "upgrade_counterspell",
+        "upgrade_reduce_debuff_duration",
+        "upgrade_fleetfoot_boots",
+        "upgrade_enchanted_holsters",
+        "upgrade_damage_recycler",
+        "upgrade_colossus",
+        "upgrade_inhibitor",
+        "upgrade_ricochet",
+        "upgrade_cardio_calibrator",
+        "upgrade_weighted_shots",
+        "upgrade_arcane_surge"
+      ],
+      "gold_remaining": 1000
+    },
+    "12": {
+      "hero_id": 12,
+      "hero_name": "Kelvin",
+      "items": [
+        "upgrade_guardian_ward",
+        "upgrade_magic_reach",
+        "upgrade_arcane_surge",
+        "upgrade_imbued_duration_extender",
+        "upgrade_boundless_spirit",
+        "upgrade_ability_refresher",
+        "upgrade_transcendent_cooldown",
+        "upgrade_healbuff",
+        "upgrade_rescue_beam",
+        "upgrade_cardio_calibrator",
+        "upgrade_arctic_blast",
+        "upgrade_spirit_burn"
+      ],
+      "gold_remaining": 200
+    },
+    "8": {
+      "hero_id": 8,
+      "hero_name": "McGinnis",
+      "items": [
+        "upgrade_healbuff",
+        "upgrade_capacitor",
+        "upgrade_dps_aura",
+        "upgrade_critshot",
+        "upgrade_banshee_slugs",
+        "upgrade_fervor",
+        "upgrade_rapid_recharge",
+        "upgrade_bullet_resist_shredder",
+        "upgrade_cardio_calibrator",
+        "upgrade_regenerating_bullet_shield",
+        "upgrade_vex_barrier",
+        "upgrade_reinforcing_casings"
+      ],
+      "gold_remaining": 2600
+    },
+    "63": {
+      "hero_id": 63,
+      "hero_name": "Hero #63",
+      "items": [
+        "upgrade_cooldown_reduction",
+        "upgrade_boundless_spirit",
+        "upgrade_spirit_burn",
+        "upgrade_spellslinger_headshots",
+        "upgrade_magic_shock",
+        "upgrade_quick_silver",
+        "upgrade_toxic_bullets",
+        "upgrade_blitz_bullets",
+        "upgrade_superior_stamina",
+        "upgrade_arctic_blast",
+        "upgrade_glass_cannon",
+        "upgrade_burst_fire"
+      ],
+      "gold_remaining": 2600
+    },
+    "52": {
+      "hero_id": 52,
+      "hero_name": "Mirage",
+      "items": [
+        "upgrade_tech_defense_shredders",
+        "upgrade_chonky",
+        "upgrade_magic_shield",
+        "upgrade_rechargingbullets",
+        "upgrade_siphon_bullets",
+        "upgrade_escalating_exposure",
+        "upgrade_inhibitor",
+        "upgrade_ricochet",
+        "upgrade_proc_silence",
+        "upgrade_boundless_spirit",
+        "upgrade_health_stealing_magic",
+        "upgrade_vex_barrier"
+      ],
+      "gold_remaining": 1000
+    },
+    "18": {
+      "hero_id": 18,
+      "hero_name": "Mo \u0026 Krill",
+      "items": [
+        "upgrade_magic_shock",
+        "upgrade_arctic_blast",
+        "upgrade_tech_range",
+        "upgrade_tech_purge",
+        "upgrade_escalating_exposure",
+        "upgrade_transcendent_cooldown",
+        "upgrade_spirit_burn",
+        "upgrade_tech_damage_pulse",
+        "upgrade_warp_stone",
+        "upgrade_cardio_calibrator",
+        "upgrade_magic_shield",
+        "upgrade_suppressor"
+      ],
+      "gold_remaining": 4200
+    },
+    "10": {
+      "hero_id": 10,
+      "hero_name": "Paradox",
+      "items": [
+        "upgrade_chonky",
+        "upgrade_hollow_point_rounds",
+        "upgrade_superior_stamina",
+        "upgrade_banshee_slugs",
+        "upgrade_imbued_duration_extender",
+        "upgrade_headhunter",
+        "upgrade_pristine_emblem",
+        "upgrade_critshot",
+        "upgrade_express_shot",
+        "upgrade_weighted_shots",
+        "upgrade_ultimate_burst",
+        "upgrade_transcendent_cooldown"
+      ],
+      "gold_remaining": 1000
+    },
+    "67": {
+      "hero_id": 67,
+      "hero_name": "Paige",
+      "items": [
+        "upgrade_superior_stamina",
+        "upgrade_divine_barrier",
+        "upgrade_transcendent_cooldown",
+        "upgrade_imbued_duration_extender",
+        "upgrade_spirit_bubble",
+        "upgrade_vex_barrier",
+        "upgrade_target_stun",
+        "upgrade_tech_range",
+        "upgrade_rescue_beam",
+        "upgrade_trophy_collector",
+        "upgrade_boundless_spirit",
+        "upgrade_ability_refresher"
+      ],
+      "gold_remaining": 2600
+    },
+    "50": {
+      "hero_id": 50,
+      "hero_name": "Pocket",
+      "items": [
+        "upgrade_magic_shield",
+        "upgrade_blitz_bullets",
+        "upgrade_rocket_booster",
+        "upgrade_weighted_shots",
+        "upgrade_transcendent_cooldown",
+        "upgrade_magic_shock",
+        "upgrade_spirit_burn",
+        "upgrade_imbued_duration_extender",
+        "upgrade_tech_range",
+        "upgrade_cheat_death",
+        "upgrade_boundless_spirit",
+        "upgrade_targeted_silence"
+      ],
+      "gold_remaining": 2600
+    },
+    "2": {
+      "hero_id": 2,
+      "hero_name": "Seven",
+      "items": [
+        "upgrade_toxic_bullets",
+        "upgrade_magic_storm",
+        "upgrade_escalating_exposure",
+        "upgrade_imbued_duration_extender",
+        "upgrade_infuser",
+        "upgrade_boundless_spirit",
+        "upgrade_transcendent_cooldown",
+        "upgrade_magic_shield",
+        "upgrade_healbane",
+        "upgrade_rapid_recharge",
+        "upgrade_bulletshredimbue",
+        "upgrade_tech_range"
+      ],
+      "gold_remaining": 2600
+    },
+    "79": {
+      "hero_id": 79,
+      "hero_name": "Rem",
+      "items": [
+        "upgrade_guardian_ward",
+        "upgrade_bulletshredimbue",
+        "upgrade_tech_damage_pulse",
+        "upgrade_rapid_recharge",
+        "upgrade_magic_shock",
+        "upgrade_health_nova",
+        "upgrade_boundless_spirit",
+        "upgrade_magic_storm",
+        "upgrade_mystic_reverb",
+        "upgrade_healbuff",
+        "upgrade_transcendent_cooldown",
+        "upgrade_rupture"
+      ],
+      "gold_remaining": 1000
+    },
+    "19": {
+      "hero_id": 19,
+      "hero_name": "Shiv",
+      "items": [
+        "upgrade_rupture",
+        "upgrade_healbane",
+        "upgrade_warp_stone",
+        "upgrade_rapid_recharge",
+        "upgrade_tech_purge",
+        "upgrade_tech_damage_pulse",
+        "upgrade_counterspell",
+        "upgrade_colossus",
+        "upgrade_deflecting_armor",
+        "upgrade_unstoppable",
+        "upgrade_magic_shock",
+        "upgrade_resonant_healing"
+      ],
+      "gold_remaining": 4200
+    },
+    "80": {
+      "hero_id": 80,
+      "hero_name": "Silver",
+      "items": [
+        "upgrade_express_shot",
+        "upgrade_bullet_armor_reduction_aura",
+        "upgrade_superior_stamina",
+        "upgrade_close_quarter_combat",
+        "upgrade_boxing_glove",
+        "upgrade_berserker",
+        "upgrade_warp_stone",
+        "upgrade_unstoppable",
+        "upgrade_toxic_bullets",
+        "upgrade_weighted_shots",
+        "upgrade_hollow_point_rounds",
+        "upgrade_colossus"
+      ],
+      "gold_remaining": 5800
+    },
+    "65": {
+      "hero_id": 65,
+      "hero_name": "Venator",
+      "items": [
+        "upgrade_intensifying_clip",
+        "upgrade_regenerating_bullet_shield",
+        "upgrade_blitz_bullets",
+        "upgrade_surging_power",
+        "upgrade_glass_cannon",
+        "upgrade_rapid_recharge",
+        "upgrade_inhibitor",
+        "upgrade_reinforcing_casings",
+        "upgrade_tech_purge",
+        "upgrade_burst_fire",
+        "upgrade_fervor",
+        "upgrade_juggernaut"
+      ],
+      "gold_remaining": 1000
+    },
+    "60": {
+      "hero_id": 60,
+      "hero_name": "Sinclair",
+      "items": [
+        "upgrade_rapid_recharge",
+        "upgrade_magic_shield",
+        "upgrade_rupture",
+        "upgrade_spirit_sap",
+        "upgrade_veil_walker",
+        "upgrade_magic_carpet",
+        "upgrade_tech_range",
+        "upgrade_boundless_spirit",
+        "upgrade_transcendent_cooldown",
+        "upgrade_imbued_duration_extender",
+        "upgrade_ability_power_shard",
+        "upgrade_tech_purge"
+      ],
+      "gold_remaining": 2600
+    },
+    "66": {
+      "hero_id": 66,
+      "hero_name": "Victor",
+      "items": [
+        "upgrade_tech_damage_pulse",
+        "upgrade_healing_booster",
+        "upgrade_cardio_calibrator",
+        "upgrade_rapid_recharge",
+        "upgrade_infuser",
+        "upgrade_warp_stone",
+        "upgrade_escalating_exposure",
+        "upgrade_tech_range",
+        "upgrade_boundless_spirit",
+        "upgrade_transcendent_cooldown",
+        "upgrade_imbued_duration_extender",
+        "upgrade_magic_shock"
+      ],
+      "gold_remaining": 2600
+    },
+    "3": {
+      "hero_id": 3,
+      "hero_name": "Vindicta",
+      "items": [
+        "upgrade_rapid_recharge",
+        "upgrade_magic_shield",
+        "upgrade_pristine_emblem",
+        "upgrade_blood_tribute",
+        "upgrade_magic_storm",
+        "upgrade_magic_shock",
+        "upgrade_counterspell",
+        "upgrade_boundless_spirit",
+        "upgrade_damage_recycler",
+        "upgrade_burst_fire",
+        "upgrade_ethereal_bullets",
+        "upgrade_tech_overflow"
+      ],
+      "gold_remaining": 2600
+    },
+    "35": {
+      "hero_id": 35,
+      "hero_name": "Viscous",
+      "items": [
+        "upgrade_boxing_glove",
+        "upgrade_spirit_snatch",
+        "upgrade_rapid_recharge",
+        "upgrade_crushing_fists",
+        "upgrade_hollow_point_rounds",
+        "upgrade_cooldown_reduction",
+        "upgrade_tech_range",
+        "upgrade_magic_shock",
+        "upgrade_superior_stamina",
+        "upgrade_rescue_beam",
+        "upgrade_boundless_spirit",
+        "upgrade_escalating_exposure"
+      ],
+      "gold_remaining": 2600
+    },
+    "58": {
+      "hero_id": 58,
+      "hero_name": "Vyper",
+      "items": [
+        "upgrade_kinetic_sash",
+        "upgrade_burst_fire",
+        "upgrade_chonky",
+        "upgrade_blitz_bullets",
+        "upgrade_intensifying_clip",
+        "upgrade_weighted_shots",
+        "upgrade_blood_tribute",
+        "upgrade_aprounds",
+        "upgrade_damage_recycler",
+        "upgrade_critshot",
+        "upgrade_glass_cannon",
+        "upgrade_split_shot"
+      ],
+      "gold_remaining": 5800
+    },
+    "25": {
+      "hero_id": 25,
+      "hero_name": "Warden",
+      "items": [
+        "upgrade_intensifying_clip",
+        "upgrade_regenerating_bullet_shield",
+        "upgrade_cardio_calibrator",
+        "upgrade_magic_storm",
+        "upgrade_hollow_point_rounds",
+        "upgrade_enchanted_holsters",
+        "upgrade_ethereal_bullets",
+        "upgrade_surging_power",
+        "upgrade_critshot",
+        "upgrade_banshee_slugs",
+        "upgrade_non_player_bonus",
+        "upgrade_aprounds"
+      ],
+      "gold_remaining": 200
+    },
+    "7": {
+      "hero_id": 7,
+      "hero_name": "Wraith",
+      "items": [
+        "upgrade_medic_bullets",
+        "upgrade_intensifying_clip",
+        "upgrade_blitz_bullets",
+        "upgrade_regenerating_bullet_shield",
+        "upgrade_rapid_recharge",
+        "upgrade_superior_stamina",
+        "upgrade_ethereal_bullets",
+        "upgrade_capacitor",
+        "upgrade_toxic_bullets",
+        "upgrade_damage_recycler",
+        "upgrade_enchanted_holsters",
+        "upgrade_boundless_spirit"
+      ],
+      "gold_remaining": 3400
+    },
+    "27": {
+      "hero_id": 27,
+      "hero_name": "Yamato",
+      "items": [
+        "upgrade_crackshot",
+        "upgrade_tech_damage_pulse",
+        "upgrade_healbane",
+        "upgrade_chonky",
+        "upgrade_targeted_silence",
+        "upgrade_mystic_reverb",
+        "upgrade_counterspell",
+        "upgrade_reduce_debuff_duration",
+        "upgrade_ability_refresher",
+        "upgrade_boundless_spirit",
+        "upgrade_tech_purge",
+        "upgrade_transcendent_cooldown"
+      ],
+      "gold_remaining": 2600
+    }
+  }
+}

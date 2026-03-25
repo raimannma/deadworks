@@ -1,4 +1,6 @@
 using System.Numerics;
+using System.Reflection;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using DeadworksManaged.Api;
 
@@ -12,9 +14,29 @@ public class SpawnPoint {
 	public float[] Ang { get; set; } = [0, 0, 0];
 }
 
+public class HeroItemSet {
+	[JsonPropertyName("hero_id")]
+	public int HeroId { get; set; }
+
+	[JsonPropertyName("hero_name")]
+	public string HeroName { get; set; } = "";
+
+	[JsonPropertyName("items")]
+	public List<string> Items { get; set; } = new();
+
+	[JsonPropertyName("gold_remaining")]
+	public int GoldRemaining { get; set; }
+}
+
+public class ItemSetConfig {
+	[JsonPropertyName("hero_item_sets")]
+	public Dictionary<string, HeroItemSet> HeroItemSets { get; set; } = new();
+}
+
 public class DeathmatchConfig {
 	public Dictionary<string, Dictionary<string, SpawnPoint[]>> SpawnPoints { get; set; } = new();
-	public int HeroSwapIntervalSeconds { get; set; } = 300;
+	public int HeroSwapIntervalSeconds { get; set; } = 60;
+	public Dictionary<string, HeroItemSet> HeroItemSets { get; set; } = new();
 }
 
 public record SwapState(List<string> Items, Dictionary<EAbilitySlot, (float Start, float End)> Cooldowns, int Gold);
@@ -37,7 +59,36 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 	private readonly Dictionary<int, int> _playerKills = new(); // entity index -> kills this round
 
 	public override void OnLoad(bool isReload) {
+		LoadBundledItemSets();
 		Console.WriteLine(isReload ? "Deathmatch reloaded!" : "Deathmatch loaded!");
+	}
+
+	private void LoadBundledItemSets() {
+		// Load embedded item sets as defaults — config file entries take priority
+		var asm = Assembly.GetExecutingAssembly();
+		var resourceName = asm.GetManifestResourceNames()
+			.FirstOrDefault(n => n.EndsWith("HeroItemSets.jsonc"));
+		if (resourceName == null) return;
+
+		using var stream = asm.GetManifestResourceStream(resourceName);
+		if (stream == null) return;
+
+		var options = new JsonSerializerOptions {
+			ReadCommentHandling = JsonCommentHandling.Skip,
+			PropertyNameCaseInsensitive = true
+		};
+		var bundled = JsonSerializer.Deserialize<ItemSetConfig>(stream, options);
+		if (bundled == null) return;
+
+		int count = 0;
+		foreach (var (key, itemSet) in bundled.HeroItemSets) {
+			// Only add if not already defined in the config file
+			if (!Config.HeroItemSets.ContainsKey(key)) {
+				Config.HeroItemSets[key] = itemSet;
+				count++;
+			}
+		}
+		Console.WriteLine($"[DM] Loaded {count} bundled item sets ({bundled.HeroItemSets.Count} total, {Config.HeroItemSets.Count - count} from config)");
 	}
 
 	public override void OnConfigReloaded() => RestartSwapTimer();
@@ -53,7 +104,8 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 		}
 	}
 
-	public override void OnStartupServer() {
+    public override void OnStartupServer()
+    {
 		ConVar.Find("citadel_active_lane")?.SetInt(4);
 		ConVar.Find("citadel_player_spawn_time_max_respawn_time")?.SetInt(5);
 		ConVar.Find("citadel_allow_purchasing_anywhere")?.SetInt(1);
@@ -65,6 +117,10 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 		ConVar.Find("citadel_npc_spawn_enabled")?.SetInt(0);
 		ConVar.Find("citadel_start_players_on_zipline")?.SetInt(0);
 		ConVar.Find("citadel_allow_duplicate_heroes")?.SetInt(1);
+
+		Server.ExecuteCommand("sv_cheats 1");
+		Server.ExecuteCommand("citadel_unlock_flex_slots");
+		Server.ExecuteCommand("sv_cheats 0");
 
 		Timer.NextTick(() => {
 			var (hero1, hero2) = PickTwoRandomHeroes();
@@ -151,29 +207,20 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 		(_team2Hero, _team3Hero) = PickTwoRandomHeroes();
 		Console.WriteLine($"[DM] New heroes! Team 2: {_team2Hero.ToHeroName()}, Team 3: {_team3Hero.ToHeroName()}");
 
-		var curTime = GlobalVars.CurTime;
-
 		foreach (var controller in Players.GetAll()) {
 			var pawn = controller.GetHeroPawn()?.As<CCitadelPlayerPawn>();
 			if (pawn == null) continue;
 
-			var items = new List<string>();
-			var cooldowns = new Dictionary<EAbilitySlot, (float Start, float End)>();
-			foreach (var ability in pawn.AbilityComponent.Abilities) {
-				if (ability.IsItem)
-					items.Add(ability.AbilityName);
+			var newHero = pawn.TeamNum == 2 ? _team2Hero : _team3Hero;
+			var newHeroData = newHero.GetHeroData();
+			int newHeroId = newHeroData?.HeroID ?? 0;
 
-				if (ability.AbilitySlot == EAbilitySlot.Signature4 && ability.CooldownEnd > curTime)
-					cooldowns[ability.AbilitySlot] = (ability.CooldownStart, ability.CooldownEnd);
-			}
+			// Look up the item set for the new hero
+			Config.HeroItemSets.TryGetValue(newHeroId.ToString(), out var itemSet);
 
-			Console.WriteLine($"[DM] Saved {items.Count} items, {cooldowns.Count} cooldowns for {controller.PlayerName}");
-			foreach (var item in items)
-				Console.WriteLine($"[DM]   item: {item}");
-
-			var gold = pawn.GetCurrency(ECurrencyType.EGold);
-			_pendingSwap[controller] = new SwapState(items, cooldowns, gold);
-			controller.SelectHero(pawn.TeamNum == 2 ? _team2Hero : _team3Hero);
+			int gold = itemSet?.GoldRemaining ?? 50_000;
+			_pendingSwap[controller] = new SwapState(itemSet?.Items ?? new(), new(), gold);
+			controller.SelectHero(newHero);
 		}
 
 		// Hero loading is async — restore after it completes.
@@ -185,7 +232,6 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 
 				var p = controller.GetHeroPawn()?.As<CCitadelPlayerPawn>();
 				if (p == null) { Console.WriteLine("[DM] Pawn is null in timer"); continue; }
-
 
 				// ResetHero triggers EStartingAmount — _pendingSwap must still
 				// exist so OnModifyCurrency restores saved gold instead of 15000.
@@ -200,12 +246,7 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 					Console.WriteLine($"[DM]   AddItem({item}) => {(result != null ? result.ToString() : "NULL")}");
 				}
 
-				foreach (var ability in p.AbilityComponent.Abilities) {
-					if (state.Cooldowns.TryGetValue(ability.AbilitySlot, out var cd)) {
-						ability.CooldownStart = cd.Start;
-						ability.CooldownEnd = cd.End;
-					}
-				}
+				Console.WriteLine($"[DM] Restored {state.Items.Count} items, {state.Gold}g for {controller.PlayerName}");
 			}
 		});
 	}
@@ -318,6 +359,7 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 		pawn.ResetHero();
 		pawn.Heal(pawn.GetMaxHealth());
 		MaxUpgradeSignatureAbilities(pawn);
+		RestoreItemSet(pawn);
 		return HookResult.Continue;
 	}
 
@@ -367,6 +409,11 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 				int gold = 50_000;
 				if (controller != null && _pendingSwap.TryGet(controller, out var state))
 					gold = state.Gold;
+				else if (controller != null) {
+					int heroId = controller.PlayerDataGlobal.HeroID;
+					if (Config.HeroItemSets.TryGetValue(heroId.ToString(), out var itemSet))
+						gold = itemSet.GoldRemaining;
+				}
 
 				// Set level + gold atomically via schema writes to avoid the
 				// step-by-step level-up in ModifyCurrency that triggers
@@ -425,6 +472,21 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 	}
 
 	public override void OnPrecacheResources() {
+	}
+
+	private void RestoreItemSet(CCitadelPlayerPawn? pawn) {
+		if (pawn == null) return;
+		var controller = pawn.Controller;
+		if (controller == null) return;
+
+		int heroId = controller.PlayerDataGlobal.HeroID;
+		if (!Config.HeroItemSets.TryGetValue(heroId.ToString(), out var itemSet))
+			return;
+
+		foreach (var item in itemSet.Items) {
+			pawn.AddItem(item);
+		}
+		Console.WriteLine($"[DM] Restored {itemSet.Items.Count} items for {itemSet.HeroName}");
 	}
 
 	private static void MaxUpgradeSignatureAbilities(CCitadelPlayerPawn? pawn) {
