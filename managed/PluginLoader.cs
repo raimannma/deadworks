@@ -94,6 +94,7 @@ internal static partial class PluginLoader
         ConfigManager.Initialize();
         ConCommandManager.Initialize();
         PluginStateManager.Initialize();
+        PluginRegistry.Resolve = () => _pluginSnapshot.Select(p => p.Name).ToArray();
 
         GameEvents.OnAddListener = OnManualAddListenerWithHandle;
         GameEvents.OnRemoveListener = OnManualRemoveListener;
