@@ -11,7 +11,12 @@ using Source2MainFn = int (*)(void *hInstance, void *hPrevInstance, const char *
 int main(int argc, char **argv) {
     auto log = deadworks::ConsoleLogger{"bootstrap"};
 
-    auto serverModule = deadworks::Module("../../citadel/bin/win64/server.dll");
+    // Resolve paths from executable location, not cwd
+    auto exePath = std::filesystem::path(argv[0]).parent_path();
+    if (exePath.empty()) exePath = std::filesystem::current_path();
+    else exePath = std::filesystem::absolute(exePath);
+
+    auto serverModule = deadworks::Module((exePath / "../../citadel/bin/win64/server.dll").string());
 
     auto engineModule = deadworks::Module{"engine2.dll"};
     if (!engineModule.IsValid()) {
@@ -25,9 +30,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    auto parentPath = std::filesystem::current_path();
     auto &data = deadworks::MemoryDataLoader::Get();
-    auto loadResult = data.Load((parentPath.parent_path().parent_path() / "citadel" / "cfg" / "deadworks_mem.jsonc").string());
+    auto loadResult = data.Load((exePath / "../../citadel/cfg/deadworks_mem.jsonc").string());
     if (!loadResult.has_value()) {
         log.Critical("Failed to load data: {}", loadResult.error());
         return 1;
@@ -69,6 +73,6 @@ int main(int argc, char **argv) {
     }
 
     log.Info("handoff to Source2Main. have fun!!");
-    int res = Source2Main(nullptr, nullptr, cmdLine.c_str(), 0, parentPath.string().c_str(), "citadel");
+    int res = Source2Main(nullptr, nullptr, cmdLine.c_str(), 0, exePath.string().c_str(), "citadel");
     return res;
 }
