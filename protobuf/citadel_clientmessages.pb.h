@@ -63,6 +63,9 @@ extern CCitadelClientMsg_ChatMsgDefaultTypeInternal _CCitadelClientMsg_ChatMsg_d
 class CCitadelClientMsg_CheaterVote;
 struct CCitadelClientMsg_CheaterVoteDefaultTypeInternal;
 extern CCitadelClientMsg_CheaterVoteDefaultTypeInternal _CCitadelClientMsg_CheaterVote_default_instance_;
+class CCitadelClientMsg_ExecuteMapPositionAbility;
+struct CCitadelClientMsg_ExecuteMapPositionAbilityDefaultTypeInternal;
+extern CCitadelClientMsg_ExecuteMapPositionAbilityDefaultTypeInternal _CCitadelClientMsg_ExecuteMapPositionAbility_default_instance_;
 class CCitadelClientMsg_ExecuteMapUnitAbility;
 struct CCitadelClientMsg_ExecuteMapUnitAbilityDefaultTypeInternal;
 extern CCitadelClientMsg_ExecuteMapUnitAbilityDefaultTypeInternal _CCitadelClientMsg_ExecuteMapUnitAbility_default_instance_;
@@ -126,6 +129,7 @@ template<> ::CCitadelClientCachedPlayerStats_Stat* Arena::CreateMaybeMessage<::C
 template<> ::CCitadelClientMsg_AbilityPing* Arena::CreateMaybeMessage<::CCitadelClientMsg_AbilityPing>(Arena*);
 template<> ::CCitadelClientMsg_ChatMsg* Arena::CreateMaybeMessage<::CCitadelClientMsg_ChatMsg>(Arena*);
 template<> ::CCitadelClientMsg_CheaterVote* Arena::CreateMaybeMessage<::CCitadelClientMsg_CheaterVote>(Arena*);
+template<> ::CCitadelClientMsg_ExecuteMapPositionAbility* Arena::CreateMaybeMessage<::CCitadelClientMsg_ExecuteMapPositionAbility>(Arena*);
 template<> ::CCitadelClientMsg_ExecuteMapUnitAbility* Arena::CreateMaybeMessage<::CCitadelClientMsg_ExecuteMapUnitAbility>(Arena*);
 template<> ::CCitadelClientMsg_GetDamageStats* Arena::CreateMaybeMessage<::CCitadelClientMsg_GetDamageStats>(Arena*);
 template<> ::CCitadelClientMsg_HeroBuild* Arena::CreateMaybeMessage<::CCitadelClientMsg_HeroBuild>(Arena*);
@@ -192,11 +196,12 @@ enum ECitadelClientMessages : int {
   CITADEL_CM_HideoutSpawn = 1019,
   CITADEL_CM_HideoutMatchmakingState = 1020,
   CITADEL_CM_PlayerStatsUpdated = 1021,
-  CITADEL_CM_HideoutUpdateHeroReleaseVoteTally = 1022
+  CITADEL_CM_HideoutUpdateHeroReleaseVoteTally = 1022,
+  CITADEL_CM_ExecuteMapPositionAbility = 1023
 };
 bool ECitadelClientMessages_IsValid(int value);
 constexpr ECitadelClientMessages ECitadelClientMessages_MIN = CITADEL_CM_MapPing;
-constexpr ECitadelClientMessages ECitadelClientMessages_MAX = CITADEL_CM_HideoutUpdateHeroReleaseVoteTally;
+constexpr ECitadelClientMessages ECitadelClientMessages_MAX = CITADEL_CM_ExecuteMapPositionAbility;
 constexpr int ECitadelClientMessages_ARRAYSIZE = ECitadelClientMessages_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ECitadelClientMessages_descriptor();
@@ -215,7 +220,7 @@ inline bool ECitadelClientMessages_Parse(
 }
 // ===================================================================
 
-class CCitadelClientMsg_Pause /*final*/ :
+class CCitadelClientMsg_Pause :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_Pause) */ {
  public:
   inline CCitadelClientMsg_Pause() : CCitadelClientMsg_Pause(nullptr) {}
@@ -295,7 +300,7 @@ class CCitadelClientMsg_Pause /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_Pause* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_Pause* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_Pause>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
@@ -319,9 +324,9 @@ class CCitadelClientMsg_Pause /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -340,7 +345,7 @@ class CCitadelClientMsg_Pause /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_MapPing /*final*/ :
+class CCitadelClientMsg_MapPing :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_MapPing) */ {
  public:
   inline CCitadelClientMsg_MapPing() : CCitadelClientMsg_MapPing(nullptr) {}
@@ -421,7 +426,7 @@ class CCitadelClientMsg_MapPing /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_MapPing* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_MapPing* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_MapPing>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -433,19 +438,19 @@ class CCitadelClientMsg_MapPing /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_MapPing* other);
 
   private:
@@ -459,9 +464,9 @@ class CCitadelClientMsg_MapPing /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -580,7 +585,7 @@ class CCitadelClientMsg_MapPing /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_PingWheel /*final*/ :
+class CCitadelClientMsg_PingWheel :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_PingWheel) */ {
  public:
   inline CCitadelClientMsg_PingWheel() : CCitadelClientMsg_PingWheel(nullptr) {}
@@ -661,7 +666,7 @@ class CCitadelClientMsg_PingWheel /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_PingWheel* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_PingWheel* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_PingWheel>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -673,19 +678,19 @@ class CCitadelClientMsg_PingWheel /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_PingWheel* other);
 
   private:
@@ -699,9 +704,9 @@ class CCitadelClientMsg_PingWheel /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -790,7 +795,7 @@ class CCitadelClientMsg_PingWheel /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_AbilityPing /*final*/ :
+class CCitadelClientMsg_AbilityPing :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_AbilityPing) */ {
  public:
   inline CCitadelClientMsg_AbilityPing() : CCitadelClientMsg_AbilityPing(nullptr) {}
@@ -871,7 +876,7 @@ class CCitadelClientMsg_AbilityPing /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_AbilityPing* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_AbilityPing* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_AbilityPing>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -883,19 +888,19 @@ class CCitadelClientMsg_AbilityPing /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_AbilityPing* other);
 
   private:
@@ -909,9 +914,9 @@ class CCitadelClientMsg_AbilityPing /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -980,7 +985,7 @@ class CCitadelClientMsg_AbilityPing /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_MapLine /*final*/ :
+class CCitadelClientMsg_MapLine :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_MapLine) */ {
  public:
   inline CCitadelClientMsg_MapLine() : CCitadelClientMsg_MapLine(nullptr) {}
@@ -1061,7 +1066,7 @@ class CCitadelClientMsg_MapLine /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_MapLine* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_MapLine* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_MapLine>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1073,19 +1078,19 @@ class CCitadelClientMsg_MapLine /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_MapLine* other);
 
   private:
@@ -1099,9 +1104,9 @@ class CCitadelClientMsg_MapLine /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1145,7 +1150,7 @@ class CCitadelClientMsg_MapLine /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_QuickResponse /*final*/ :
+class CCitadelClientMsg_QuickResponse :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_QuickResponse) */ {
  public:
   inline CCitadelClientMsg_QuickResponse() : CCitadelClientMsg_QuickResponse(nullptr) {}
@@ -1226,7 +1231,7 @@ class CCitadelClientMsg_QuickResponse /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_QuickResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_QuickResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_QuickResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1238,19 +1243,19 @@ class CCitadelClientMsg_QuickResponse /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_QuickResponse* other);
 
   private:
@@ -1264,9 +1269,9 @@ class CCitadelClientMsg_QuickResponse /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1335,7 +1340,7 @@ class CCitadelClientMsg_QuickResponse /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_PerformanceStats /*final*/ :
+class CCitadelClientMsg_PerformanceStats :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_PerformanceStats) */ {
  public:
   inline CCitadelClientMsg_PerformanceStats() : CCitadelClientMsg_PerformanceStats(nullptr) {}
@@ -1416,7 +1421,7 @@ class CCitadelClientMsg_PerformanceStats /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_PerformanceStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_PerformanceStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_PerformanceStats>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1428,19 +1433,19 @@ class CCitadelClientMsg_PerformanceStats /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_PerformanceStats* other);
 
   private:
@@ -1454,9 +1459,9 @@ class CCitadelClientMsg_PerformanceStats /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1540,7 +1545,7 @@ class CCitadelClientMsg_PerformanceStats /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_ChatMsg /*final*/ :
+class CCitadelClientMsg_ChatMsg :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_ChatMsg) */ {
  public:
   inline CCitadelClientMsg_ChatMsg() : CCitadelClientMsg_ChatMsg(nullptr) {}
@@ -1621,7 +1626,7 @@ class CCitadelClientMsg_ChatMsg /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_ChatMsg* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_ChatMsg* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_ChatMsg>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1633,19 +1638,19 @@ class CCitadelClientMsg_ChatMsg /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_ChatMsg* other);
 
   private:
@@ -1659,9 +1664,9 @@ class CCitadelClientMsg_ChatMsg /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1735,7 +1740,7 @@ class CCitadelClientMsg_ChatMsg /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_PerfReport /*final*/ :
+class CCitadelClientMsg_PerfReport :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_PerfReport) */ {
  public:
   inline CCitadelClientMsg_PerfReport() : CCitadelClientMsg_PerfReport(nullptr) {}
@@ -1816,7 +1821,7 @@ class CCitadelClientMsg_PerfReport /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_PerfReport* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_PerfReport* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_PerfReport>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1828,19 +1833,19 @@ class CCitadelClientMsg_PerfReport /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_PerfReport* other);
 
   private:
@@ -1854,9 +1859,9 @@ class CCitadelClientMsg_PerfReport /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2180,7 +2185,7 @@ class CCitadelClientMsg_PerfReport /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_GetDamageStats /*final*/ :
+class CCitadelClientMsg_GetDamageStats :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_GetDamageStats) */ {
  public:
   inline CCitadelClientMsg_GetDamageStats() : CCitadelClientMsg_GetDamageStats(nullptr) {}
@@ -2261,7 +2266,7 @@ class CCitadelClientMsg_GetDamageStats /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_GetDamageStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_GetDamageStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_GetDamageStats>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2273,19 +2278,19 @@ class CCitadelClientMsg_GetDamageStats /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_GetDamageStats* other);
 
   private:
@@ -2299,9 +2304,9 @@ class CCitadelClientMsg_GetDamageStats /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2360,7 +2365,7 @@ class CCitadelClientMsg_GetDamageStats /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientCachedPlayerStats_Stat /*final*/ :
+class CCitadelClientCachedPlayerStats_Stat :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientCachedPlayerStats.Stat) */ {
  public:
   inline CCitadelClientCachedPlayerStats_Stat() : CCitadelClientCachedPlayerStats_Stat(nullptr) {}
@@ -2441,7 +2446,7 @@ class CCitadelClientCachedPlayerStats_Stat /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientCachedPlayerStats_Stat* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientCachedPlayerStats_Stat* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientCachedPlayerStats_Stat>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2453,19 +2458,19 @@ class CCitadelClientCachedPlayerStats_Stat /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientCachedPlayerStats_Stat* other);
 
   private:
@@ -2479,9 +2484,9 @@ class CCitadelClientCachedPlayerStats_Stat /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2570,7 +2575,7 @@ class CCitadelClientCachedPlayerStats_Stat /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientCachedPlayerStats /*final*/ :
+class CCitadelClientCachedPlayerStats :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientCachedPlayerStats) */ {
  public:
   inline CCitadelClientCachedPlayerStats() : CCitadelClientCachedPlayerStats(nullptr) {}
@@ -2651,7 +2656,7 @@ class CCitadelClientCachedPlayerStats /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientCachedPlayerStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientCachedPlayerStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientCachedPlayerStats>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2663,19 +2668,19 @@ class CCitadelClientCachedPlayerStats /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientCachedPlayerStats* other);
 
   private:
@@ -2689,9 +2694,9 @@ class CCitadelClientCachedPlayerStats /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2752,7 +2757,7 @@ class CCitadelClientCachedPlayerStats /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_ExecuteMapUnitAbility /*final*/ :
+class CCitadelClientMsg_ExecuteMapUnitAbility :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_ExecuteMapUnitAbility) */ {
  public:
   inline CCitadelClientMsg_ExecuteMapUnitAbility() : CCitadelClientMsg_ExecuteMapUnitAbility(nullptr) {}
@@ -2833,7 +2838,7 @@ class CCitadelClientMsg_ExecuteMapUnitAbility /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_ExecuteMapUnitAbility* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_ExecuteMapUnitAbility* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_ExecuteMapUnitAbility>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2845,19 +2850,19 @@ class CCitadelClientMsg_ExecuteMapUnitAbility /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_ExecuteMapUnitAbility* other);
 
   private:
@@ -2871,9 +2876,9 @@ class CCitadelClientMsg_ExecuteMapUnitAbility /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2927,7 +2932,7 @@ class CCitadelClientMsg_ExecuteMapUnitAbility /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_CheaterVote /*final*/ :
+class CCitadelClientMsg_CheaterVote :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_CheaterVote) */ {
  public:
   inline CCitadelClientMsg_CheaterVote() : CCitadelClientMsg_CheaterVote(nullptr) {}
@@ -3008,7 +3013,7 @@ class CCitadelClientMsg_CheaterVote /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_CheaterVote* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_CheaterVote* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_CheaterVote>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3020,19 +3025,19 @@ class CCitadelClientMsg_CheaterVote /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_CheaterVote* other);
 
   private:
@@ -3046,9 +3051,9 @@ class CCitadelClientMsg_CheaterVote /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3087,7 +3092,7 @@ class CCitadelClientMsg_CheaterVote /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_MutePlayers /*final*/ :
+class CCitadelClientMsg_MutePlayers :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_MutePlayers) */ {
  public:
   inline CCitadelClientMsg_MutePlayers() : CCitadelClientMsg_MutePlayers(nullptr) {}
@@ -3168,7 +3173,7 @@ class CCitadelClientMsg_MutePlayers /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_MutePlayers* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_MutePlayers* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_MutePlayers>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3180,19 +3185,19 @@ class CCitadelClientMsg_MutePlayers /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_MutePlayers* other);
 
   private:
@@ -3206,9 +3211,9 @@ class CCitadelClientMsg_MutePlayers /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3271,7 +3276,7 @@ class CCitadelClientMsg_MutePlayers /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HitMismatch /*final*/ :
+class CCitadelClientMsg_HitMismatch :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HitMismatch) */ {
  public:
   inline CCitadelClientMsg_HitMismatch() : CCitadelClientMsg_HitMismatch(nullptr) {}
@@ -3352,7 +3357,7 @@ class CCitadelClientMsg_HitMismatch /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HitMismatch* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HitMismatch* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HitMismatch>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3364,19 +3369,19 @@ class CCitadelClientMsg_HitMismatch /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HitMismatch* other);
 
   private:
@@ -3390,9 +3395,9 @@ class CCitadelClientMsg_HitMismatch /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3446,7 +3451,7 @@ class CCitadelClientMsg_HitMismatch /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HideoutStart /*final*/ :
+class CCitadelClientMsg_HideoutStart :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HideoutStart) */ {
  public:
   inline CCitadelClientMsg_HideoutStart() : CCitadelClientMsg_HideoutStart(nullptr) {}
@@ -3526,7 +3531,7 @@ class CCitadelClientMsg_HideoutStart /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HideoutStart* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HideoutStart* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HideoutStart>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
@@ -3550,9 +3555,9 @@ class CCitadelClientMsg_HideoutStart /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3571,7 +3576,7 @@ class CCitadelClientMsg_HideoutStart /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HeroBuild /*final*/ :
+class CCitadelClientMsg_HeroBuild :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HeroBuild) */ {
  public:
   inline CCitadelClientMsg_HeroBuild() : CCitadelClientMsg_HeroBuild(nullptr) {}
@@ -3652,7 +3657,7 @@ class CCitadelClientMsg_HeroBuild /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HeroBuild* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HeroBuild* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HeroBuild>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3664,19 +3669,19 @@ class CCitadelClientMsg_HeroBuild /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HeroBuild* other);
 
   private:
@@ -3690,9 +3695,9 @@ class CCitadelClientMsg_HeroBuild /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3736,7 +3741,7 @@ class CCitadelClientMsg_HeroBuild /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HideoutMenuState /*final*/ :
+class CCitadelClientMsg_HideoutMenuState :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HideoutMenuState) */ {
  public:
   inline CCitadelClientMsg_HideoutMenuState() : CCitadelClientMsg_HideoutMenuState(nullptr) {}
@@ -3817,7 +3822,7 @@ class CCitadelClientMsg_HideoutMenuState /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HideoutMenuState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HideoutMenuState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HideoutMenuState>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3829,19 +3834,19 @@ class CCitadelClientMsg_HideoutMenuState /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HideoutMenuState* other);
 
   private:
@@ -3855,9 +3860,9 @@ class CCitadelClientMsg_HideoutMenuState /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3928,7 +3933,7 @@ class CCitadelClientMsg_HideoutMenuState /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HideoutSpawn /*final*/ :
+class CCitadelClientMsg_HideoutSpawn :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HideoutSpawn) */ {
  public:
   inline CCitadelClientMsg_HideoutSpawn() : CCitadelClientMsg_HideoutSpawn(nullptr) {}
@@ -4009,7 +4014,7 @@ class CCitadelClientMsg_HideoutSpawn /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HideoutSpawn* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HideoutSpawn* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HideoutSpawn>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4021,19 +4026,19 @@ class CCitadelClientMsg_HideoutSpawn /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HideoutSpawn* other);
 
   private:
@@ -4047,9 +4052,9 @@ class CCitadelClientMsg_HideoutSpawn /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4103,7 +4108,7 @@ class CCitadelClientMsg_HideoutSpawn /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HideoutMatchmakingState /*final*/ :
+class CCitadelClientMsg_HideoutMatchmakingState :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HideoutMatchmakingState) */ {
  public:
   inline CCitadelClientMsg_HideoutMatchmakingState() : CCitadelClientMsg_HideoutMatchmakingState(nullptr) {}
@@ -4184,7 +4189,7 @@ class CCitadelClientMsg_HideoutMatchmakingState /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HideoutMatchmakingState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HideoutMatchmakingState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HideoutMatchmakingState>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4196,19 +4201,19 @@ class CCitadelClientMsg_HideoutMatchmakingState /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HideoutMatchmakingState* other);
 
   private:
@@ -4222,9 +4227,9 @@ class CCitadelClientMsg_HideoutMatchmakingState /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4263,7 +4268,7 @@ class CCitadelClientMsg_HideoutMatchmakingState /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_PlayerStatsUpdated /*final*/ :
+class CCitadelClientMsg_PlayerStatsUpdated :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_PlayerStatsUpdated) */ {
  public:
   inline CCitadelClientMsg_PlayerStatsUpdated() : CCitadelClientMsg_PlayerStatsUpdated(nullptr) {}
@@ -4343,7 +4348,7 @@ class CCitadelClientMsg_PlayerStatsUpdated /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_PlayerStatsUpdated* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_PlayerStatsUpdated* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_PlayerStatsUpdated>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
@@ -4367,9 +4372,9 @@ class CCitadelClientMsg_PlayerStatsUpdated /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4388,7 +4393,7 @@ class CCitadelClientMsg_PlayerStatsUpdated /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry /*final*/ :
+class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally.VoteRoundToTallyEntry) */ {
  public:
   inline CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry() : CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry(nullptr) {}
@@ -4469,7 +4474,7 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry 
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4481,19 +4486,19 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry 
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry* other);
 
   private:
@@ -4507,9 +4512,9 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry 
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4568,7 +4573,7 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry 
 };
 // -------------------------------------------------------------------
 
-class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally /*final*/ :
+class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally) */ {
  public:
   inline CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally() : CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally(nullptr) {}
@@ -4649,7 +4654,7 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4661,19 +4666,19 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally* other);
 
   private:
@@ -4687,9 +4692,9 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4728,6 +4733,211 @@ class CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally /*final*/ :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally_VoteRoundToTallyEntry > vote_round_to_tally_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_citadel_5fclientmessages_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CCitadelClientMsg_ExecuteMapPositionAbility :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelClientMsg_ExecuteMapPositionAbility) */ {
+ public:
+  inline CCitadelClientMsg_ExecuteMapPositionAbility() : CCitadelClientMsg_ExecuteMapPositionAbility(nullptr) {}
+  ~CCitadelClientMsg_ExecuteMapPositionAbility() override;
+  explicit PROTOBUF_CONSTEXPR CCitadelClientMsg_ExecuteMapPositionAbility(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CCitadelClientMsg_ExecuteMapPositionAbility(const CCitadelClientMsg_ExecuteMapPositionAbility& from);
+  CCitadelClientMsg_ExecuteMapPositionAbility(CCitadelClientMsg_ExecuteMapPositionAbility&& from) noexcept
+    : CCitadelClientMsg_ExecuteMapPositionAbility() {
+    *this = ::std::move(from);
+  }
+
+  inline CCitadelClientMsg_ExecuteMapPositionAbility& operator=(const CCitadelClientMsg_ExecuteMapPositionAbility& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CCitadelClientMsg_ExecuteMapPositionAbility& operator=(CCitadelClientMsg_ExecuteMapPositionAbility&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CCitadelClientMsg_ExecuteMapPositionAbility& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CCitadelClientMsg_ExecuteMapPositionAbility* internal_default_instance() {
+    return reinterpret_cast<const CCitadelClientMsg_ExecuteMapPositionAbility*>(
+               &_CCitadelClientMsg_ExecuteMapPositionAbility_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  friend void swap(CCitadelClientMsg_ExecuteMapPositionAbility& a, CCitadelClientMsg_ExecuteMapPositionAbility& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CCitadelClientMsg_ExecuteMapPositionAbility* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CCitadelClientMsg_ExecuteMapPositionAbility* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CCitadelClientMsg_ExecuteMapPositionAbility* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CCitadelClientMsg_ExecuteMapPositionAbility>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CCitadelClientMsg_ExecuteMapPositionAbility& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CCitadelClientMsg_ExecuteMapPositionAbility& from) {
+    CCitadelClientMsg_ExecuteMapPositionAbility::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CCitadelClientMsg_ExecuteMapPositionAbility* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "CCitadelClientMsg_ExecuteMapPositionAbility";
+  }
+  protected:
+  explicit CCitadelClientMsg_ExecuteMapPositionAbility(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAbilityEntityIndexFieldNumber = 1,
+    kPosXFieldNumber = 2,
+    kPosYFieldNumber = 3,
+    kPosZFieldNumber = 4,
+  };
+  // optional int32 ability_entity_index = 1;
+  bool has_ability_entity_index() const;
+  private:
+  bool _internal_has_ability_entity_index() const;
+  public:
+  void clear_ability_entity_index();
+  int32_t ability_entity_index() const;
+  void set_ability_entity_index(int32_t value);
+  private:
+  int32_t _internal_ability_entity_index() const;
+  void _internal_set_ability_entity_index(int32_t value);
+  public:
+
+  // optional float pos_x = 2;
+  bool has_pos_x() const;
+  private:
+  bool _internal_has_pos_x() const;
+  public:
+  void clear_pos_x();
+  float pos_x() const;
+  void set_pos_x(float value);
+  private:
+  float _internal_pos_x() const;
+  void _internal_set_pos_x(float value);
+  public:
+
+  // optional float pos_y = 3;
+  bool has_pos_y() const;
+  private:
+  bool _internal_has_pos_y() const;
+  public:
+  void clear_pos_y();
+  float pos_y() const;
+  void set_pos_y(float value);
+  private:
+  float _internal_pos_y() const;
+  void _internal_set_pos_y(float value);
+  public:
+
+  // optional float pos_z = 4;
+  bool has_pos_z() const;
+  private:
+  bool _internal_has_pos_z() const;
+  public:
+  void clear_pos_z();
+  float pos_z() const;
+  void set_pos_z(float value);
+  private:
+  float _internal_pos_z() const;
+  void _internal_set_pos_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:CCitadelClientMsg_ExecuteMapPositionAbility)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    int32_t ability_entity_index_;
+    float pos_x_;
+    float pos_y_;
+    float pos_z_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_citadel_5fclientmessages_2eproto;
@@ -7171,9 +7381,127 @@ CCitadelClientMsg_HideoutUpdateHeroReleaseVoteTally::vote_round_to_tally() const
   return _impl_.vote_round_to_tally_;
 }
 
+// -------------------------------------------------------------------
+
+// CCitadelClientMsg_ExecuteMapPositionAbility
+
+// optional int32 ability_entity_index = 1;
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::_internal_has_ability_entity_index() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::has_ability_entity_index() const {
+  return _internal_has_ability_entity_index();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::clear_ability_entity_index() {
+  _impl_.ability_entity_index_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline int32_t CCitadelClientMsg_ExecuteMapPositionAbility::_internal_ability_entity_index() const {
+  return _impl_.ability_entity_index_;
+}
+inline int32_t CCitadelClientMsg_ExecuteMapPositionAbility::ability_entity_index() const {
+  // @@protoc_insertion_point(field_get:CCitadelClientMsg_ExecuteMapPositionAbility.ability_entity_index)
+  return _internal_ability_entity_index();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::_internal_set_ability_entity_index(int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.ability_entity_index_ = value;
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::set_ability_entity_index(int32_t value) {
+  _internal_set_ability_entity_index(value);
+  // @@protoc_insertion_point(field_set:CCitadelClientMsg_ExecuteMapPositionAbility.ability_entity_index)
+}
+
+// optional float pos_x = 2;
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::_internal_has_pos_x() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::has_pos_x() const {
+  return _internal_has_pos_x();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::clear_pos_x() {
+  _impl_.pos_x_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline float CCitadelClientMsg_ExecuteMapPositionAbility::_internal_pos_x() const {
+  return _impl_.pos_x_;
+}
+inline float CCitadelClientMsg_ExecuteMapPositionAbility::pos_x() const {
+  // @@protoc_insertion_point(field_get:CCitadelClientMsg_ExecuteMapPositionAbility.pos_x)
+  return _internal_pos_x();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::_internal_set_pos_x(float value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.pos_x_ = value;
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::set_pos_x(float value) {
+  _internal_set_pos_x(value);
+  // @@protoc_insertion_point(field_set:CCitadelClientMsg_ExecuteMapPositionAbility.pos_x)
+}
+
+// optional float pos_y = 3;
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::_internal_has_pos_y() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::has_pos_y() const {
+  return _internal_has_pos_y();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::clear_pos_y() {
+  _impl_.pos_y_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline float CCitadelClientMsg_ExecuteMapPositionAbility::_internal_pos_y() const {
+  return _impl_.pos_y_;
+}
+inline float CCitadelClientMsg_ExecuteMapPositionAbility::pos_y() const {
+  // @@protoc_insertion_point(field_get:CCitadelClientMsg_ExecuteMapPositionAbility.pos_y)
+  return _internal_pos_y();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::_internal_set_pos_y(float value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.pos_y_ = value;
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::set_pos_y(float value) {
+  _internal_set_pos_y(value);
+  // @@protoc_insertion_point(field_set:CCitadelClientMsg_ExecuteMapPositionAbility.pos_y)
+}
+
+// optional float pos_z = 4;
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::_internal_has_pos_z() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool CCitadelClientMsg_ExecuteMapPositionAbility::has_pos_z() const {
+  return _internal_has_pos_z();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::clear_pos_z() {
+  _impl_.pos_z_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline float CCitadelClientMsg_ExecuteMapPositionAbility::_internal_pos_z() const {
+  return _impl_.pos_z_;
+}
+inline float CCitadelClientMsg_ExecuteMapPositionAbility::pos_z() const {
+  // @@protoc_insertion_point(field_get:CCitadelClientMsg_ExecuteMapPositionAbility.pos_z)
+  return _internal_pos_z();
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::_internal_set_pos_z(float value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.pos_z_ = value;
+}
+inline void CCitadelClientMsg_ExecuteMapPositionAbility::set_pos_z(float value) {
+  _internal_set_pos_z(value);
+  // @@protoc_insertion_point(field_set:CCitadelClientMsg_ExecuteMapPositionAbility.pos_z)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

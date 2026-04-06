@@ -149,7 +149,7 @@ inline bool EBaseGameEvents_Parse(
 }
 // ===================================================================
 
-class CMsgVDebugGameSessionIDEvent final :
+class CMsgVDebugGameSessionIDEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgVDebugGameSessionIDEvent) */ {
  public:
   inline CMsgVDebugGameSessionIDEvent() : CMsgVDebugGameSessionIDEvent(nullptr) {}
@@ -329,7 +329,7 @@ class CMsgVDebugGameSessionIDEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgPlaceDecalEvent final :
+class CMsgPlaceDecalEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgPlaceDecalEvent) */ {
  public:
   inline CMsgPlaceDecalEvent() : CMsgPlaceDecalEvent(nullptr) {}
@@ -684,7 +684,7 @@ class CMsgPlaceDecalEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgClearWorldDecalsEvent final :
+class CMsgClearWorldDecalsEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgClearWorldDecalsEvent) */ {
  public:
   inline CMsgClearWorldDecalsEvent() : CMsgClearWorldDecalsEvent(nullptr) {}
@@ -844,7 +844,7 @@ class CMsgClearWorldDecalsEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgClearEntityDecalsEvent final :
+class CMsgClearEntityDecalsEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgClearEntityDecalsEvent) */ {
  public:
   inline CMsgClearEntityDecalsEvent() : CMsgClearEntityDecalsEvent(nullptr) {}
@@ -1004,7 +1004,7 @@ class CMsgClearEntityDecalsEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgClearDecalsForEntityEvent final :
+class CMsgClearDecalsForEntityEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgClearDecalsForEntityEvent) */ {
  public:
   inline CMsgClearDecalsForEntityEvent() : CMsgClearDecalsForEntityEvent(nullptr) {}
@@ -1179,7 +1179,7 @@ class CMsgClearDecalsForEntityEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSource1LegacyGameEventList_key_t final :
+class CMsgSource1LegacyGameEventList_key_t :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSource1LegacyGameEventList.key_t) */ {
  public:
   inline CMsgSource1LegacyGameEventList_key_t() : CMsgSource1LegacyGameEventList_key_t(nullptr) {}
@@ -1359,7 +1359,7 @@ class CMsgSource1LegacyGameEventList_key_t final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSource1LegacyGameEventList_descriptor_t final :
+class CMsgSource1LegacyGameEventList_descriptor_t :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSource1LegacyGameEventList.descriptor_t) */ {
  public:
   inline CMsgSource1LegacyGameEventList_descriptor_t() : CMsgSource1LegacyGameEventList_descriptor_t(nullptr) {}
@@ -1559,7 +1559,7 @@ class CMsgSource1LegacyGameEventList_descriptor_t final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSource1LegacyGameEventList final :
+class CMsgSource1LegacyGameEventList :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSource1LegacyGameEventList) */ {
  public:
   inline CMsgSource1LegacyGameEventList() : CMsgSource1LegacyGameEventList(nullptr) {}
@@ -1726,7 +1726,7 @@ class CMsgSource1LegacyGameEventList final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSource1LegacyListenEvents final :
+class CMsgSource1LegacyListenEvents :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSource1LegacyListenEvents) */ {
  public:
   inline CMsgSource1LegacyListenEvents() : CMsgSource1LegacyListenEvents(nullptr) {}
@@ -1910,7 +1910,7 @@ class CMsgSource1LegacyListenEvents final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSource1LegacyGameEvent_key_t final :
+class CMsgSource1LegacyGameEvent_key_t :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSource1LegacyGameEvent.key_t) */ {
  public:
   inline CMsgSource1LegacyGameEvent_key_t() : CMsgSource1LegacyGameEvent_key_t(nullptr) {}
@@ -2180,7 +2180,7 @@ class CMsgSource1LegacyGameEvent_key_t final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSource1LegacyGameEvent final :
+class CMsgSource1LegacyGameEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSource1LegacyGameEvent) */ {
  public:
   inline CMsgSource1LegacyGameEvent() : CMsgSource1LegacyGameEvent(nullptr) {}
@@ -2412,7 +2412,7 @@ class CMsgSource1LegacyGameEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSosStartSoundEvent final :
+class CMsgSosStartSoundEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSosStartSoundEvent) */ {
  public:
   inline CMsgSosStartSoundEvent() : CMsgSosStartSoundEvent(nullptr) {}
@@ -2652,7 +2652,7 @@ class CMsgSosStartSoundEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSosStopSoundEvent final :
+class CMsgSosStopSoundEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSosStopSoundEvent) */ {
  public:
   inline CMsgSosStopSoundEvent() : CMsgSosStopSoundEvent(nullptr) {}
@@ -2812,7 +2812,7 @@ class CMsgSosStopSoundEvent final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSosStopSoundEventHash final :
+class CMsgSosStopSoundEventHash :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSosStopSoundEventHash) */ {
  public:
   inline CMsgSosStopSoundEventHash() : CMsgSosStopSoundEventHash(nullptr) {}
@@ -2987,7 +2987,7 @@ class CMsgSosStopSoundEventHash final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSosSetSoundEventParams final :
+class CMsgSosSetSoundEventParams :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSosSetSoundEventParams) */ {
  public:
   inline CMsgSosSetSoundEventParams() : CMsgSosSetSoundEventParams(nullptr) {}
@@ -3167,7 +3167,7 @@ class CMsgSosSetSoundEventParams final :
 };
 // -------------------------------------------------------------------
 
-class CMsgSosSetLibraryStackFields final :
+class CMsgSosSetLibraryStackFields :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSosSetLibraryStackFields) */ {
  public:
   inline CMsgSosSetLibraryStackFields() : CMsgSosSetLibraryStackFields(nullptr) {}

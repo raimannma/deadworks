@@ -675,7 +675,7 @@ inline bool PostProcessingGameStates_Parse(
 }
 // ===================================================================
 
-class CUserMessageEmpty final :
+class CUserMessageEmpty :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CUserMessageEmpty) */ {
  public:
   inline CUserMessageEmpty() : CUserMessageEmpty(nullptr) {}
@@ -835,7 +835,7 @@ class CUserMessageEmpty final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_Damage final :
+class CCitadelUserMessage_Damage :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_Damage) */ {
  public:
   inline CCitadelUserMessage_Damage() : CCitadelUserMessage_Damage(nullptr) {}
@@ -1425,7 +1425,7 @@ class CCitadelUserMessage_Damage final :
 };
 // -------------------------------------------------------------------
 
-class PingCommonData final :
+class PingCommonData :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PingCommonData) */ {
  public:
   inline PingCommonData() : PingCommonData(nullptr) {}
@@ -1685,7 +1685,7 @@ class PingCommonData final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_MapPing final :
+class CCitadelUserMsg_MapPing :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_MapPing) */ {
  public:
   inline CCitadelUserMsg_MapPing() : CCitadelUserMsg_MapPing(nullptr) {}
@@ -1960,7 +1960,7 @@ class CCitadelUserMsg_MapPing final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_PingWheel final :
+class CCitadelUserMsg_PingWheel :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_PingWheel) */ {
  public:
   inline CCitadelUserMsg_PingWheel() : CCitadelUserMsg_PingWheel(nullptr) {}
@@ -2140,7 +2140,7 @@ class CCitadelUserMsg_PingWheel final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_AbilityPing final :
+class CCitadelUserMsg_AbilityPing :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_AbilityPing) */ {
  public:
   inline CCitadelUserMsg_AbilityPing() : CCitadelUserMsg_AbilityPing(nullptr) {}
@@ -2350,7 +2350,7 @@ class CCitadelUserMsg_AbilityPing final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_QuickResponse final :
+class CCitadelUserMsg_QuickResponse :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_QuickResponse) */ {
  public:
   inline CCitadelUserMsg_QuickResponse() : CCitadelUserMsg_QuickResponse(nullptr) {}
@@ -2560,7 +2560,7 @@ class CCitadelUserMsg_QuickResponse final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ItemDraftReaction final :
+class CCitadelUserMsg_ItemDraftReaction :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ItemDraftReaction) */ {
  public:
   inline CCitadelUserMsg_ItemDraftReaction() : CCitadelUserMsg_ItemDraftReaction(nullptr) {}
@@ -2755,7 +2755,7 @@ class CCitadelUserMsg_ItemDraftReaction final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_MapLine final :
+class CCitadelUserMsg_MapLine :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_MapLine) */ {
  public:
   inline CCitadelUserMsg_MapLine() : CCitadelUserMsg_MapLine(nullptr) {}
@@ -2935,7 +2935,7 @@ class CCitadelUserMsg_MapLine final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_TeamRewards final :
+class CCitadelUserMsg_TeamRewards :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_TeamRewards) */ {
  public:
   inline CCitadelUserMsg_TeamRewards() : CCitadelUserMsg_TeamRewards(nullptr) {}
@@ -3125,7 +3125,7 @@ class CCitadelUserMsg_TeamRewards final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_TriggerDamageFlash final :
+class CCitadelUserMsg_TriggerDamageFlash :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_TriggerDamageFlash) */ {
  public:
   inline CCitadelUserMsg_TriggerDamageFlash() : CCitadelUserMsg_TriggerDamageFlash(nullptr) {}
@@ -3380,7 +3380,7 @@ class CCitadelUserMsg_TriggerDamageFlash final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_AbilitiesChanged final :
+class CCitadelUserMsg_AbilitiesChanged :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_AbilitiesChanged) */ {
  public:
   inline CCitadelUserMsg_AbilitiesChanged() : CCitadelUserMsg_AbilitiesChanged(nullptr) {}
@@ -3608,7 +3608,7 @@ class CCitadelUserMsg_AbilitiesChanged final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_AbilityInterrupted final :
+class CCitadelUserMsg_AbilityInterrupted :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_AbilityInterrupted) */ {
  public:
   inline CCitadelUserMsg_AbilityInterrupted() : CCitadelUserMsg_AbilityInterrupted(nullptr) {}
@@ -3828,7 +3828,7 @@ class CCitadelUserMsg_AbilityInterrupted final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_AbilityLateFailure final :
+class CCitadelUserMsg_AbilityLateFailure :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_AbilityLateFailure) */ {
  public:
   inline CCitadelUserMsg_AbilityLateFailure() : CCitadelUserMsg_AbilityLateFailure(nullptr) {}
@@ -4018,7 +4018,7 @@ class CCitadelUserMsg_AbilityLateFailure final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_RecentDamageSummary_DamageRecord final :
+class CCitadelUserMsg_RecentDamageSummary_DamageRecord :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_RecentDamageSummary.DamageRecord) */ {
  public:
   inline CCitadelUserMsg_RecentDamageSummary_DamageRecord() : CCitadelUserMsg_RecentDamageSummary_DamageRecord(nullptr) {}
@@ -4343,7 +4343,7 @@ class CCitadelUserMsg_RecentDamageSummary_DamageRecord final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_RecentDamageSummary_ModifierRecord final :
+class CCitadelUserMsg_RecentDamageSummary_ModifierRecord :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_RecentDamageSummary.ModifierRecord) */ {
  public:
   inline CCitadelUserMsg_RecentDamageSummary_ModifierRecord() : CCitadelUserMsg_RecentDamageSummary_ModifierRecord(nullptr) {}
@@ -4578,7 +4578,7 @@ class CCitadelUserMsg_RecentDamageSummary_ModifierRecord final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_RecentDamageSummary final :
+class CCitadelUserMsg_RecentDamageSummary :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_RecentDamageSummary) */ {
  public:
   inline CCitadelUserMsg_RecentDamageSummary() : CCitadelUserMsg_RecentDamageSummary(nullptr) {}
@@ -4841,7 +4841,7 @@ class CCitadelUserMsg_RecentDamageSummary final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_SpectatorTeamChanged final :
+class CCitadelUserMsg_SpectatorTeamChanged :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_SpectatorTeamChanged) */ {
  public:
   inline CCitadelUserMsg_SpectatorTeamChanged() : CCitadelUserMsg_SpectatorTeamChanged(nullptr) {}
@@ -5001,7 +5001,7 @@ class CCitadelUserMsg_SpectatorTeamChanged final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ChatWheel final :
+class CCitadelUserMsg_ChatWheel :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ChatWheel) */ {
  public:
   inline CCitadelUserMsg_ChatWheel() : CCitadelUserMsg_ChatWheel(nullptr) {}
@@ -5256,7 +5256,7 @@ class CCitadelUserMsg_ChatWheel final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ChatMsg final :
+class CCitadelUserMsg_ChatMsg :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ChatMsg) */ {
  public:
   inline CCitadelUserMsg_ChatMsg() : CCitadelUserMsg_ChatMsg(nullptr) {}
@@ -5466,7 +5466,7 @@ class CCitadelUserMsg_ChatMsg final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_GoldHistory_GoldRecord final :
+class CCitadelUserMsg_GoldHistory_GoldRecord :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_GoldHistory.GoldRecord) */ {
  public:
   inline CCitadelUserMsg_GoldHistory_GoldRecord() : CCitadelUserMsg_GoldHistory_GoldRecord(nullptr) {}
@@ -5656,7 +5656,7 @@ class CCitadelUserMsg_GoldHistory_GoldRecord final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_GoldHistory_MinuteRecord final :
+class CCitadelUserMsg_GoldHistory_MinuteRecord :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_GoldHistory.MinuteRecord) */ {
  public:
   inline CCitadelUserMsg_GoldHistory_MinuteRecord() : CCitadelUserMsg_GoldHistory_MinuteRecord(nullptr) {}
@@ -5836,7 +5836,7 @@ class CCitadelUserMsg_GoldHistory_MinuteRecord final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_GoldHistory final :
+class CCitadelUserMsg_GoldHistory :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_GoldHistory) */ {
  public:
   inline CCitadelUserMsg_GoldHistory() : CCitadelUserMsg_GoldHistory(nullptr) {}
@@ -6019,7 +6019,7 @@ class CCitadelUserMsg_GoldHistory final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CameraController_Maintain final :
+class CCitadelUserMsg_CameraController_Maintain :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CameraController.Maintain) */ {
  public:
   inline CCitadelUserMsg_CameraController_Maintain() : CCitadelUserMsg_CameraController_Maintain(nullptr) {}
@@ -6179,7 +6179,7 @@ class CCitadelUserMsg_CameraController_Maintain final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CameraController_Approach final :
+class CCitadelUserMsg_CameraController_Approach :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CameraController.Approach) */ {
  public:
   inline CCitadelUserMsg_CameraController_Approach() : CCitadelUserMsg_CameraController_Approach(nullptr) {}
@@ -6434,7 +6434,7 @@ class CCitadelUserMsg_CameraController_Approach final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CameraController_Spring final :
+class CCitadelUserMsg_CameraController_Spring :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CameraController.Spring) */ {
  public:
   inline CCitadelUserMsg_CameraController_Spring() : CCitadelUserMsg_CameraController_Spring(nullptr) {}
@@ -6659,7 +6659,7 @@ class CCitadelUserMsg_CameraController_Spring final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CameraController_Lerp final :
+class CCitadelUserMsg_CameraController_Lerp :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CameraController.Lerp) */ {
  public:
   inline CCitadelUserMsg_CameraController_Lerp() : CCitadelUserMsg_CameraController_Lerp(nullptr) {}
@@ -6919,7 +6919,7 @@ class CCitadelUserMsg_CameraController_Lerp final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CameraController_Lag final :
+class CCitadelUserMsg_CameraController_Lag :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CameraController.Lag) */ {
  public:
   inline CCitadelUserMsg_CameraController_Lag() : CCitadelUserMsg_CameraController_Lag(nullptr) {}
@@ -7139,7 +7139,7 @@ class CCitadelUserMsg_CameraController_Lag final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CameraController final :
+class CCitadelUserMsg_CameraController :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CameraController) */ {
  public:
   inline CCitadelUserMsg_CameraController() : CCitadelUserMsg_CameraController(nullptr) {}
@@ -7510,7 +7510,7 @@ class CCitadelUserMsg_CameraController final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_PostMatchDetails final :
+class CCitadelUserMsg_PostMatchDetails :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_PostMatchDetails) */ {
  public:
   inline CCitadelUserMsg_PostMatchDetails() : CCitadelUserMsg_PostMatchDetails(nullptr) {}
@@ -7675,7 +7675,7 @@ class CCitadelUserMsg_PostMatchDetails final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ChatEvent final :
+class CCitadelUserMsg_ChatEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ChatEvent) */ {
  public:
   inline CCitadelUserMsg_ChatEvent() : CCitadelUserMsg_ChatEvent(nullptr) {}
@@ -7883,7 +7883,7 @@ class CCitadelUserMsg_ChatEvent final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_HeroKilled final :
+class CCitadelUserMsg_HeroKilled :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_HeroKilled) */ {
  public:
   inline CCitadelUserMsg_HeroKilled() : CCitadelUserMsg_HeroKilled(nullptr) {}
@@ -8142,7 +8142,7 @@ class CCitadelUserMsg_HeroKilled final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelEntityMsg_BreakablePropSpawnDebris final :
+class CCitadelEntityMsg_BreakablePropSpawnDebris :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelEntityMsg_BreakablePropSpawnDebris) */ {
  public:
   inline CCitadelEntityMsg_BreakablePropSpawnDebris() : CCitadelEntityMsg_BreakablePropSpawnDebris(nullptr) {}
@@ -8362,7 +8362,7 @@ class CCitadelEntityMsg_BreakablePropSpawnDebris final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ReturnIdol final :
+class CCitadelUserMsg_ReturnIdol :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ReturnIdol) */ {
  public:
   inline CCitadelUserMsg_ReturnIdol() : CCitadelUserMsg_ReturnIdol(nullptr) {}
@@ -8557,7 +8557,7 @@ class CCitadelUserMsg_ReturnIdol final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_SetClientCameraAngles final :
+class CCitadelUserMsg_SetClientCameraAngles :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_SetClientCameraAngles) */ {
  public:
   inline CCitadelUserMsg_SetClientCameraAngles() : CCitadelUserMsg_SetClientCameraAngles(nullptr) {}
@@ -8737,7 +8737,7 @@ class CCitadelUserMsg_SetClientCameraAngles final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_BulletHit final :
+class CCitadelUserMessage_BulletHit :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_BulletHit) */ {
  public:
   inline CCitadelUserMessage_BulletHit() : CCitadelUserMessage_BulletHit(nullptr) {}
@@ -8957,7 +8957,7 @@ class CCitadelUserMessage_BulletHit final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_ObjectiveMask final :
+class CCitadelUserMessage_ObjectiveMask :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_ObjectiveMask) */ {
  public:
   inline CCitadelUserMessage_ObjectiveMask() : CCitadelUserMessage_ObjectiveMask(nullptr) {}
@@ -9132,7 +9132,7 @@ class CCitadelUserMessage_ObjectiveMask final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_ModifierApplied final :
+class CCitadelUserMessage_ModifierApplied :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_ModifierApplied) */ {
  public:
   inline CCitadelUserMessage_ModifierApplied() : CCitadelUserMessage_ModifierApplied(nullptr) {}
@@ -9322,7 +9322,7 @@ class CCitadelUserMessage_ModifierApplied final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_AuraModifierApplied final :
+class CCitadelUserMessage_AuraModifierApplied :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_AuraModifierApplied) */ {
  public:
   inline CCitadelUserMessage_AuraModifierApplied() : CCitadelUserMessage_AuraModifierApplied(nullptr) {}
@@ -9557,7 +9557,7 @@ class CCitadelUserMessage_AuraModifierApplied final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ObstructedShotFired final :
+class CCitadelUserMsg_ObstructedShotFired :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ObstructedShotFired) */ {
  public:
   inline CCitadelUserMsg_ObstructedShotFired() : CCitadelUserMsg_ObstructedShotFired(nullptr) {}
@@ -9682,7 +9682,7 @@ class CCitadelUserMsg_ObstructedShotFired final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_PostProcessingAnim final :
+class CCitadelUserMsg_PostProcessingAnim :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_PostProcessingAnim) */ {
  public:
   inline CCitadelUserMsg_PostProcessingAnim() : CCitadelUserMsg_PostProcessingAnim(nullptr) {}
@@ -9947,7 +9947,7 @@ class CCitadelUserMsg_PostProcessingAnim final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_DeathReplayData final :
+class CCitadelUserMsg_DeathReplayData :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_DeathReplayData) */ {
  public:
   inline CCitadelUserMsg_DeathReplayData() : CCitadelUserMsg_DeathReplayData(nullptr) {}
@@ -10142,7 +10142,7 @@ class CCitadelUserMsg_DeathReplayData final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ForceShopClosed final :
+class CCitadelUserMsg_ForceShopClosed :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ForceShopClosed) */ {
  public:
   inline CCitadelUserMsg_ForceShopClosed() : CCitadelUserMsg_ForceShopClosed(nullptr) {}
@@ -10267,7 +10267,7 @@ class CCitadelUserMsg_ForceShopClosed final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_PlayerLifetimeStatInfo_Stat final :
+class CCitadelUserMsg_PlayerLifetimeStatInfo_Stat :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_PlayerLifetimeStatInfo.Stat) */ {
  public:
   inline CCitadelUserMsg_PlayerLifetimeStatInfo_Stat() : CCitadelUserMsg_PlayerLifetimeStatInfo_Stat(nullptr) {}
@@ -10522,7 +10522,7 @@ class CCitadelUserMsg_PlayerLifetimeStatInfo_Stat final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_PlayerLifetimeStatInfo final :
+class CCitadelUserMsg_PlayerLifetimeStatInfo :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_PlayerLifetimeStatInfo) */ {
  public:
   inline CCitadelUserMsg_PlayerLifetimeStatInfo() : CCitadelUserMsg_PlayerLifetimeStatInfo(nullptr) {}
@@ -10734,7 +10734,7 @@ class CCitadelUserMsg_PlayerLifetimeStatInfo final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_StaminaConsumed final :
+class CCitadelUserMsg_StaminaConsumed :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_StaminaConsumed) */ {
  public:
   inline CCitadelUserMsg_StaminaConsumed() : CCitadelUserMsg_StaminaConsumed(nullptr) {}
@@ -10969,7 +10969,7 @@ class CCitadelUserMsg_StaminaConsumed final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_AbilityNotify final :
+class CCitadelUserMessage_AbilityNotify :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_AbilityNotify) */ {
  public:
   inline CCitadelUserMessage_AbilityNotify() : CCitadelUserMessage_AbilityNotify(nullptr) {}
@@ -11174,7 +11174,7 @@ class CCitadelUserMessage_AbilityNotify final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_CurrencyChanged final :
+class CCitadelUserMessage_CurrencyChanged :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_CurrencyChanged) */ {
  public:
   inline CCitadelUserMessage_CurrencyChanged() : CCitadelUserMessage_CurrencyChanged(nullptr) {}
@@ -11474,7 +11474,7 @@ class CCitadelUserMessage_CurrencyChanged final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_GameOver final :
+class CCitadelUserMessage_GameOver :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_GameOver) */ {
  public:
   inline CCitadelUserMessage_GameOver() : CCitadelUserMessage_GameOver(nullptr) {}
@@ -11649,7 +11649,7 @@ class CCitadelUserMessage_GameOver final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_GetDamageStatsResponse_StatType final :
+class CCitadelUserMsg_GetDamageStatsResponse_StatType :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_GetDamageStatsResponse.StatType) */ {
  public:
   inline CCitadelUserMsg_GetDamageStatsResponse_StatType() : CCitadelUserMsg_GetDamageStatsResponse_StatType(nullptr) {}
@@ -11843,7 +11843,7 @@ class CCitadelUserMsg_GetDamageStatsResponse_StatType final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_GetDamageStatsResponse final :
+class CCitadelUserMsg_GetDamageStatsResponse :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_GetDamageStatsResponse) */ {
  public:
   inline CCitadelUserMsg_GetDamageStatsResponse() : CCitadelUserMsg_GetDamageStatsResponse(nullptr) {}
@@ -12065,7 +12065,7 @@ class CCitadelUserMsg_GetDamageStatsResponse final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ParticipantStartSoundEvent final :
+class CCitadelUserMsg_ParticipantStartSoundEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ParticipantStartSoundEvent) */ {
  public:
   inline CCitadelUserMsg_ParticipantStartSoundEvent() : CCitadelUserMsg_ParticipantStartSoundEvent(nullptr) {}
@@ -12254,7 +12254,7 @@ class CCitadelUserMsg_ParticipantStartSoundEvent final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ParticipantStopSoundEvent final :
+class CCitadelUserMsg_ParticipantStopSoundEvent :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ParticipantStopSoundEvent) */ {
  public:
   inline CCitadelUserMsg_ParticipantStopSoundEvent() : CCitadelUserMsg_ParticipantStopSoundEvent(nullptr) {}
@@ -12443,7 +12443,7 @@ class CCitadelUserMsg_ParticipantStopSoundEvent final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ParticipantStopSoundEventHash final :
+class CCitadelUserMsg_ParticipantStopSoundEventHash :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ParticipantStopSoundEventHash) */ {
  public:
   inline CCitadelUserMsg_ParticipantStopSoundEventHash() : CCitadelUserMsg_ParticipantStopSoundEventHash(nullptr) {}
@@ -12632,7 +12632,7 @@ class CCitadelUserMsg_ParticipantStopSoundEventHash final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ParticipantSetSoundEventParams final :
+class CCitadelUserMsg_ParticipantSetSoundEventParams :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ParticipantSetSoundEventParams) */ {
  public:
   inline CCitadelUserMsg_ParticipantSetSoundEventParams() : CCitadelUserMsg_ParticipantSetSoundEventParams(nullptr) {}
@@ -12821,7 +12821,7 @@ class CCitadelUserMsg_ParticipantSetSoundEventParams final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_ParticipantSetLibraryStackFields final :
+class CCitadelUserMsg_ParticipantSetLibraryStackFields :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_ParticipantSetLibraryStackFields) */ {
  public:
   inline CCitadelUserMsg_ParticipantSetLibraryStackFields() : CCitadelUserMsg_ParticipantSetLibraryStackFields(nullptr) {}
@@ -13010,7 +13010,7 @@ class CCitadelUserMsg_ParticipantSetLibraryStackFields final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_BossKilled final :
+class CCitadelUserMsg_BossKilled :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_BossKilled) */ {
  public:
   inline CCitadelUserMsg_BossKilled() : CCitadelUserMsg_BossKilled(nullptr) {}
@@ -13280,7 +13280,7 @@ class CCitadelUserMsg_BossKilled final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_BossDamaged final :
+class CCitadelUserMsg_BossDamaged :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_BossDamaged) */ {
  public:
   inline CCitadelUserMsg_BossDamaged() : CCitadelUserMsg_BossDamaged(nullptr) {}
@@ -13470,7 +13470,7 @@ class CCitadelUserMsg_BossDamaged final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_MidBossSpawned final :
+class CCitadelUserMsg_MidBossSpawned :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_MidBossSpawned) */ {
  public:
   inline CCitadelUserMsg_MidBossSpawned() : CCitadelUserMsg_MidBossSpawned(nullptr) {}
@@ -13595,7 +13595,7 @@ class CCitadelUserMsg_MidBossSpawned final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_RejuvStatus final :
+class CCitadelUserMsg_RejuvStatus :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_RejuvStatus) */ {
  public:
   inline CCitadelUserMsg_RejuvStatus() : CCitadelUserMsg_RejuvStatus(nullptr) {}
@@ -13800,7 +13800,7 @@ class CCitadelUserMsg_RejuvStatus final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_KillStreak final :
+class CCitadelUserMsg_KillStreak :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_KillStreak) */ {
  public:
   inline CCitadelUserMsg_KillStreak() : CCitadelUserMsg_KillStreak(nullptr) {}
@@ -14020,7 +14020,7 @@ class CCitadelUserMsg_KillStreak final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_TeamMsg final :
+class CCitadelUserMsg_TeamMsg :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_TeamMsg) */ {
  public:
   inline CCitadelUserMsg_TeamMsg() : CCitadelUserMsg_TeamMsg(nullptr) {}
@@ -14225,7 +14225,7 @@ class CCitadelUserMsg_TeamMsg final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_PlayerRespawned final :
+class CCitadelUserMsg_PlayerRespawned :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_PlayerRespawned) */ {
  public:
   inline CCitadelUserMsg_PlayerRespawned() : CCitadelUserMsg_PlayerRespawned(nullptr) {}
@@ -14400,7 +14400,7 @@ class CCitadelUserMsg_PlayerRespawned final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_CallCheaterVote final :
+class CCitadelUserMsg_CallCheaterVote :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_CallCheaterVote) */ {
  public:
   inline CCitadelUserMsg_CallCheaterVote() : CCitadelUserMsg_CallCheaterVote(nullptr) {}
@@ -14560,7 +14560,7 @@ class CCitadelUserMsg_CallCheaterVote final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_MeleeHit final :
+class CCitadelUserMessage_MeleeHit :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_MeleeHit) */ {
  public:
   inline CCitadelUserMessage_MeleeHit() : CCitadelUserMessage_MeleeHit(nullptr) {}
@@ -14735,7 +14735,7 @@ class CCitadelUserMessage_MeleeHit final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_FlexSlotUnlocked final :
+class CCitadelUserMsg_FlexSlotUnlocked :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_FlexSlotUnlocked) */ {
  public:
   inline CCitadelUserMsg_FlexSlotUnlocked() : CCitadelUserMsg_FlexSlotUnlocked(nullptr) {}
@@ -14910,7 +14910,7 @@ class CCitadelUserMsg_FlexSlotUnlocked final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_ItemPurchaseNotification final :
+class CCitadelUserMessage_ItemPurchaseNotification :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_ItemPurchaseNotification) */ {
  public:
   inline CCitadelUserMessage_ItemPurchaseNotification() : CCitadelUserMessage_ItemPurchaseNotification(nullptr) {}
@@ -15115,7 +15115,7 @@ class CCitadelUserMessage_ItemPurchaseNotification final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_SeasonalKill final :
+class CCitadelUserMsg_SeasonalKill :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_SeasonalKill) */ {
  public:
   inline CCitadelUserMsg_SeasonalKill() : CCitadelUserMsg_SeasonalKill(nullptr) {}
@@ -15290,7 +15290,7 @@ class CCitadelUserMsg_SeasonalKill final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_MusicQueue final :
+class CCitadelUserMsg_MusicQueue :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_MusicQueue) */ {
  public:
   inline CCitadelUserMsg_MusicQueue() : CCitadelUserMsg_MusicQueue(nullptr) {}
@@ -15465,7 +15465,7 @@ class CCitadelUserMsg_MusicQueue final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_AG2ParamTrigger final :
+class CCitadelUserMsg_AG2ParamTrigger :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_AG2ParamTrigger) */ {
  public:
   inline CCitadelUserMsg_AG2ParamTrigger() : CCitadelUserMsg_AG2ParamTrigger(nullptr) {}
@@ -15650,7 +15650,7 @@ class CCitadelUserMsg_AG2ParamTrigger final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_EntityPortalled final :
+class CCitadelUserMsg_EntityPortalled :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_EntityPortalled) */ {
  public:
   inline CCitadelUserMsg_EntityPortalled() : CCitadelUserMsg_EntityPortalled(nullptr) {}
@@ -15830,7 +15830,7 @@ class CCitadelUserMsg_EntityPortalled final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_StreetBrawlScoring final :
+class CCitadelUserMsg_StreetBrawlScoring :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_StreetBrawlScoring) */ {
  public:
   inline CCitadelUserMsg_StreetBrawlScoring() : CCitadelUserMsg_StreetBrawlScoring(nullptr) {}
@@ -16035,7 +16035,7 @@ class CCitadelUserMsg_StreetBrawlScoring final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_HudGameAnnouncement /* final */:
+class CCitadelUserMsg_HudGameAnnouncement :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_HudGameAnnouncement) */ {
  public:
   inline CCitadelUserMsg_HudGameAnnouncement() : CCitadelUserMsg_HudGameAnnouncement(nullptr) {}
@@ -16298,7 +16298,7 @@ class CCitadelUserMsg_HudGameAnnouncement /* final */:
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMessage_ImportantAbilityUsed final :
+class CCitadelUserMessage_ImportantAbilityUsed :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMessage_ImportantAbilityUsed) */ {
  public:
   inline CCitadelUserMessage_ImportantAbilityUsed() : CCitadelUserMessage_ImportantAbilityUsed(nullptr) {}
@@ -16493,7 +16493,7 @@ class CCitadelUserMessage_ImportantAbilityUsed final :
 };
 // -------------------------------------------------------------------
 
-class CCitadelUserMsg_BannedHeroes final :
+class CCitadelUserMsg_BannedHeroes :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CCitadelUserMsg_BannedHeroes) */ {
  public:
   inline CCitadelUserMsg_BannedHeroes() : CCitadelUserMsg_BannedHeroes(nullptr) {}

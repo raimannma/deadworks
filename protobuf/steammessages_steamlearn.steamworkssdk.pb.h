@@ -469,7 +469,7 @@ inline bool ESteamLearnInferenceMetadataResult_Parse(
 }
 // ===================================================================
 
-class CMsgSteamLearnDataSourceDescObject /*final*/ :
+class CMsgSteamLearnDataSourceDescObject :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnDataSourceDescObject) */ {
  public:
   inline CMsgSteamLearnDataSourceDescObject() : CMsgSteamLearnDataSourceDescObject(nullptr) {}
@@ -550,7 +550,7 @@ class CMsgSteamLearnDataSourceDescObject /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnDataSourceDescObject* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnDataSourceDescObject* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnDataSourceDescObject>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -562,19 +562,19 @@ class CMsgSteamLearnDataSourceDescObject /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnDataSourceDescObject* other);
 
   private:
@@ -588,9 +588,9 @@ class CMsgSteamLearnDataSourceDescObject /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -633,7 +633,7 @@ class CMsgSteamLearnDataSourceDescObject /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnDataSourceDescElement /*final*/ :
+class CMsgSteamLearnDataSourceDescElement :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnDataSourceDescElement) */ {
  public:
   inline CMsgSteamLearnDataSourceDescElement() : CMsgSteamLearnDataSourceDescElement(nullptr) {}
@@ -714,7 +714,7 @@ class CMsgSteamLearnDataSourceDescElement /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnDataSourceDescElement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnDataSourceDescElement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnDataSourceDescElement>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -726,19 +726,19 @@ class CMsgSteamLearnDataSourceDescElement /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnDataSourceDescElement* other);
 
   private:
@@ -752,9 +752,9 @@ class CMsgSteamLearnDataSourceDescElement /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -848,7 +848,7 @@ class CMsgSteamLearnDataSourceDescElement /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnDataSource /*final*/ :
+class CMsgSteamLearnDataSource :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnDataSource) */ {
  public:
   inline CMsgSteamLearnDataSource() : CMsgSteamLearnDataSource(nullptr) {}
@@ -929,7 +929,7 @@ class CMsgSteamLearnDataSource /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnDataSource* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnDataSource* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnDataSource>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -941,19 +941,19 @@ class CMsgSteamLearnDataSource /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnDataSource* other);
 
   private:
@@ -967,9 +967,9 @@ class CMsgSteamLearnDataSource /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1113,7 +1113,7 @@ class CMsgSteamLearnDataSource /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnDataObject /*final*/ :
+class CMsgSteamLearnDataObject :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnDataObject) */ {
  public:
   inline CMsgSteamLearnDataObject() : CMsgSteamLearnDataObject(nullptr) {}
@@ -1194,7 +1194,7 @@ class CMsgSteamLearnDataObject /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnDataObject* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnDataObject* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnDataObject>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1206,19 +1206,19 @@ class CMsgSteamLearnDataObject /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnDataObject* other);
 
   private:
@@ -1232,9 +1232,9 @@ class CMsgSteamLearnDataObject /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1277,7 +1277,7 @@ class CMsgSteamLearnDataObject /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnDataElement /*final*/ :
+class CMsgSteamLearnDataElement :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnDataElement) */ {
  public:
   inline CMsgSteamLearnDataElement() : CMsgSteamLearnDataElement(nullptr) {}
@@ -1358,7 +1358,7 @@ class CMsgSteamLearnDataElement /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnDataElement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnDataElement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnDataElement>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1370,19 +1370,19 @@ class CMsgSteamLearnDataElement /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnDataElement* other);
 
   private:
@@ -1396,9 +1396,9 @@ class CMsgSteamLearnDataElement /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1560,7 +1560,7 @@ class CMsgSteamLearnDataElement /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnData /*final*/ :
+class CMsgSteamLearnData :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnData) */ {
  public:
   inline CMsgSteamLearnData() : CMsgSteamLearnData(nullptr) {}
@@ -1641,7 +1641,7 @@ class CMsgSteamLearnData /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnData>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1653,19 +1653,19 @@ class CMsgSteamLearnData /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnData* other);
 
   private:
@@ -1679,9 +1679,9 @@ class CMsgSteamLearnData /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1764,7 +1764,7 @@ class CMsgSteamLearnData /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnDataList /*final*/ :
+class CMsgSteamLearnDataList :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnDataList) */ {
  public:
   inline CMsgSteamLearnDataList() : CMsgSteamLearnDataList(nullptr) {}
@@ -1845,7 +1845,7 @@ class CMsgSteamLearnDataList /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnDataList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnDataList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnDataList>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -1857,19 +1857,19 @@ class CMsgSteamLearnDataList /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnDataList* other);
 
   private:
@@ -1883,9 +1883,9 @@ class CMsgSteamLearnDataList /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -1928,7 +1928,7 @@ class CMsgSteamLearnDataList /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_RegisterDataSource_Request /*final*/ :
+class CMsgSteamLearn_RegisterDataSource_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_RegisterDataSource_Request) */ {
  public:
   inline CMsgSteamLearn_RegisterDataSource_Request() : CMsgSteamLearn_RegisterDataSource_Request(nullptr) {}
@@ -2009,7 +2009,7 @@ class CMsgSteamLearn_RegisterDataSource_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_RegisterDataSource_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_RegisterDataSource_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_RegisterDataSource_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2021,19 +2021,19 @@ class CMsgSteamLearn_RegisterDataSource_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_RegisterDataSource_Request* other);
 
   private:
@@ -2047,9 +2047,9 @@ class CMsgSteamLearn_RegisterDataSource_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2113,7 +2113,7 @@ class CMsgSteamLearn_RegisterDataSource_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_RegisterDataSource_Response /*final*/ :
+class CMsgSteamLearn_RegisterDataSource_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_RegisterDataSource_Response) */ {
  public:
   inline CMsgSteamLearn_RegisterDataSource_Response() : CMsgSteamLearn_RegisterDataSource_Response(nullptr) {}
@@ -2194,7 +2194,7 @@ class CMsgSteamLearn_RegisterDataSource_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_RegisterDataSource_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_RegisterDataSource_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_RegisterDataSource_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2206,19 +2206,19 @@ class CMsgSteamLearn_RegisterDataSource_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_RegisterDataSource_Response* other);
 
   private:
@@ -2232,9 +2232,9 @@ class CMsgSteamLearn_RegisterDataSource_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2293,7 +2293,7 @@ class CMsgSteamLearn_RegisterDataSource_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_CacheData_Request /*final*/ :
+class CMsgSteamLearn_CacheData_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_CacheData_Request) */ {
  public:
   inline CMsgSteamLearn_CacheData_Request() : CMsgSteamLearn_CacheData_Request(nullptr) {}
@@ -2374,7 +2374,7 @@ class CMsgSteamLearn_CacheData_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_CacheData_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_CacheData_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_CacheData_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2386,19 +2386,19 @@ class CMsgSteamLearn_CacheData_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_CacheData_Request* other);
 
   private:
@@ -2412,9 +2412,9 @@ class CMsgSteamLearn_CacheData_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2478,7 +2478,7 @@ class CMsgSteamLearn_CacheData_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_CacheData_Response /*final*/ :
+class CMsgSteamLearn_CacheData_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_CacheData_Response) */ {
  public:
   inline CMsgSteamLearn_CacheData_Response() : CMsgSteamLearn_CacheData_Response(nullptr) {}
@@ -2559,7 +2559,7 @@ class CMsgSteamLearn_CacheData_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_CacheData_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_CacheData_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_CacheData_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2571,19 +2571,19 @@ class CMsgSteamLearn_CacheData_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_CacheData_Response* other);
 
   private:
@@ -2597,9 +2597,9 @@ class CMsgSteamLearn_CacheData_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2638,7 +2638,7 @@ class CMsgSteamLearn_CacheData_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_SnapshotProject_Request /*final*/ :
+class CMsgSteamLearn_SnapshotProject_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_SnapshotProject_Request) */ {
  public:
   inline CMsgSteamLearn_SnapshotProject_Request() : CMsgSteamLearn_SnapshotProject_Request(nullptr) {}
@@ -2719,7 +2719,7 @@ class CMsgSteamLearn_SnapshotProject_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_SnapshotProject_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_SnapshotProject_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_SnapshotProject_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2731,19 +2731,19 @@ class CMsgSteamLearn_SnapshotProject_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_SnapshotProject_Request* other);
 
   private:
@@ -2757,9 +2757,9 @@ class CMsgSteamLearn_SnapshotProject_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -2892,7 +2892,7 @@ class CMsgSteamLearn_SnapshotProject_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_SnapshotProject_Response /*final*/ :
+class CMsgSteamLearn_SnapshotProject_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_SnapshotProject_Response) */ {
  public:
   inline CMsgSteamLearn_SnapshotProject_Response() : CMsgSteamLearn_SnapshotProject_Response(nullptr) {}
@@ -2973,7 +2973,7 @@ class CMsgSteamLearn_SnapshotProject_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_SnapshotProject_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_SnapshotProject_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_SnapshotProject_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -2985,19 +2985,19 @@ class CMsgSteamLearn_SnapshotProject_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_SnapshotProject_Response* other);
 
   private:
@@ -3011,9 +3011,9 @@ class CMsgSteamLearn_SnapshotProject_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3052,7 +3052,7 @@ class CMsgSteamLearn_SnapshotProject_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_BatchOperation_Request /*final*/ :
+class CMsgSteamLearn_BatchOperation_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_BatchOperation_Request) */ {
  public:
   inline CMsgSteamLearn_BatchOperation_Request() : CMsgSteamLearn_BatchOperation_Request(nullptr) {}
@@ -3133,7 +3133,7 @@ class CMsgSteamLearn_BatchOperation_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_BatchOperation_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_BatchOperation_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_BatchOperation_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3145,19 +3145,19 @@ class CMsgSteamLearn_BatchOperation_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_BatchOperation_Request* other);
 
   private:
@@ -3171,9 +3171,9 @@ class CMsgSteamLearn_BatchOperation_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3256,7 +3256,7 @@ class CMsgSteamLearn_BatchOperation_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_BatchOperation_Response /*final*/ :
+class CMsgSteamLearn_BatchOperation_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_BatchOperation_Response) */ {
  public:
   inline CMsgSteamLearn_BatchOperation_Response() : CMsgSteamLearn_BatchOperation_Response(nullptr) {}
@@ -3337,7 +3337,7 @@ class CMsgSteamLearn_BatchOperation_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_BatchOperation_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_BatchOperation_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_BatchOperation_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3349,19 +3349,19 @@ class CMsgSteamLearn_BatchOperation_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_BatchOperation_Response* other);
 
   private:
@@ -3375,9 +3375,9 @@ class CMsgSteamLearn_BatchOperation_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3460,7 +3460,7 @@ class CMsgSteamLearn_BatchOperation_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnAccessTokens_CacheDataAccessToken /*final*/ :
+class CMsgSteamLearnAccessTokens_CacheDataAccessToken :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnAccessTokens.CacheDataAccessToken) */ {
  public:
   inline CMsgSteamLearnAccessTokens_CacheDataAccessToken() : CMsgSteamLearnAccessTokens_CacheDataAccessToken(nullptr) {}
@@ -3541,7 +3541,7 @@ class CMsgSteamLearnAccessTokens_CacheDataAccessToken /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnAccessTokens_CacheDataAccessToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnAccessTokens_CacheDataAccessToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnAccessTokens_CacheDataAccessToken>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3553,19 +3553,19 @@ class CMsgSteamLearnAccessTokens_CacheDataAccessToken /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnAccessTokens_CacheDataAccessToken* other);
 
   private:
@@ -3579,9 +3579,9 @@ class CMsgSteamLearnAccessTokens_CacheDataAccessToken /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3640,7 +3640,7 @@ class CMsgSteamLearnAccessTokens_CacheDataAccessToken /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken /*final*/ :
+class CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnAccessTokens.SnapshotProjectAccessToken) */ {
  public:
   inline CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken() : CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken(nullptr) {}
@@ -3721,7 +3721,7 @@ class CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3733,19 +3733,19 @@ class CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken* other);
 
   private:
@@ -3759,9 +3759,9 @@ class CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -3820,7 +3820,7 @@ class CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnAccessTokens_InferenceAccessToken /*final*/ :
+class CMsgSteamLearnAccessTokens_InferenceAccessToken :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnAccessTokens.InferenceAccessToken) */ {
  public:
   inline CMsgSteamLearnAccessTokens_InferenceAccessToken() : CMsgSteamLearnAccessTokens_InferenceAccessToken(nullptr) {}
@@ -3901,7 +3901,7 @@ class CMsgSteamLearnAccessTokens_InferenceAccessToken /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnAccessTokens_InferenceAccessToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnAccessTokens_InferenceAccessToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnAccessTokens_InferenceAccessToken>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -3913,19 +3913,19 @@ class CMsgSteamLearnAccessTokens_InferenceAccessToken /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnAccessTokens_InferenceAccessToken* other);
 
   private:
@@ -3939,9 +3939,9 @@ class CMsgSteamLearnAccessTokens_InferenceAccessToken /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4000,7 +4000,7 @@ class CMsgSteamLearnAccessTokens_InferenceAccessToken /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearnAccessTokens /*final*/ :
+class CMsgSteamLearnAccessTokens :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearnAccessTokens) */ {
  public:
   inline CMsgSteamLearnAccessTokens() : CMsgSteamLearnAccessTokens(nullptr) {}
@@ -4081,7 +4081,7 @@ class CMsgSteamLearnAccessTokens /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearnAccessTokens* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearnAccessTokens* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearnAccessTokens>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4093,19 +4093,19 @@ class CMsgSteamLearnAccessTokens /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearnAccessTokens* other);
 
   private:
@@ -4119,9 +4119,9 @@ class CMsgSteamLearnAccessTokens /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4229,7 +4229,7 @@ class CMsgSteamLearnAccessTokens /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_GetAccessTokens_Request /*final*/ :
+class CMsgSteamLearn_GetAccessTokens_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_GetAccessTokens_Request) */ {
  public:
   inline CMsgSteamLearn_GetAccessTokens_Request() : CMsgSteamLearn_GetAccessTokens_Request(nullptr) {}
@@ -4310,7 +4310,7 @@ class CMsgSteamLearn_GetAccessTokens_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_GetAccessTokens_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_GetAccessTokens_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_GetAccessTokens_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4322,19 +4322,19 @@ class CMsgSteamLearn_GetAccessTokens_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_GetAccessTokens_Request* other);
 
   private:
@@ -4348,9 +4348,9 @@ class CMsgSteamLearn_GetAccessTokens_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4389,7 +4389,7 @@ class CMsgSteamLearn_GetAccessTokens_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_GetAccessTokens_Response /*final*/ :
+class CMsgSteamLearn_GetAccessTokens_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_GetAccessTokens_Response) */ {
  public:
   inline CMsgSteamLearn_GetAccessTokens_Response() : CMsgSteamLearn_GetAccessTokens_Response(nullptr) {}
@@ -4470,7 +4470,7 @@ class CMsgSteamLearn_GetAccessTokens_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_GetAccessTokens_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_GetAccessTokens_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_GetAccessTokens_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4482,19 +4482,19 @@ class CMsgSteamLearn_GetAccessTokens_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_GetAccessTokens_Response* other);
 
   private:
@@ -4508,9 +4508,9 @@ class CMsgSteamLearn_GetAccessTokens_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4569,7 +4569,7 @@ class CMsgSteamLearn_GetAccessTokens_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgInferenceIterateBeamSearch_CustomItemScalar /*final*/ :
+class CMsgInferenceIterateBeamSearch_CustomItemScalar :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgInferenceIterateBeamSearch.CustomItemScalar) */ {
  public:
   inline CMsgInferenceIterateBeamSearch_CustomItemScalar() : CMsgInferenceIterateBeamSearch_CustomItemScalar(nullptr) {}
@@ -4650,7 +4650,7 @@ class CMsgInferenceIterateBeamSearch_CustomItemScalar /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgInferenceIterateBeamSearch_CustomItemScalar* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgInferenceIterateBeamSearch_CustomItemScalar* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgInferenceIterateBeamSearch_CustomItemScalar>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4662,19 +4662,19 @@ class CMsgInferenceIterateBeamSearch_CustomItemScalar /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgInferenceIterateBeamSearch_CustomItemScalar* other);
 
   private:
@@ -4688,9 +4688,9 @@ class CMsgInferenceIterateBeamSearch_CustomItemScalar /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -4744,7 +4744,7 @@ class CMsgInferenceIterateBeamSearch_CustomItemScalar /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgInferenceIterateBeamSearch /*final*/ :
+class CMsgInferenceIterateBeamSearch :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgInferenceIterateBeamSearch) */ {
  public:
   inline CMsgInferenceIterateBeamSearch() : CMsgInferenceIterateBeamSearch(nullptr) {}
@@ -4825,7 +4825,7 @@ class CMsgInferenceIterateBeamSearch /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgInferenceIterateBeamSearch* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgInferenceIterateBeamSearch* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgInferenceIterateBeamSearch>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -4837,19 +4837,19 @@ class CMsgInferenceIterateBeamSearch /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgInferenceIterateBeamSearch* other);
 
   private:
@@ -4863,9 +4863,9 @@ class CMsgInferenceIterateBeamSearch /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -5016,7 +5016,7 @@ class CMsgInferenceIterateBeamSearch /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_Inference_Request /*final*/ :
+class CMsgSteamLearn_Inference_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_Inference_Request) */ {
  public:
   inline CMsgSteamLearn_Inference_Request() : CMsgSteamLearn_Inference_Request(nullptr) {}
@@ -5097,7 +5097,7 @@ class CMsgSteamLearn_Inference_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_Inference_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_Inference_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_Inference_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -5109,19 +5109,19 @@ class CMsgSteamLearn_Inference_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_Inference_Request* other);
 
   private:
@@ -5135,9 +5135,9 @@ class CMsgSteamLearn_Inference_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -5349,7 +5349,7 @@ class CMsgSteamLearn_Inference_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Request /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Request) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Request() : CMsgSteamLearn_InferenceMetadata_Request(nullptr) {}
@@ -5430,7 +5430,7 @@ class CMsgSteamLearn_InferenceMetadata_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -5442,19 +5442,19 @@ class CMsgSteamLearn_InferenceMetadata_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Request* other);
 
   private:
@@ -5468,9 +5468,9 @@ class CMsgSteamLearn_InferenceMetadata_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -5559,7 +5559,7 @@ class CMsgSteamLearn_InferenceMetadata_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadataBackend_Request /*final*/ :
+class CMsgSteamLearn_InferenceMetadataBackend_Request :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadataBackend_Request) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadataBackend_Request() : CMsgSteamLearn_InferenceMetadataBackend_Request(nullptr) {}
@@ -5640,7 +5640,7 @@ class CMsgSteamLearn_InferenceMetadataBackend_Request /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadataBackend_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadataBackend_Request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadataBackend_Request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -5652,19 +5652,19 @@ class CMsgSteamLearn_InferenceMetadataBackend_Request /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadataBackend_Request* other);
 
   private:
@@ -5678,9 +5678,9 @@ class CMsgSteamLearn_InferenceMetadataBackend_Request /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -5734,7 +5734,7 @@ class CMsgSteamLearn_InferenceMetadataBackend_Request /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_RowRange /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_RowRange :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.RowRange) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_RowRange() : CMsgSteamLearn_InferenceMetadata_Response_RowRange(nullptr) {}
@@ -5815,7 +5815,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_RowRange /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_RowRange* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_RowRange* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_RowRange>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -5827,19 +5827,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_RowRange /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_RowRange* other);
 
   private:
@@ -5853,9 +5853,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_RowRange /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -5909,7 +5909,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_RowRange /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_Range /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_Range :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.Range) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_Range() : CMsgSteamLearn_InferenceMetadata_Response_Range(nullptr) {}
@@ -5990,7 +5990,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_Range /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_Range* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_Range* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_Range>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -6002,19 +6002,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_Range /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_Range* other);
 
   private:
@@ -6028,9 +6028,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_Range /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -6104,7 +6104,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_Range /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_StdDev /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_StdDev :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.StdDev) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_StdDev() : CMsgSteamLearn_InferenceMetadata_Response_StdDev(nullptr) {}
@@ -6185,7 +6185,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_StdDev /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_StdDev* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_StdDev* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_StdDev>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -6197,19 +6197,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_StdDev /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_StdDev* other);
 
   private:
@@ -6223,9 +6223,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_StdDev /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -6299,7 +6299,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_StdDev /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.CompactTable.Entry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry() : CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry(nullptr) {}
@@ -6380,7 +6380,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -6392,19 +6392,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry* other);
 
   private:
@@ -6418,9 +6418,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -6489,7 +6489,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_Entry /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.CompactTable.MapValuesEntry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry() : CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry(nullptr) {}
@@ -6570,7 +6570,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry /*fi
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -6582,19 +6582,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry /*fi
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry* other);
 
   private:
@@ -6608,9 +6608,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry /*fi
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -6669,7 +6669,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapValuesEntry /*fi
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.CompactTable.MapMappingsEntry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry() : CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry(nullptr) {}
@@ -6750,7 +6750,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry /*
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -6762,19 +6762,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry /*
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry* other);
 
   private:
@@ -6788,9 +6788,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry /*
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -6849,7 +6849,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable_MapMappingsEntry /*
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_CompactTable /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_CompactTable :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.CompactTable) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_CompactTable() : CMsgSteamLearn_InferenceMetadata_Response_CompactTable(nullptr) {}
@@ -6930,7 +6930,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_CompactTable* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_CompactTable* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_CompactTable>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -6942,19 +6942,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_CompactTable* other);
 
   private:
@@ -6968,9 +6968,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -7058,7 +7058,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_CompactTable /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.SequenceTable.Entry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry() : CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry(nullptr) {}
@@ -7139,7 +7139,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -7151,19 +7151,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry* other);
 
   private:
@@ -7177,9 +7177,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -7257,7 +7257,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_Entry /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.SequenceTable.MapValuesEntry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry() : CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry(nullptr) {}
@@ -7338,7 +7338,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry /*f
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -7350,19 +7350,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry /*f
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry* other);
 
   private:
@@ -7376,9 +7376,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry /*f
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -7437,7 +7437,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapValuesEntry /*f
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.SequenceTable.MapMappingsEntry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry() : CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry(nullptr) {}
@@ -7518,7 +7518,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry /
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -7530,19 +7530,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry /
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry* other);
 
   private:
@@ -7556,9 +7556,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry /
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -7622,7 +7622,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable_MapMappingsEntry /
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.SequenceTable) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_SequenceTable() : CMsgSteamLearn_InferenceMetadata_Response_SequenceTable(nullptr) {}
@@ -7703,7 +7703,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_SequenceTable* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_SequenceTable>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -7715,19 +7715,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_SequenceTable* other);
 
   private:
@@ -7741,9 +7741,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -7846,7 +7846,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SequenceTable /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.KMeans.Cluster) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster() : CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster(nullptr) {}
@@ -7927,7 +7927,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -7939,19 +7939,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster* other);
 
   private:
@@ -7965,9 +7965,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -8081,7 +8081,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans_Cluster /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_KMeans /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_KMeans :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.KMeans) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_KMeans() : CMsgSteamLearn_InferenceMetadata_Response_KMeans(nullptr) {}
@@ -8162,7 +8162,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_KMeans* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_KMeans* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_KMeans>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -8174,19 +8174,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_KMeans* other);
 
   private:
@@ -8200,9 +8200,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -8268,7 +8268,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_KMeans /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.SnapshotHistogram) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram() : CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram(nullptr) {}
@@ -8349,7 +8349,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -8361,19 +8361,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram* other);
 
   private:
@@ -8387,9 +8387,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -8482,7 +8482,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_SnapshotHistogram /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_AppInfo /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_AppInfo :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.AppInfo) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_AppInfo() : CMsgSteamLearn_InferenceMetadata_Response_AppInfo(nullptr) {}
@@ -8563,7 +8563,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfo /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_AppInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_AppInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_AppInfo>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -8575,19 +8575,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfo /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_AppInfo* other);
 
   private:
@@ -8601,9 +8601,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfo /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -8742,7 +8742,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfo /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response.AppInfoEntry) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry() : CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry(nullptr) {}
@@ -8823,7 +8823,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -8835,19 +8835,19 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry* other);
 
   private:
@@ -8861,9 +8861,9 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -8922,7 +8922,7 @@ class CMsgSteamLearn_InferenceMetadata_Response_AppInfoEntry /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceMetadata_Response /*final*/ :
+class CMsgSteamLearn_InferenceMetadata_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceMetadata_Response) */ {
  public:
   inline CMsgSteamLearn_InferenceMetadata_Response() : CMsgSteamLearn_InferenceMetadata_Response(nullptr) {}
@@ -9003,7 +9003,7 @@ class CMsgSteamLearn_InferenceMetadata_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceMetadata_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceMetadata_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceMetadata_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -9015,19 +9015,19 @@ class CMsgSteamLearn_InferenceMetadata_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceMetadata_Response* other);
 
   private:
@@ -9041,9 +9041,9 @@ class CMsgSteamLearn_InferenceMetadata_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -9252,7 +9252,7 @@ class CMsgSteamLearn_InferenceMetadata_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_Sequence /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_Sequence :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.Sequence) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_Sequence() : CMsgSteamLearn_InferenceBackend_Response_Sequence(nullptr) {}
@@ -9333,7 +9333,7 @@ class CMsgSteamLearn_InferenceBackend_Response_Sequence /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_Sequence* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_Sequence* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_Sequence>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -9345,19 +9345,19 @@ class CMsgSteamLearn_InferenceBackend_Response_Sequence /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_Sequence* other);
 
   private:
@@ -9371,9 +9371,9 @@ class CMsgSteamLearn_InferenceBackend_Response_Sequence /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -9420,7 +9420,7 @@ class CMsgSteamLearn_InferenceBackend_Response_Sequence /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_RegressionOutput /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_RegressionOutput :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.RegressionOutput) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_RegressionOutput() : CMsgSteamLearn_InferenceBackend_Response_RegressionOutput(nullptr) {}
@@ -9501,7 +9501,7 @@ class CMsgSteamLearn_InferenceBackend_Response_RegressionOutput /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_RegressionOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_RegressionOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_RegressionOutput>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -9513,19 +9513,19 @@ class CMsgSteamLearn_InferenceBackend_Response_RegressionOutput /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_RegressionOutput* other);
 
   private:
@@ -9539,9 +9539,9 @@ class CMsgSteamLearn_InferenceBackend_Response_RegressionOutput /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -9580,7 +9580,7 @@ class CMsgSteamLearn_InferenceBackend_Response_RegressionOutput /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.NamedInferenceOutput) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput() : CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput(nullptr) {}
@@ -9661,7 +9661,7 @@ class CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -9673,19 +9673,19 @@ class CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput* other);
 
   private:
@@ -9699,9 +9699,9 @@ class CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -9748,7 +9748,7 @@ class CMsgSteamLearn_InferenceBackend_Response_NamedInferenceOutput /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.BinaryCrossEntropyOutput) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput() : CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput(nullptr) {}
@@ -9829,7 +9829,7 @@ class CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput /*final*
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -9841,19 +9841,19 @@ class CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput /*final*
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput* other);
 
   private:
@@ -9867,9 +9867,9 @@ class CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput /*final*
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -9908,7 +9908,7 @@ class CMsgSteamLearn_InferenceBackend_Response_BinaryCrossEntropyOutput /*final*
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.MutliBinaryCrossEntropyOutput) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput() : CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput(nullptr) {}
@@ -9989,7 +9989,7 @@ class CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput /*f
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -10001,19 +10001,19 @@ class CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput /*f
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput* other);
 
   private:
@@ -10027,9 +10027,9 @@ class CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput /*f
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -10120,7 +10120,7 @@ class CMsgSteamLearn_InferenceBackend_Response_MutliBinaryCrossEntropyOutput /*f
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.CategoricalCrossEntropyOutput) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput() : CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput(nullptr) {}
@@ -10201,7 +10201,7 @@ class CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput /*f
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -10213,19 +10213,19 @@ class CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput /*f
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput* other);
 
   private:
@@ -10239,9 +10239,9 @@ class CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput /*f
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -10332,7 +10332,7 @@ class CMsgSteamLearn_InferenceBackend_Response_CategoricalCrossEntropyOutput /*f
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response_Output /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response_Output :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response.Output) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response_Output() : CMsgSteamLearn_InferenceBackend_Response_Output(nullptr) {}
@@ -10422,7 +10422,7 @@ class CMsgSteamLearn_InferenceBackend_Response_Output /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response_Output* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response_Output* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response_Output>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -10434,19 +10434,19 @@ class CMsgSteamLearn_InferenceBackend_Response_Output /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response_Output* other);
 
   private:
@@ -10460,9 +10460,9 @@ class CMsgSteamLearn_InferenceBackend_Response_Output /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -10601,7 +10601,7 @@ class CMsgSteamLearn_InferenceBackend_Response_Output /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_InferenceBackend_Response /*final*/ :
+class CMsgSteamLearn_InferenceBackend_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_InferenceBackend_Response) */ {
  public:
   inline CMsgSteamLearn_InferenceBackend_Response() : CMsgSteamLearn_InferenceBackend_Response(nullptr) {}
@@ -10682,7 +10682,7 @@ class CMsgSteamLearn_InferenceBackend_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_InferenceBackend_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_InferenceBackend_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_InferenceBackend_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -10694,19 +10694,19 @@ class CMsgSteamLearn_InferenceBackend_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_InferenceBackend_Response* other);
 
   private:
@@ -10720,9 +10720,9 @@ class CMsgSteamLearn_InferenceBackend_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
@@ -10773,7 +10773,7 @@ class CMsgSteamLearn_InferenceBackend_Response /*final*/ :
 };
 // -------------------------------------------------------------------
 
-class CMsgSteamLearn_Inference_Response /*final*/ :
+class CMsgSteamLearn_Inference_Response :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CMsgSteamLearn_Inference_Response) */ {
  public:
   inline CMsgSteamLearn_Inference_Response() : CMsgSteamLearn_Inference_Response(nullptr) {}
@@ -10854,7 +10854,7 @@ class CMsgSteamLearn_Inference_Response /*final*/ :
 
   // implements Message ----------------------------------------------
 
-  CMsgSteamLearn_Inference_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const /*final*/ {
+  CMsgSteamLearn_Inference_Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<CMsgSteamLearn_Inference_Response>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
@@ -10866,19 +10866,19 @@ class CMsgSteamLearn_Inference_Response /*final*/ :
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() /*final*/;
-  bool IsInitialized() const /*final*/;
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
 
-  size_t ByteSizeLong() const /*final*/;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) /*final*/;
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
   uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const /*final*/;
-  int GetCachedSize() const /*final*/ { return _impl_._cached_size_.Get(); }
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
 
   private:
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
-  void SetCachedSize(int size) const /*final*/;
+  void SetCachedSize(int size) const final;
   void InternalSwap(CMsgSteamLearn_Inference_Response* other);
 
   private:
@@ -10892,9 +10892,9 @@ class CMsgSteamLearn_Inference_Response /*final*/ :
   public:
 
   static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const /*final*/;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const /*final*/;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
