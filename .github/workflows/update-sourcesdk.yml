@@ -1,0 +1,38 @@
+name: Update sourcesdk Submodule
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # Daily at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-sourcesdk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Update submodule to latest
+        run: |
+          cd sourcesdk
+          git fetch origin main
+          git checkout origin/main
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "chore: update sourcesdk submodule"
+          title: "chore: update sourcesdk submodule"
+          body: |
+            Automated update of the `sourcesdk` submodule to the latest commit on
+            [Deadworks-net/sourcesdk](https://github.com/Deadworks-net/sourcesdk).
+
+            Review the diff to verify the changes are expected.
+          branch: chore/update-sourcesdk
+          delete-branch: true
