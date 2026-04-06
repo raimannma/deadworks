@@ -1,0 +1,13 @@
+*.vcxproj.user
+.vs/
+.claude/
+x64/
+~AutoRecover.*
+local.props
+managed/**/bin/
+managed/**/obj/
+cvarlist.md
+dlw/
+deps/
+.env
+.idea
