@@ -74,7 +74,7 @@ jobs:
         run: msbuild deadworks/deadworks.vcxproj /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /m /verbosity:minimal
 
       - name: Build managed
-        run: dotnet build managed/DeadworksManaged.csproj -c Release -o x64/Release/managed/
+        run: dotnet build managed/DeadworksManaged.csproj -c Release -o managed/bin/Release/
 
       - name: Stage artifact
         shell: pwsh
@@ -82,8 +82,8 @@ jobs:
           $out = "artifact"
           New-Item -ItemType Directory -Path "$out/game/bin/win64/managed" -Force | Out-Null
           New-Item -ItemType Directory -Path "$out/game/citadel/cfg" -Force | Out-Null
-          Copy-Item "x64/Release/deadworks.exe" "$out/game/bin/win64/"
-          Copy-Item "x64/Release/managed/*" "$out/game/bin/win64/managed/" -Recurse -Exclude "plugins"
+          Copy-Item "deadworks/x64/Release/deadworks.exe" "$out/game/bin/win64/"
+          Copy-Item "managed/bin/Release/*" "$out/game/bin/win64/managed/" -Recurse -Exclude "plugins"
           New-Item -ItemType Directory -Path "$out/game/bin/win64/managed/plugins" -Force | Out-Null
           Set-Content -Path "$out/game/bin/win64/managed/plugins/.gitkeep" -Value ""
           Copy-Item "config/deadworks_mem.jsonc" "$out/game/citadel/cfg/"
