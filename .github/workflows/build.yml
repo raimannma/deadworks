@@ -83,7 +83,8 @@ jobs:
           New-Item -ItemType Directory -Path "$out/game/bin/win64/managed" -Force | Out-Null
           New-Item -ItemType Directory -Path "$out/game/citadel/cfg" -Force | Out-Null
           Copy-Item "deadworks/x64/Release/deadworks.exe" "$out/game/bin/win64/"
-          Copy-Item "managed/bin/Release/*" "$out/game/bin/win64/managed/" -Recurse -Exclude "plugins"
+          $managedFiles = @("DeadworksManaged.dll", "DeadworksManaged.Api.dll", "DeadworksManaged.runtimeconfig.json", "Google.Protobuf.dll")
+          foreach ($f in $managedFiles) { Copy-Item "managed/bin/Release/$f" "$out/game/bin/win64/managed/" }
           New-Item -ItemType Directory -Path "$out/game/bin/win64/managed/plugins" -Force | Out-Null
           Set-Content -Path "$out/game/bin/win64/managed/plugins/.gitkeep" -Value ""
           Copy-Item "config/deadworks_mem.jsonc" "$out/game/citadel/cfg/"
