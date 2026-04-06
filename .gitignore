@@ -11,3 +11,5 @@ managed/**/obj/
 cvarlist.md
 dlw/
 deps/
+.env
+.idea
