@@ -146,6 +146,8 @@ for f in \
     ${SRC}/Core/Hooks/CCitadelPlayerController.cpp \
     ${SRC}/Core/Hooks/GameEvents.cpp \
     ${SRC}/Core/Hooks/CServerSideClientBase.cpp \
+    ${SRC}/Core/Hooks/SendNetMessage.cpp \
+    ${SRC}/Core/Hooks/ReplyConnection.cpp \
     ${SRC}/Core/Hooks/PostEventAbstract.cpp \
     ${SRC}/Core/Hooks/NetworkServerService.cpp \
     ${SRC}/Core/Hooks/Source2GameClients.cpp \
@@ -156,6 +158,7 @@ for f in \
     ${SRC}/Core/Hooks/AbilityThink.cpp \
     ${SRC}/Core/Hooks/AddModifier.cpp \
     ${SRC}/Core/Hooks/BuildGameSessionManifest.cpp \
+    ${SRC}/Core/A2SPatch.cpp \
     ${SRC}/Core/Deadworks.cpp \
     ${SRC}/Core/NativeCallbacks.cpp \
     ${SRC}/Core/NativeAbility.cpp \
