@@ -92,18 +92,22 @@ WORKDIR /build
 COPY managed managed
 COPY game_exported game_exported
 
-# Merge extra plugin sources into managed/plugins/.
+# Copy extra plugin sources from the build context.
 # Each subdirectory should contain a .csproj referencing DeadworksManaged.Api.
 RUN --mount=from=extra-plugins,target=/extra \
-    cp -r /extra/. managed/plugins/ 2>/dev/null || true
+    mkdir -p extra-plugins && \
+    cp -r /extra/. extra-plugins/ 2>/dev/null || true
 
 RUN dotnet publish managed/DeadworksManaged.csproj \
     -c Release -o /artifacts/managed --no-self-contained
 
-# Auto-discover and publish all plugins under managed/plugins/
+# Build plugins supplied via the extra-plugins build context.
+# Pass --build-context extra-plugins=./my-plugins to include them.
 RUN mkdir -p /artifacts/managed/plugins && \
-    find managed/plugins -name '*.csproj' -print0 | \
-    xargs -0 -r -I {} dotnet publish {} -c Release -o /artifacts/managed/plugins --no-self-contained
+    if ls extra-plugins/*/*.csproj 1>/dev/null 2>&1; then \
+        find extra-plugins -name '*.csproj' -print0 | \
+        xargs -0 -r -I {} dotnet publish {} -c Release -o /artifacts/managed/plugins --no-self-contained; \
+    fi
 
 # =============================================================================
 # Stage 3: Runtime image with Proton/Wine + SteamCMD
