@@ -215,6 +215,12 @@ rm -f "${INSTALL_DIR}/game/citadel/console.log"
 echo "[phase 6] Starting deadworks server on port ${SERVER_PORT}..."
 echo "[phase 6] Args: ${SERVER_ARGS}"
 
+# Collect DEADWORKS_ENV_* variables to forward to the game process (visible to plugins)
+PLUGIN_EXPORTS=""
+while IFS='=' read -r key val; do
+    PLUGIN_EXPORTS+="export ${key}='${val}'"$'\n'
+done < <(env | grep '^DEADWORKS_ENV_')
+
 cat > /tmp/run_server.sh << SERVSCRIPT
 #!/bin/bash
 export STEAM_COMPAT_DATA_PATH='${COMPAT_DATA}'
@@ -224,7 +230,7 @@ export SteamGameId=${APP_ID}
 export DISPLAY=:99
 export WINEDEBUG=warn+module,err+all
 export DOTNET_ROOT='C:\\Program Files\\dotnet'
-cd '${WIN64_DIR}'
+${PLUGIN_EXPORTS}cd '${WIN64_DIR}'
 '${PROTON_DIR}/proton' run ./deadworks.exe ${SERVER_ARGS} 2>&1
 SERVSCRIPT
 chmod +x /tmp/run_server.sh
