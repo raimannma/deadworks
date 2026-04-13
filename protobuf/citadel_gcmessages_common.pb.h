@@ -8127,6 +8127,7 @@ class CMsgMatchMetaDataContents_Items :
     kSoldTimeSFieldNumber = 4,
     kFlagsFieldNumber = 5,
     kImbuedAbilityIdFieldNumber = 6,
+    kUpgradeInfoFieldNumber = 7,
   };
   // optional uint32 game_time_s = 1;
   bool has_game_time_s() const;
@@ -8206,6 +8207,19 @@ class CMsgMatchMetaDataContents_Items :
   void _internal_set_imbued_ability_id(uint32_t value);
   public:
 
+  // optional uint32 upgrade_info = 7;
+  bool has_upgrade_info() const;
+  private:
+  bool _internal_has_upgrade_info() const;
+  public:
+  void clear_upgrade_info();
+  uint32_t upgrade_info() const;
+  void set_upgrade_info(uint32_t value);
+  private:
+  uint32_t _internal_upgrade_info() const;
+  void _internal_set_upgrade_info(uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:CMsgMatchMetaDataContents.Items)
  private:
   class _Internal;
@@ -8222,6 +8236,7 @@ class CMsgMatchMetaDataContents_Items :
     uint32_t sold_time_s_;
     uint32_t flags_;
     uint32_t imbued_ability_id_;
+    uint32_t upgrade_info_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_citadel_5fgcmessages_5fcommon_2eproto;
@@ -22371,6 +22386,34 @@ inline void CMsgMatchMetaDataContents_Items::_internal_set_imbued_ability_id(uin
 inline void CMsgMatchMetaDataContents_Items::set_imbued_ability_id(uint32_t value) {
   _internal_set_imbued_ability_id(value);
   // @@protoc_insertion_point(field_set:CMsgMatchMetaDataContents.Items.imbued_ability_id)
+}
+
+// optional uint32 upgrade_info = 7;
+inline bool CMsgMatchMetaDataContents_Items::_internal_has_upgrade_info() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool CMsgMatchMetaDataContents_Items::has_upgrade_info() const {
+  return _internal_has_upgrade_info();
+}
+inline void CMsgMatchMetaDataContents_Items::clear_upgrade_info() {
+  _impl_.upgrade_info_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline uint32_t CMsgMatchMetaDataContents_Items::_internal_upgrade_info() const {
+  return _impl_.upgrade_info_;
+}
+inline uint32_t CMsgMatchMetaDataContents_Items::upgrade_info() const {
+  // @@protoc_insertion_point(field_get:CMsgMatchMetaDataContents.Items.upgrade_info)
+  return _internal_upgrade_info();
+}
+inline void CMsgMatchMetaDataContents_Items::_internal_set_upgrade_info(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.upgrade_info_ = value;
+}
+inline void CMsgMatchMetaDataContents_Items::set_upgrade_info(uint32_t value) {
+  _internal_set_upgrade_info(value);
+  // @@protoc_insertion_point(field_set:CMsgMatchMetaDataContents.Items.upgrade_info)
 }
 
 // -------------------------------------------------------------------
