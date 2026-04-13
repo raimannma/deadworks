@@ -104,11 +104,11 @@ RUN dotnet publish managed/DeadworksManaged.csproj \
 # Build plugins supplied via the extra-plugins build context.
 # Pass --build-context extra-plugins=./my-plugins to include them.
 # Plugins reference DeadworksManaged.Api as an assembly — drop a
-# Directory.Build.props so MSBuild can resolve it from the managed output.
+# Directory.Build.targets so MSBuild can resolve it from the managed output.
 RUN mkdir -p /artifacts/managed/plugins && \
     if ls extra-plugins/*/*.csproj 1>/dev/null 2>&1; then \
         printf '<Project>\n  <PropertyGroup>\n    <AssemblySearchPaths>$(AssemblySearchPaths);/artifacts/managed</AssemblySearchPaths>\n  </PropertyGroup>\n</Project>\n' \
-            > extra-plugins/Directory.Build.props && \
+            > extra-plugins/Directory.Build.targets && \
         find extra-plugins -name '*.csproj' -not -path '*/.*' -not -name '*.Tests.csproj' -print0 | \
         xargs -0 -r -I {} dotnet publish {} -c Release -o /artifacts/managed/plugins --no-self-contained; \
     fi
