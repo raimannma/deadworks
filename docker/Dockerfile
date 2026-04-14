@@ -157,8 +157,9 @@ RUN mkdir -p \
     /home/steam/.steam/steam/steamapps/compatdata/1422450/pfx \
     /home/steam/server \
     /opt/proton \
+    /opt/gamefiles \
     /opt/deadworks && \
-    chown -R steam:steam /home/steam/.steam /home/steam/server
+    chown -R steam:steam /home/steam/.steam /home/steam/server /opt/gamefiles
 
 # Copy build artifacts
 COPY --from=native-builder /build/out/deadworks.exe /opt/deadworks/game/bin/win64/

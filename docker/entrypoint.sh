@@ -26,6 +26,17 @@ COMPAT_DATA="${STEAM_PATH}/steamapps/compatdata/${APP_ID}"
 PFXDIR="${COMPAT_DATA}/pfx"
 WIN64_DIR="${INSTALL_DIR}/game/bin/win64"
 REDIST_DIR="${STEAM_PATH}/steamapps/common/Steamworks SDK Redist"
+GAME_BASE_DIR="/opt/gamefiles"
+
+# =============================================================================
+# Phase 0b: Generate unique machine-id for this instance
+# =============================================================================
+# Steam uses machine-id to identify unique machines. Each server instance needs
+# its own to avoid authentication conflicts.
+if [ ! -s /etc/machine-id ]; then
+    echo "[phase 0] Generating unique machine-id for this instance..."
+    cat /proc/sys/kernel/random/uuid | tr -d '-' > /etc/machine-id
+fi
 
 # =============================================================================
 # Phase 1: Proton setup
@@ -43,29 +54,40 @@ fi
 WINE64="${PROTON_DIR}/files/bin/wine64"
 
 # =============================================================================
-# Phase 2: Download game files via SteamCMD
+# Phase 2: Download game files via SteamCMD (shared volume)
 # =============================================================================
 echo "[phase 2] Updating Deadlock server files..."
-mkdir -p "${COMPAT_DATA}"
+mkdir -p "${GAME_BASE_DIR}" "${COMPAT_DATA}"
+chown steam:steam "${GAME_BASE_DIR}" "${INSTALL_DIR}"
 
-MAX_RETRIES=3
-for attempt in $(seq 1 $MAX_RETRIES); do
-    echo "[phase 2] SteamCMD attempt ${attempt}/${MAX_RETRIES}..."
-    gosu steam /home/steam/steamcmd/steamcmd.sh \
-        +@sSteamCmdForcePlatformType windows \
-        +force_install_dir "$INSTALL_DIR" \
-        +login "$STEAM_LOGIN" "$STEAM_PASSWORD" \
-        +app_update "$APP_ID" \
-        +quit && break
-    echo "[phase 2] WARNING: attempt ${attempt} failed, retrying..."
-    sleep 5
-done
+# Use flock to prevent concurrent SteamCMD downloads to the shared volume
+(
+    flock -x 200
+    MAX_RETRIES=3
+    for attempt in $(seq 1 $MAX_RETRIES); do
+        echo "[phase 2] SteamCMD attempt ${attempt}/${MAX_RETRIES}..."
+        gosu steam /home/steam/steamcmd/steamcmd.sh \
+            +@sSteamCmdForcePlatformType windows \
+            +force_install_dir "$GAME_BASE_DIR" \
+            +login "$STEAM_LOGIN" "$STEAM_PASSWORD" \
+            +app_update "$APP_ID" \
+            +quit && break
+        echo "[phase 2] WARNING: attempt ${attempt} failed, retrying..."
+        sleep 5
+    done
+) 200>"${GAME_BASE_DIR}/.download.lock"
 
-if [ ! -f "${WIN64_DIR}/deadlock.exe" ]; then
-    echo "[phase 2] ERROR: deadlock.exe not found after ${MAX_RETRIES} attempts"
+if [ ! -f "${GAME_BASE_DIR}/game/bin/win64/deadlock.exe" ]; then
+    echo "[phase 2] ERROR: deadlock.exe not found after download"
     exit 1
 fi
 echo "[phase 2] Game files verified."
+
+# Link shared game files into per-instance directory via symlinks.
+# This avoids copying ~20GB per instance while keeping instance state isolated.
+echo "[phase 2] Linking game files to instance directory..."
+find "${INSTALL_DIR}" -xtype l -delete 2>/dev/null || true
+gosu steam cp -rs "${GAME_BASE_DIR}/." "${INSTALL_DIR}/" 2>/dev/null || true
 
 # Download Steam client DLLs
 STEAM_CLIENT_DIR="/home/steam/steam_client"
@@ -108,6 +130,7 @@ fi
 # Install Steam client DLLs
 for dll in steamclient64.dll steamclient.dll; do
     SRC="${REDIST_DIR}/${dll}"
+    [ ! -f "$SRC" ] && SRC="${STEAM_CLIENT_DIR}/${dll}"
     if [ -f "$SRC" ]; then
         mkdir -p "${PFXDIR}/drive_c/Program Files (x86)/Steam"
         cp -f "$SRC" "${PFXDIR}/drive_c/Program Files (x86)/Steam/${dll}"
@@ -170,9 +193,9 @@ cp -f "${DEADWORKS_SRC}/game/citadel/cfg/deadworks_mem.jsonc" "${INSTALL_DIR}/ga
 echo "$APP_ID" > "${WIN64_DIR}/steam_appid.txt"
 echo "$APP_ID" > "${INSTALL_DIR}/game/citadel/steam_appid.txt"
 
-# Fix ownership
-chown -R steam:steam "${WIN64_DIR}" "${INSTALL_DIR}/game/citadel"
-chown -R steam:steam "${PFXDIR}"
+# Fix ownership (--no-dereference to avoid following symlinks into shared volume)
+chown -Rh steam:steam "${WIN64_DIR}" "${INSTALL_DIR}/game/citadel"
+chown -Rh steam:steam "${PFXDIR}"
 
 echo "[phase 5] Deadworks deployed."
 ls -la "${WIN64_DIR}/deadworks.exe"
