@@ -234,7 +234,7 @@ if [ -n "$DEADWORKS_ARGS" ]; then
 fi
 
 # Clear stale logs
-rm -f "${WIN64_DIR}/console.log"
+rm -f "${INSTALL_DIR}/game/citadel/console.log"
 
 echo "[phase 6] Starting deadworks server on port ${SERVER_PORT}..."
 echo "[phase 6] Args: ${SERVER_ARGS}"
@@ -259,7 +259,8 @@ ${PLUGIN_EXPORTS}cd '${WIN64_DIR}'
 SERVSCRIPT
 chmod +x /tmp/run_server.sh
 
-CONSOLE_LOG="${WIN64_DIR}/console.log"
+CONSOLE_LOG="${INSTALL_DIR}/game/citadel/console.log"
+mkdir -p "$(dirname "$CONSOLE_LOG")"
 touch "$CONSOLE_LOG"
 chown steam:steam "$CONSOLE_LOG"
 tail -F "$CONSOLE_LOG" &
@@ -283,7 +284,7 @@ echo "--- Steam stderr ---"
 cat "${STEAM_PATH}/logs/stderr.txt" 2>/dev/null || echo "(no stderr log)"
 
 echo "--- Game console log ---"
-CONSOLE_LOG="${WIN64_DIR}/console.log"
+CONSOLE_LOG="${INSTALL_DIR}/game/citadel/console.log"
 if [ -f "$CONSOLE_LOG" ]; then
     tail -200 "$CONSOLE_LOG"
 else
