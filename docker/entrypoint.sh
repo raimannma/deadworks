@@ -183,8 +183,8 @@ ls -la "${WIN64_DIR}/managed/"
 # =============================================================================
 
 # Build server arguments (matches startup.cpp defaults but allows override)
-SERVER_ARGS="-dedicated -console -dev -insecure -allow_no_lobby_connect"
-SERVER_ARGS="${SERVER_ARGS} +hostport ${SERVER_PORT} +map ${SERVER_MAP}"
+SERVER_ARGS="-dedicated -console -dev -insecure -allow_no_lobby_connect -con_logfile console.log"
+SERVER_ARGS="${SERVER_ARGS} +log 1 +hostport ${SERVER_PORT} +map ${SERVER_MAP}"
 
 if [ "$TV_ENABLE" = "1" ]; then
     SERVER_ARGS="${SERVER_ARGS} +tv_enable 1 +tv_broadcast 1 +tv_maxclients 0 +tv_delay ${TV_DELAY}"
@@ -210,7 +210,7 @@ if [ -n "$DEADWORKS_ARGS" ]; then
 fi
 
 # Clear stale logs
-rm -f "${INSTALL_DIR}/game/citadel/console.log"
+rm -f "${WIN64_DIR}/console.log"
 
 echo "[phase 6] Starting deadworks server on port ${SERVER_PORT}..."
 echo "[phase 6] Args: ${SERVER_ARGS}"
@@ -235,8 +235,18 @@ ${PLUGIN_EXPORTS}cd '${WIN64_DIR}'
 SERVSCRIPT
 chmod +x /tmp/run_server.sh
 
-gosu steam bash /tmp/run_server.sh
+CONSOLE_LOG="${WIN64_DIR}/console.log"
+touch "$CONSOLE_LOG"
+chown steam:steam "$CONSOLE_LOG"
+tail -F "$CONSOLE_LOG" &
+TAIL_PID=$!
+
+gosu steam bash /tmp/run_server.sh &
+SERVER_PID=$!
+wait $SERVER_PID
 EXIT_CODE=$?
+
+kill "${TAIL_PID}" 2>/dev/null || true
 
 # =============================================================================
 # Phase 7: Cleanup and log collection
@@ -249,7 +259,7 @@ echo "--- Steam stderr ---"
 cat "${STEAM_PATH}/logs/stderr.txt" 2>/dev/null || echo "(no stderr log)"
 
 echo "--- Game console log ---"
-CONSOLE_LOG="${INSTALL_DIR}/game/citadel/console.log"
+CONSOLE_LOG="${WIN64_DIR}/console.log"
 if [ -f "$CONSOLE_LOG" ]; then
     tail -200 "$CONSOLE_LOG"
 else
