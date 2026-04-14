@@ -181,7 +181,8 @@ DEADWORKS_SRC="/opt/deadworks"
 # Copy deadworks.exe
 cp -f "${DEADWORKS_SRC}/game/bin/win64/deadworks.exe" "${WIN64_DIR}/"
 
-# Copy managed layer
+# Copy managed layer (clean first to remove stale plugins from previous deploys)
+rm -rf "${WIN64_DIR}/managed"
 mkdir -p "${WIN64_DIR}/managed/plugins"
 cp -rf "${DEADWORKS_SRC}/game/bin/win64/managed/"* "${WIN64_DIR}/managed/"
 
