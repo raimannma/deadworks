@@ -11,12 +11,27 @@ services:
       - "${SERVER_PORT:-27015}:${SERVER_PORT:-27015}/tcp"
     env_file: .env
     volumes:
-      - /etc/machine-id:/etc/machine-id:ro
       - proton:/opt/proton
+      - gamefiles:/opt/gamefiles
       - gamedata:/home/steam/server
       - compatdata:/home/steam/.steam/steam/steamapps/compatdata
       - dotnet-cache:/opt/dotnet-cache
     restart: unless-stopped
+
+  # To run additional servers, duplicate the service with per-instance volumes
+  # and a separate env file (must set a unique SERVER_PORT):
+  #
+  # server-2:
+  #   build: { context: ., dockerfile: docker/Dockerfile }
+  #   ports: ["27016:27016/udp", "27016:27016/tcp"]
+  #   env_file: .env.server-2
+  #   volumes:
+  #     - proton:/opt/proton              # shared
+  #     - gamefiles:/opt/gamefiles        # shared (game download)
+  #     - gamedata-2:/home/steam/server
+  #     - compatdata-2:/home/steam/.steam/steam/steamapps/compatdata
+  #     - dotnet-cache:/opt/dotnet-cache  # shared
+  #   restart: unless-stopped
 
   hltv-relay:
     profiles: ["tv"]
@@ -59,6 +74,7 @@ services:
 
 volumes:
   proton:
+  gamefiles:
   gamedata:
   compatdata:
   dotnet-cache:
