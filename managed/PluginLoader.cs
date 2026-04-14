@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
@@ -33,6 +34,17 @@ internal sealed class PluginLoadContext : AssemblyLoadContext
             return LoadFromAssemblyPath(path);
 
         return null;
+    }
+
+    protected override nint LoadUnmanagedDll(string unmanagedDllName)
+    {
+        // Resolve native libraries (e.g. e_sqlite3) using the plugin's deps.json
+        // so plugins can bundle platform-specific native dependencies.
+        var path = _resolver.ResolveUnmanagedDllToPath(unmanagedDllName);
+        if (path != null)
+            return NativeLibrary.Load(path);
+
+        return nint.Zero;
     }
 }
 
