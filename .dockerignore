@@ -6,6 +6,7 @@ x64/
 local.props
 managed/**/bin/
 managed/**/obj/
+managed/plugins/
 cvarlist.md
 dlw/
 deps/
