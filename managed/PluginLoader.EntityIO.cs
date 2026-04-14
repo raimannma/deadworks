@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Logging;
 using DeadworksManaged.Api;
+using DeadworksManaged.Telemetry;
 
 namespace DeadworksManaged;
 
@@ -79,7 +81,7 @@ internal static partial class PluginLoader
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[PluginLoader] Entity output hook '{key}' threw: {ex.Message}");
+                _logger.LogError(ex, "Entity output hook {Key} threw", key);
             }
         }
     }
@@ -103,7 +105,7 @@ internal static partial class PluginLoader
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[PluginLoader] Entity input hook '{key}' threw: {ex.Message}");
+                _logger.LogError(ex, "Entity input hook {Key} threw", key);
             }
         }
     }
