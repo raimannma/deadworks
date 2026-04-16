@@ -1,0 +1,34 @@
+[package]
+name = "deadworks-launcher"
+version = "0.2.6"
+description = "Deadworks Launcher"
+authors = ["Deadworks"]
+edition = "2021"
+
+[lib]
+name = "deadworks_launcher_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["devtools", "tray-icon", "image-png"] }
+tauri-plugin-updater = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-process = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+open = "5"
+tauri-plugin-store = "2.4.2"
+reqwest = { version = "0.12", features = ["stream", "json"] }
+tokio = { version = "1", features = ["fs", "io-util"] }
+futures-util = "0.3"
+bzip2 = "0.5"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.55"
+
+[target.'cfg(any(target_os = "macos", windows, target_os = "linux"))'.dependencies]
+tauri-plugin-autostart = "2.5.1"

@@ -1,0 +1,164 @@
+.wrap {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.wrap::-webkit-scrollbar {
+  width: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table th {
+  position: relative;
+  background: #161720;
+  padding: 8px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.resizeHandle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: col-resize;
+}
+
+.resizeHandle:hover {
+  background: var(--border);
+}
+
+.table th + th {
+  border-left: 1px solid var(--border);
+}
+
+.table td {
+  padding: 9px 12px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  border-bottom: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table tbody tr {
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.table tbody tr:hover {
+  background: var(--hover);
+}
+
+.selected {
+  background: var(--active);
+  border-left: 2px solid var(--accent);
+}
+
+.selected td {
+  color: var(--text);
+}
+
+.offline td {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.colName {}
+.colMap {
+  color: var(--text-muted);
+}
+.colPlayers {
+  text-align: center;
+}
+.colPing {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.thPlayers,
+.thPing {
+  text-align: center;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+.sortable:hover {
+  color: var(--text-secondary);
+}
+
+.sortActive {
+  color: var(--text);
+}
+
+.sortArrow {
+  font-size: 0.5rem;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.pingGood { color: var(--ping-good); }
+.pingOk { color: var(--ping-ok); }
+.pingBad { color: var(--ping-bad); }
+
+.flag {
+  width: 16px;
+  height: 11px;
+  margin-right: 8px;
+  vertical-align: middle;
+  image-rendering: pixelated;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.dotOnline {
+  background: var(--accent);
+}
+
+.dotOffline {
+  background: var(--dot-offline);
+}
+
+.emptyRow {
+  cursor: default;
+}
+
+.emptyRow:hover {
+  background: transparent;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 12px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}

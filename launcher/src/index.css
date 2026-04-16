@@ -1,0 +1,96 @@
+/* Radiance font - same as deadworks-web */
+@font-face {
+  font-family: 'Radiance';
+  src: url('https://steamcdn-a.akamaihd.net/apps/underlords/fonts/Radiance-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Radiance';
+  src: url('https://steamcdn-a.akamaihd.net/apps/underlords/fonts/Radiance-Semibold.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Radiance';
+  src: url('https://steamcdn-a.akamaihd.net/apps/underlords/fonts/Radiance-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Radiance';
+  src: url('https://steamcdn-a.akamaihd.net/apps/underlords/fonts/Radiance-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Theme variables */
+:root {
+  --bg: #000000;
+  --bg-panel: #0b0c10;
+  --bg-card: #0f1016;
+  --accent: #69E899;
+  --accent-dim: rgba(105, 232, 153, 0.15);
+  --accent-hover: #7cf0a8;
+  --text: #ffffff;
+  --text-secondary: #dedede;
+  --text-muted: #a0a0a6;
+  --border: #2a2c35;
+  --hover: rgba(255, 255, 255, 0.06);
+  --active: rgba(255, 255, 255, 0.10);
+  --hover-strong: rgba(255, 255, 255, 0.08);
+  --separator: rgba(255, 255, 255, 0.04);
+  --overlay: rgba(0, 0, 0, 0.7);
+  --close-hover: #e81123;
+  --disabled-bg: #333;
+  --disabled-text: #666;
+  --dot-offline: #555;
+  --ping-good: var(--accent);
+  --ping-ok: #f0c040;
+  --ping-bad: #e05050;
+  --scrollbar-hover: #3a3c45;
+  --sidebar-width: 180px;
+  --titlebar-height: 30px;
+  --font-family: 'Radiance', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Reset & base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background: linear-gradient(135deg, #141414 0%, #000000 100%);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+/* Progress bar animation */
+@keyframes progress-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(430%); }
+}

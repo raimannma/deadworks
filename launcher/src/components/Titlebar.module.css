@@ -1,0 +1,105 @@
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--titlebar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border-bottom: none;
+  z-index: 100;
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+/* Left side */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding-left: 12px;
+}
+
+.appIcon {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.brandText {
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Right side */
+.right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  height: 100%;
+  border-right: 1px solid var(--border);
+  -webkit-app-region: no-drag;
+}
+
+.settingsBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 16px;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.settingsBtn:hover {
+  background: var(--hover-strong);
+  color: var(--text);
+}
+
+/* Windows-style window controls */
+.windowControls {
+  display: flex;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.winBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.winBtn:hover {
+  background: var(--hover-strong);
+  color: var(--text);
+}
+
+.winClose:hover {
+  background: var(--close-hover);
+  color: #fff;
+}
