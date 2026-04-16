@@ -6,13 +6,20 @@ mod ping;
 /// Try to patch gameinfo.gi at startup. If the game is running the file is
 /// locked, so we just log and move on — the user will be told at connect time.
 fn patch_gameinfo_on_startup() {
-    let cfg_dir = match connect::find_deadlock_cfg_dir() {
-        Ok(d) => d,
-        Err(_) => return, // Deadlock not installed, nothing to do
-    };
-    let game_dir = match cfg_dir.parent().and_then(|p| p.parent()) {
-        Some(d) => d,
-        None => return,
+    let game_dir_buf;
+    let game_dir: &std::path::Path = if let Some(override_dir) = connect::get_game_dir_override() {
+        game_dir_buf = override_dir;
+        &game_dir_buf
+    } else {
+        let cfg_dir = match connect::find_deadlock_cfg_dir() {
+            Ok(d) => d,
+            Err(_) => return, // Deadlock not installed, nothing to do
+        };
+        game_dir_buf = match cfg_dir.parent().and_then(|p| p.parent()) {
+            Some(d) => d.to_path_buf(),
+            None => return,
+        };
+        &game_dir_buf
     };
     match gameinfo::ensure_addonroot(game_dir) {
         Ok(true) => println!("[startup] Patched gameinfo.gi with addonroot"),
@@ -38,6 +45,10 @@ pub fn run() {
         ))
         .invoke_handler(tauri::generate_handler![
             connect::launch_deadlock,
+            connect::get_detected_game_dir,
+            connect::get_game_dir,
+            connect::set_game_dir,
+            connect::reset_game_dir,
             addons::prepare_and_connect,
             ping::ping_server,
         ])
@@ -45,10 +56,16 @@ pub fn run() {
             use tauri::menu::{Menu, MenuItem};
             use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
             use tauri::Manager;
-            use tauri_plugin_autostart::ManagerExt;
 
-            // Ensure autostart is always enabled
-            let _ = app.autolaunch().enable();
+            // Restore game directory override from persisted settings
+            let app_handle = app.handle().clone();
+            tauri::async_runtime::spawn(async move {
+                if let Ok(store) = tauri_plugin_store::StoreBuilder::new(&app_handle, "settings.json").build() {
+                    if let Some(path) = store.get("game_dir_override").and_then(|v| v.as_str().map(String::from)) {
+                        connect::set_game_dir_override(Some(std::path::PathBuf::from(path)));
+                    }
+                }
+            });
 
             let show = MenuItem::with_id(app, "show", "Show", true, None::<&str>)?;
             let launch = MenuItem::with_id(app, "launch", "Launch Deadlock", true, None::<&str>)?;

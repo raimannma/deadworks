@@ -56,6 +56,9 @@ struct VersionsState {
 // ── Helpers ──
 
 fn find_game_dir() -> Result<PathBuf, String> {
+    if let Some(override_dir) = crate::connect::get_game_dir_override() {
+        return Ok(override_dir);
+    }
     let cfg_dir = crate::connect::find_deadlock_cfg_dir()?;
     cfg_dir
         .parent()
