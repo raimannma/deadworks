@@ -81,9 +81,16 @@ export function useServers(apiUrl: string): UseServersResult {
     filtered.sort((a, b) => {
       if (a.online !== b.online) return a.online ? -1 : 1;
 
-      // No sort active — default: player count high → low
+      const aDefault = a.name === "Deadlock";
+      const bDefault = b.name === "Deadlock";
+      if (aDefault !== bDefault) return aDefault ? 1 : -1;
+
+      // No sort active — default: player count high → low, ping low → high
       if (!sortColumn || !sortDirection) {
-        return b.player_count - a.player_count;
+        if (a.player_count !== b.player_count) return b.player_count - a.player_count;
+        const aPing = pings[a.id] ?? Infinity;
+        const bPing = pings[b.id] ?? Infinity;
+        return aPing - bPing;
       }
 
       const dir = sortDirection === "asc" ? 1 : -1;
