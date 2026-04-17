@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DeadworksManaged.Api\DeadworksManaged.Api.csproj">
+    <ProjectReference Include="..\..\..\managed\DeadworksManaged.Api\DeadworksManaged.Api.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
@@ -16,7 +16,7 @@
 
   <Target Name="DeployToGame" AfterTargets="Build">
     <ItemGroup>
-      <DeployFiles Include="$(OutputPath)ExampleTimerPlugin.dll;$(OutputPath)ExampleTimerPlugin.pdb" />
+      <DeployFiles Include="$(OutputPath)AutoRestartPlugin.dll;$(OutputPath)AutoRestartPlugin.pdb;$(OutputPath)AutoRestartPlugin.deps.json;$(OutputPath)AutoRestartPlugin.runtimeconfig.json" />
     </ItemGroup>
     <Copy SourceFiles="@(DeployFiles)" DestinationFolder="$(DeadlockManagedDir)\plugins" SkipUnchangedFiles="false" Retries="0" ContinueOnError="WarnAndContinue" />
   </Target>

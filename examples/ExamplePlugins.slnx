@@ -1,0 +1,13 @@
+<Solution>
+  <Project Path="plugins/AutoRestartPlugin/AutoRestartPlugin.csproj" />
+  <Project Path="plugins/ChatRelayPlugin/ChatRelayPlugin.csproj" />
+  <Project Path="plugins/DeathmatchPlugin/DeathmatchPlugin.csproj" />
+  <Project Path="plugins/DumperPlugin/DumperPlugin.csproj" />
+  <Project Path="plugins/ExampleTimerPlugin/ExampleTimerPlugin.csproj" />
+  <Project Path="plugins/ItemRotationPlugin/ItemRotationPlugin.csproj" />
+  <Project Path="plugins/ItemTestPlugin/ItemTestPlugin.csproj" />
+  <Project Path="plugins/RollTheDicePlugin/RollTheDicePlugin.csproj" />
+  <Project Path="plugins/ScourgePlugin/ScourgePlugin.csproj" />
+  <Project Path="plugins/SetModelPlugin/SetModelPlugin.csproj" />
+  <Project Path="plugins/TagPlugin/TagPlugin.csproj" />
+</Solution>

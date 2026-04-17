@@ -458,7 +458,7 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 	private static void MaxUpgradeSignatureAbilities(CCitadelPlayerPawn? pawn) {
 		if (pawn == null) return;
 		foreach (var ability in pawn.AbilityComponent.Abilities) {
-			if (ability.AbilitySlot > EAbilitySlot.Signature4) continue;
+			if (ability.AbilitySlot < EAbilitySlot.Signature1 || ability.AbilitySlot > EAbilitySlot.Signature4) continue;
 			ability.UpgradeBits = ability.UpgradeBits | 0b11111;
 		}
 	}

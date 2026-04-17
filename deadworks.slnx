@@ -7,16 +7,4 @@
   <Project Path="managed\DeadworksManaged.Api\DeadworksManaged.Api.csproj" />
   <Project Path="managed\DeadworksManaged.csproj" />
   <Project Path="managed\DeadworksManaged.Generators\DeadworksManaged.Generators.csproj" />
-  <Folder Name="/Plugins/">
-    <Project Path="managed/plugins/TagPlugin/TagPlugin.csproj" />
-    <Project Path="managed\plugins\DeathmatchPlugin\DeathmatchPlugin.csproj" />
-    <Project Path="managed\plugins\DumperPlugin\DumperPlugin.csproj" />
-    <Project Path="managed\plugins\ExampleTimerPlugin\ExampleTimerPlugin.csproj" />
-    <Project Path="managed\plugins\ItemRotationPlugin\ItemRotationPlugin.csproj" />
-    <Project Path="managed\plugins\ItemTestPlugin\ItemTestPlugin.csproj" />
-    <Project Path="managed\plugins\RollTheDicePlugin\RollTheDicePlugin.csproj" />
-    <Project Path="managed\plugins\ScourgePlugin\ScourgePlugin.csproj" Id="dfbdd4c2-fb11-4069-85b3-2ad1fe5f004f" />
-    <Project Path="managed\plugins\SetModelPlugin\SetModelPlugin.csproj" />
-    <Project Path="managed\plugins\AutoRestartPlugin\AutoRestartPlugin.csproj" />
-  </Folder>
 </Solution>

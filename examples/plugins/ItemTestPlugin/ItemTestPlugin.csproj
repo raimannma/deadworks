@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DeadworksManaged.Api\DeadworksManaged.Api.csproj">
+    <ProjectReference Include="..\..\..\managed\DeadworksManaged.Api\DeadworksManaged.Api.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
@@ -17,7 +17,7 @@
 
   <Target Name="DeployToGame" AfterTargets="Build">
     <ItemGroup>
-      <DeployFiles Include="$(OutputPath)ChatRelayPlugin.dll;$(OutputPath)ChatRelayPlugin.pdb" />
+      <DeployFiles Include="$(OutputPath)ItemTestPlugin.dll;$(OutputPath)ItemTestPlugin.pdb" />
     </ItemGroup>
     <Copy SourceFiles="@(DeployFiles)" DestinationFolder="$(DeadlockManagedDir)\plugins" SkipUnchangedFiles="false" Retries="0" ContinueOnError="WarnAndContinue" />
   </Target>

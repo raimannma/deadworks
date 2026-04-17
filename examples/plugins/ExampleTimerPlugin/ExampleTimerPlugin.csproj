@@ -5,11 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DeadworksManaged.Api\DeadworksManaged.Api.csproj">
+    <ProjectReference Include="..\..\..\managed\DeadworksManaged.Api\DeadworksManaged.Api.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
@@ -17,7 +16,7 @@
 
   <Target Name="DeployToGame" AfterTargets="Build">
     <ItemGroup>
-      <DeployFiles Include="$(OutputPath)TagPlugin.dll;$(OutputPath)TagPlugin.pdb" />
+      <DeployFiles Include="$(OutputPath)ExampleTimerPlugin.dll;$(OutputPath)ExampleTimerPlugin.pdb" />
     </ItemGroup>
     <Copy SourceFiles="@(DeployFiles)" DestinationFolder="$(DeadlockManagedDir)\plugins" SkipUnchangedFiles="false" Retries="0" ContinueOnError="WarnAndContinue" />
   </Target>
