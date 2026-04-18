@@ -328,6 +328,13 @@ public unsafe class CBaseEntity : NativeEntity {
 	public LifeState LifeState { get => (LifeState)_lifeState.Get(Handle); set => _lifeState.Set(Handle, (uint)value); }
 	public bool IsAlive => LifeState == LifeState.Alive;
 
+	private static readonly SchemaAccessor<uint> _fFlags = new("CBaseEntity"u8, "m_fFlags"u8);
+	/// <summary>Engine flag bits (on-ground, ducking, client, in-vehicle, godmode, etc.). See <see cref="EntityFlags"/>.</summary>
+	public EntityFlags Flags { get => (EntityFlags)_fFlags.Get(Handle); set => _fFlags.Set(Handle, (uint)value); }
+
+	/// <summary>True if this entity has the <see cref="EntityFlags.FakeClient"/> flag set (i.e. it is a bot).</summary>
+	public bool IsBot => (Flags & EntityFlags.FakeClient) != 0;
+
 	private static readonly SchemaAccessor<uint> _hGroundEntity = new("CBaseEntity"u8, "m_hGroundEntity"u8);
 	/// <summary>The entity this entity is standing on, or null if airborne.</summary>
 	public CBaseEntity? GroundEntity => FromHandle(_hGroundEntity.Get(Handle));
