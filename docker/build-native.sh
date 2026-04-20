@@ -146,7 +146,6 @@ for f in \
     ${SRC}/Core/Hooks/CCitadelPlayerController.cpp \
     ${SRC}/Core/Hooks/GameEvents.cpp \
     ${SRC}/Core/Hooks/CServerSideClientBase.cpp \
-    ${SRC}/Core/Hooks/SendNetMessage.cpp \
     ${SRC}/Core/Hooks/ReplyConnection.cpp \
     ${SRC}/Core/Hooks/PostEventAbstract.cpp \
     ${SRC}/Core/Hooks/NetworkServerService.cpp \
