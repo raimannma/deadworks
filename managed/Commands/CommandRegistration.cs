@@ -39,7 +39,7 @@ internal static class CommandRegistration
                         continue;
                     }
 
-                    foreach (var name in attr.Names)
+                    foreach (var name in new HashSet<string>(attr.Names, StringComparer.OrdinalIgnoreCase))
                     {
                         if (!attr.ConsoleOnly)
                             RegisterChat(normalizedPath, plugin, method, plan, name, attr, chatRegistry);
@@ -71,15 +71,14 @@ internal static class CommandRegistration
 
         Func<ChatCommandContext, HookResult> handler = ctx =>
         {
+            if (attr.ServerOnly)
+                return HookResult.Continue;
+
             var resultOnSuccess = (ctx.Prefix == '!' && !attr.SuppressChat)
                 ? HookResult.Continue
                 : HookResult.Handled;
 
-            if (attr.ServerOnly)
-            {
-                Reply(ctx.Controller, $"Command '{name}' is server-only");
-                return resultOnSuccess;
-            }
+            void reply(string msg) => ReplyViaChat(ctx.Controller, msg);
 
             var argString = ctx.Args.Length > 0 ? string.Join(" ", ctx.Args) : "";
             var tokens = CommandTokenizer.Tokenize(argString);
@@ -89,11 +88,11 @@ internal static class CommandRegistration
                 if (silentSkip)
                     return resultOnSuccess;
                 if (error != null)
-                    Reply(ctx.Controller, error);
+                    reply(error);
                 return resultOnSuccess;
             }
 
-            Invoke(plugin, method, boundArgs, ctx.Controller);
+            Invoke(plugin, method, boundArgs, reply);
             return resultOnSuccess;
         };
 
@@ -121,6 +120,11 @@ internal static class CommandRegistration
 
         Action<ConCommandContext> handler = ctx =>
         {
+            if (attr.ServerOnly && !ctx.IsServerCommand)
+                return;
+
+            void reply(string msg) => ReplyViaConsole(ctx.Controller, msg);
+
             var argString = ctx.Args.Length > 1
                 ? string.Join(" ", ctx.Args, 1, ctx.Args.Length - 1)
                 : "";
@@ -131,14 +135,14 @@ internal static class CommandRegistration
                 if (silentSkip)
                     return;
                 if (error != null)
-                    Reply(ctx.Controller, error);
+                    reply(error);
                 return;
             }
 
-            Invoke(plugin, method, boundArgs, ctx.Controller);
+            Invoke(plugin, method, boundArgs, reply);
         };
 
-        ConCommandManager.RegisterExternal(normalizedPath, conName, attr.Description, attr.ServerOnly, handler, attr.Hidden);
+        ConCommandManager.RegisterExternal(normalizedPath, conName, attr.Description, serverOnly: false, handler, attr.Hidden);
         Console.WriteLine($"[CommandRegistration] Registered console command: {plugin.Name} -> {conName}{(attr.ServerOnly ? " (server-only)" : "")}");
     }
 
@@ -146,7 +150,7 @@ internal static class CommandRegistration
         IDeadworksPlugin plugin,
         MethodInfo method,
         object?[] boundArgs,
-        CCitadelPlayerController? replyTo)
+        Action<string> reply)
     {
         try
         {
@@ -154,7 +158,7 @@ internal static class CommandRegistration
         }
         catch (TargetInvocationException tie) when (tie.InnerException is CommandException cex)
         {
-            Reply(replyTo, cex.Message);
+            reply(cex.Message);
         }
         catch (TargetInvocationException tie) when (tie.InnerException != null)
         {
@@ -162,7 +166,13 @@ internal static class CommandRegistration
         }
     }
 
-    private static void Reply(CCitadelPlayerController? to, string message)
+    private static void ReplyViaChat(CCitadelPlayerController? to, string message)
+    {
+        if (to != null)
+            Chat.PrintToChat(to, message);
+    }
+
+    private static void ReplyViaConsole(CCitadelPlayerController? to, string message)
     {
         if (to != null)
             to.PrintToConsole(message);
