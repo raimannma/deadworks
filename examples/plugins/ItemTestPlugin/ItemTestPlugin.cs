@@ -9,154 +9,80 @@ public class ItemTestPlugin : DeadworksPluginBase
 	public override void OnLoad(bool isReload) { }
 	public override void OnUnload() { }
 
-	/// <summary>
-	/// !additem &lt;item_name&gt; [tier]
-	/// Gives an item directly (no cost). Optional tier for upgraded versions (0-based).
-	/// Example: !additem upgrade_sprint_booster 1
-	/// </summary>
-	[ChatCommand("additem")]
-	public HookResult CmdAddItem(ChatCommandContext ctx)
+	[Command("additem", Description = "Give an item directly (no cost). Set enhanced=true for the upgraded version.")]
+	public void CmdAddItem(CCitadelPlayerController caller, string itemName, bool enhanced = false)
 	{
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
-		if (ctx.Args.Length < 1)
-		{
-			Reply(ctx, "Usage: !additem <item_name> [tier]");
-			return HookResult.Handled;
-		}
-
-		string itemName = ctx.Args[0];
-		int tier = ctx.Args.Length >= 2 && int.TryParse(ctx.Args[1], out var t) ? t : -1;
-
-		var item = pawn.AddItem(itemName, tier);
-		Reply(ctx, item != null
-			? $"Added '{itemName}' (tier {tier}) -> entity #{item.EntityIndex}"
-			: $"Failed to add '{itemName}' (tier {tier})");
-
-		return HookResult.Handled;
+		var item = pawn.AddItem(itemName, enhanced);
+		Reply(caller, item != null
+			? $"Added '{itemName}' (enhanced={enhanced}) -> entity #{item.EntityIndex}"
+			: $"Failed to add '{itemName}' (enhanced={enhanced})");
 	}
 
-	/// <summary>
-	/// !sellitem &lt;item_name&gt; [fullRefund: 0/1]
-	/// Sells an item with gold refund.
-	/// Example: !sellitem upgrade_sprint_booster 1
-	/// </summary>
-	[ChatCommand("sellitem")]
-	public HookResult CmdSellItem(ChatCommandContext ctx)
+	[Command("sellitem", Description = "Sell an item. fullRefund=true refunds the full price.")]
+	public void CmdSellItem(CCitadelPlayerController caller, string itemName, bool fullRefund = false)
 	{
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
-
-		if (ctx.Args.Length < 1)
-		{
-			Reply(ctx, "Usage: !sellitem <item_name> [fullRefund: 0/1]");
-			return HookResult.Handled;
-		}
-
-		string itemName = ctx.Args[0];
-		bool fullRefund = ctx.Args.Length >= 2 && ctx.Args[1] == "1";
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
 		bool ok = pawn.SellItem(itemName, fullRefund);
-		Reply(ctx, ok
+		Reply(caller, ok
 			? $"Sold '{itemName}' (fullRefund={fullRefund})"
 			: $"Failed to sell '{itemName}'");
-
-		return HookResult.Handled;
 	}
 
-	/// <summary>
-	/// !removeitem &lt;item_name&gt;
-	/// Removes an item directly (no refund).
-	/// Example: !removeitem upgrade_sprint_booster
-	/// </summary>
-	[ChatCommand("removeitem")]
-	public HookResult CmdRemoveItem(ChatCommandContext ctx)
+	[Command("removeitem", Description = "Remove an item from your inventory (no refund)")]
+	public void CmdRemoveItem(CCitadelPlayerController caller, string itemName)
 	{
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
-		if (ctx.Args.Length < 1)
-		{
-			Reply(ctx, "Usage: !removeitem <item_name>");
-			return HookResult.Handled;
-		}
-
-		string itemName = ctx.Args[0];
 		bool ok = pawn.RemoveItem(itemName);
-		Reply(ctx, ok
+		Reply(caller, ok
 			? $"Removed '{itemName}'"
 			: $"Failed to remove '{itemName}'");
-
-		return HookResult.Handled;
 	}
 
-	/// <summary>
-	/// !givegold [amount]
-	/// Gives gold to the player (default 50000).
-	/// Example: !givegold 10000
-	/// </summary>
-	[ChatCommand("givegold")]
-	public HookResult CmdGiveGold(ChatCommandContext ctx)
+	[Command("givegold", Description = "Give yourself gold (default 50000)")]
+	public void CmdGiveGold(CCitadelPlayerController caller, int amount = 50000)
 	{
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
-
-		int amount = 50000;
-		if (ctx.Args.Length >= 1 && int.TryParse(ctx.Args[0], out var a))
-			amount = a;
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
 		pawn.ModifyCurrency(ECurrencyType.EGold, amount, ECurrencySource.ECheats, silent: true, forceGain: true);
-		Reply(ctx, $"Gave {amount} gold");
-
-		return HookResult.Handled;
+		Reply(caller, $"Gave {amount} gold");
 	}
 
-	/// <summary>
-	/// !listitems
-	/// Lists all abilities/items currently on the pawn.
-	/// </summary>
-	[ChatCommand("listitems")]
-	public HookResult CmdListItems(ChatCommandContext ctx)
+	[Command("listitems", Description = "List all abilities/items currently on your pawn")]
+	public void CmdListItems(CCitadelPlayerController caller)
 	{
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
 		var abilities = pawn.AbilityComponent.Abilities;
-		Reply(ctx, $"Pawn has {abilities.Count} abilities/items:");
+		Reply(caller, $"Pawn has {abilities.Count} abilities/items:");
 		foreach (var ent in abilities)
 		{
-			var designer = ent.DesignerName;
-			var classname = ent.Classname;
-			Reply(ctx, $"  #{ent.EntityIndex}: {designer} ({classname})");
+			Reply(caller, $"  #{ent.EntityIndex}: {ent.DesignerName} ({ent.Classname})");
 		}
-
-		return HookResult.Handled;
 	}
 
-	/// <summary>
-	/// !rcon &lt;command&gt;
-	/// Executes a server console command.
-	/// Example: !rcon sv_cheats 1
-	/// </summary>
-	[ChatCommand("rcon")]
-	public HookResult CmdRcon(ChatCommandContext ctx)
+	[Command("rcon", Description = "Execute a server console command", SuppressChat = true)]
+	public void CmdRcon(CCitadelPlayerController? caller, params string[] commandParts)
 	{
-		if (ctx.Args.Length < 1)
-		{
-			Reply(ctx, "Usage: !rcon <command>");
-			return HookResult.Handled;
-		}
+		if (commandParts.Length == 0)
+			throw new CommandException("Nothing to execute.");
 
-		string command = string.Join(' ', ctx.Args);
+		string command = string.Join(' ', commandParts);
 		Server.ExecuteCommand(command);
-		Reply(ctx, $"Executed: {command}");
-
-		return HookResult.Handled;
+		Reply(caller, $"Executed: {command}");
 	}
 
-	private static void Reply(ChatCommandContext ctx, string message)
+	private static void Reply(CCitadelPlayerController? to, string message)
 	{
-		ctx.Controller?.PrintToConsole(message);
+		if (to != null) to.PrintToConsole(message);
+		else Console.WriteLine(message);
 	}
 }

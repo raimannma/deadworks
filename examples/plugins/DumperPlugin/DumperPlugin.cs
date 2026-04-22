@@ -20,11 +20,13 @@ public class DumperPlugin : DeadworksPluginBase
 
 	// --- CVar Dump ---
 
-	[ConCommand("dw_cvardump", Description = "Dump all ConVars and ConCommands to a JSON file", ServerOnly = true)]
-	public void ConCommandCvarDump(ConCommandContext ctx)
+	[Command("cvardump",
+		Description = "Dump all ConVars and ConCommands to a JSON file",
+		ServerOnly = true,
+		ConsoleOnly = true)]
+	public void CmdCvarDump(string outputPath = "")
 	{
-		string path = ctx.Args.Length > 1 ? ctx.ArgString.Trim() : "";
-		DoCvarDump(path);
+		DoCvarDump(outputPath);
 	}
 
 	private void DoCvarDump(string outputPath)

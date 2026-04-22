@@ -15,10 +15,10 @@ public class RollTheDicePlugin : DeadworksPluginBase {
 		Precache.AddResource("particles/upgrades/mystical_piano_hit.vpcf");
 	}
 
-	[ChatCommand("rtd")]
-	public HookResult CmdRollTheDice(ChatCommandContext ctx) {
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
+	[Command("rtd", Description = "Roll a random effect on yourself")]
+	public void CmdRollTheDice(CCitadelPlayerController caller) {
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
 		var effects = new (string Name, Action<CCitadelPlayerPawn> Apply)[] {
 			("Mystical Piano Strike", ApplyPianoStrike),
@@ -31,10 +31,9 @@ public class RollTheDicePlugin : DeadworksPluginBase {
 			TitleLocstring = "ROLL THE DICE",
 			DescriptionLocstring = roll.Name
 		};
-		NetMessages.Send(msg, RecipientFilter.Single(ctx.Message.SenderSlot));
+		NetMessages.Send(msg, RecipientFilter.Single(caller.EntityIndex - 1));
 
 		roll.Apply(pawn);
-		return HookResult.Handled;
 	}
 
 	private void ApplyPianoStrike(CCitadelPlayerPawn pawn) {

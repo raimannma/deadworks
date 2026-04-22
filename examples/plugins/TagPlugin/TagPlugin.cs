@@ -191,10 +191,10 @@ public class TagPlugin : DeadworksPluginBase {
 		return HookResult.Continue;
 	}
 
-	[ChatCommand("addspawn")]
-	public HookResult CmdAddSpawn(ChatCommandContext ctx) {
-		var pawn = ctx.Controller?.GetHeroPawn()?.As<CCitadelPlayerPawn>();
-		if (pawn == null) return HookResult.Handled;
+	[Command("addspawn", Description = "Record your current position as a spawn point")]
+	public void CmdAddSpawn(CCitadelPlayerController caller) {
+		var pawn = caller.GetHeroPawn()?.As<CCitadelPlayerPawn>();
+		if (pawn == null) return;
 
 		var mapName = Server.MapName;
 		if (!Config.SpawnPoints.ContainsKey(mapName))
@@ -210,42 +210,38 @@ public class TagPlugin : DeadworksPluginBase {
 		SaveConfig();
 
 		var count = Config.SpawnPoints[mapName].Count;
-		SendChatToSlot(ctx.Message.SenderSlot, $"[Tag] Spawn #{count} added at ({pos.X:F0}, {pos.Y:F0}, {pos.Z:F0})");
+		SendChatToPlayer(caller, $"[Tag] Spawn #{count} added at ({pos.X:F0}, {pos.Y:F0}, {pos.Z:F0})");
 		Console.WriteLine($"[Tag] Spawn #{count} added on {mapName} at ({pos.X:F1}, {pos.Y:F1}, {pos.Z:F1})");
-
-		return HookResult.Handled;
 	}
 
-	[ChatCommand("removespawn")]
-	public HookResult CmdRemoveSpawn(ChatCommandContext ctx) {
+	[Command("removespawn", Description = "Remove the last spawn point on this map")]
+	public void CmdRemoveSpawn(CCitadelPlayerController caller) {
 		var mapName = Server.MapName;
 		if (!Config.SpawnPoints.TryGetValue(mapName, out var spawns) || spawns.Count == 0) {
-			SendChatToSlot(ctx.Message.SenderSlot, "[Tag] No spawns to remove on this map.");
-			return HookResult.Handled;
+			SendChatToPlayer(caller, "[Tag] No spawns to remove on this map.");
+			return;
 		}
 
 		spawns.RemoveAt(spawns.Count - 1);
 		_recentSpawns.Clear();
 		SaveConfig();
 
-		SendChatToSlot(ctx.Message.SenderSlot, $"[Tag] Removed last spawn. {spawns.Count} remaining.");
-		return HookResult.Handled;
+		SendChatToPlayer(caller, $"[Tag] Removed last spawn. {spawns.Count} remaining.");
 	}
 
-	[ChatCommand("listspawns")]
-	public HookResult CmdListSpawns(ChatCommandContext ctx) {
+	[Command("listspawns", Description = "List all configured spawn points on this map")]
+	public void CmdListSpawns(CCitadelPlayerController caller) {
 		var mapName = Server.MapName;
 		if (!Config.SpawnPoints.TryGetValue(mapName, out var spawns) || spawns.Count == 0) {
-			SendChatToSlot(ctx.Message.SenderSlot, "[Tag] No spawns on this map.");
-			return HookResult.Handled;
+			SendChatToPlayer(caller, "[Tag] No spawns on this map.");
+			return;
 		}
 
-		SendChatToSlot(ctx.Message.SenderSlot, $"[Tag] {spawns.Count} spawn(s) on {mapName}:");
+		SendChatToPlayer(caller, $"[Tag] {spawns.Count} spawn(s) on {mapName}:");
 		for (int i = 0; i < spawns.Count; i++) {
 			var s = spawns[i];
-			SendChatToSlot(ctx.Message.SenderSlot, $"  #{i + 1}: ({s.Pos[0]:F0}, {s.Pos[1]:F0}, {s.Pos[2]:F0})");
+			SendChatToPlayer(caller, $"  #{i + 1}: ({s.Pos[0]:F0}, {s.Pos[1]:F0}, {s.Pos[2]:F0})");
 		}
-		return HookResult.Handled;
 	}
 
 	private void SaveConfig() {

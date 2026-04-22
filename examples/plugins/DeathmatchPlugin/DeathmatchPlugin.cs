@@ -251,14 +251,13 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 		});
 	}
 
-	[ChatCommand("pos")]
-	public HookResult CmdPos(ChatCommandContext ctx) {
-		var pawn = ctx.Controller?.GetHeroPawn()?.As<CCitadelPlayerPawn>();
-		if (pawn == null) return HookResult.Handled;
+	[Command("pos", Description = "Print your current position and camera angles as JSON")]
+	public void CmdPos(CCitadelPlayerController caller) {
+		var pawn = caller.GetHeroPawn()?.As<CCitadelPlayerPawn>();
+		if (pawn == null) return;
 		var pos = pawn.Position;
 		var ang = pawn.CameraAngles;
 		Console.WriteLine($@"{{ ""pos"": [{pos.X}, {pos.Y}, {pos.Z}], ""ang"": [{ang.X}, {ang.Y}, {ang.Z}] }}");
-		return HookResult.Handled;
 	}
 
 	[GameEventHandler("player_death")]
@@ -463,12 +462,12 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 		}
 	}
 
-	[ChatCommand("trace")]
-	public HookResult CmdTrace(ChatCommandContext ctx) {
-		var pawn = ctx.Controller?.GetHeroPawn()?.As<CCitadelPlayerPawn>();
+	[Command("trace", Description = "Raycast forward from the caller and print trace info")]
+	public void CmdTrace(CCitadelPlayerController caller) {
+		var pawn = caller.GetHeroPawn()?.As<CCitadelPlayerPawn>();
 		if (pawn == null) {
 			Console.WriteLine("No pawn found for trace");
-			return HookResult.Handled;
+			return;
 		}
 
 		var eye = pawn.EyePosition;
@@ -519,16 +518,13 @@ public class DeathmatchPlugin : DeadworksPluginBase {
 			Console.WriteLine($"[trace] startPos=({trace.StartPos.X:F1},{trace.StartPos.Y:F1},{trace.StartPos.Z:F1})");
 			Console.WriteLine($"[trace] endPos=({trace.EndPos.X:F1},{trace.EndPos.Y:F1},{trace.EndPos.Z:F1})");
 
-			var slot = ctx.Message.SenderSlot;
 			var hitPos = eye + (end - eye) * trace.Fraction;
 			var text = trace.DidHit
 				? $"Trace hit at ({hitPos.X:F1}, {hitPos.Y:F1}, {hitPos.Z:F1}) frac={trace.Fraction:F4}"
 				: "Trace: no hit";
 
 			Console.WriteLine(text);
-			Chat.PrintToChat(slot, text);
-
-			return HookResult.Handled;
+			Chat.PrintToChat(caller, text);
 		}
 	}
 }
