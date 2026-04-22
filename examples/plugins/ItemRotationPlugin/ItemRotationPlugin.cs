@@ -69,60 +69,44 @@ public class ItemRotationPlugin : DeadworksPluginBase
 
 	#region Commands
 
-	[ChatCommand("ir_sets")]
-	public HookResult CmdSets(ChatCommandContext ctx)
+	[Command("ir_sets", Description = "Show the configured item sets and rotation options")]
+	public void CmdSets(CCitadelPlayerController? caller)
 	{
-		var slot = ctx.Message.SenderSlot;
-
-		SendChat(slot, $"[ItemRotation] Swap Interval: {Config.SwapIntervalSeconds}s (time between rotations)");
-		SendChat(slot, $"[ItemRotation] Selection Mode: {Config.SelectionMode} (sequential = 1->2->3, random = random each rotation)");
-		SendChat(slot, $"[ItemRotation] Allow Duplicates: {Config.AllowDuplicateSets} (can multiple players share a set)");
+		Reply(caller, $"[ItemRotation] Swap Interval: {Config.SwapIntervalSeconds}s (time between rotations)");
+		Reply(caller, $"[ItemRotation] Selection Mode: {Config.SelectionMode} (sequential = 1->2->3, random = random each rotation)");
+		Reply(caller, $"[ItemRotation] Allow Duplicates: {Config.AllowDuplicateSets} (can multiple players share a set)");
 
 		if (Config.ItemSets.Count == 0)
 		{
-			SendChat(slot, "[ItemRotation] No item sets configured.");
-			return HookResult.Handled;
+			Reply(caller, "[ItemRotation] No item sets configured.");
+			return;
 		}
 
 		for (int i = 0; i < Config.ItemSets.Count; i++)
 		{
 			var set = Config.ItemSets[i];
 			var label = string.IsNullOrEmpty(set.Name) ? $"Set {i + 1}" : set.Name;
-			SendChat(slot, $"{label}: {string.Join(", ", set.Items)}");
+			Reply(caller, $"{label}: {string.Join(", ", set.Items)}");
 		}
-
-		return HookResult.Handled;
 	}
 
-	[ChatCommand("ir_start")]
-	public HookResult CmdStart(ChatCommandContext ctx)
+	[Command("ir_start", Description = "Start the item-rotation game")]
+	public void CmdStart(CCitadelPlayerController? caller)
 	{
 		if (_running)
-		{
-			SendChat(ctx.Message.SenderSlot, "[ItemRotation] Game is already running! Use /ir_reset to stop.");
-			return HookResult.Handled;
-		}
+			throw new CommandException("[ItemRotation] Game is already running! Use /ir_reset to stop.");
 
 		var players = GetConnectedPlayers();
 		if (players.Count == 0)
-		{
-			SendChat(ctx.Message.SenderSlot, "[ItemRotation] No players found.");
-			return HookResult.Handled;
-		}
+			throw new CommandException("[ItemRotation] No players found.");
 
 		if (Config.ItemSets.Count == 0)
-		{
-			SendChat(ctx.Message.SenderSlot, "[ItemRotation] No item sets configured.");
-			return HookResult.Handled;
-		}
+			throw new CommandException("[ItemRotation] No item sets configured.");
 
 		if (!Config.AllowDuplicateSets && players.Count > Config.ItemSets.Count)
-		{
-			SendChat(ctx.Message.SenderSlot,
+			throw new CommandException(
 				$"[ItemRotation] Not enough item sets ({Config.ItemSets.Count}) for {players.Count} players. " +
 				"Enable allowDuplicateSets in config or add more sets.");
-			return HookResult.Handled;
-		}
 
 		_running = true;
 		_activePlayers.Clear();
@@ -139,36 +123,33 @@ public class ItemRotationPlugin : DeadworksPluginBase
 		_swapTimer = Timer.Every((Config.SwapIntervalSeconds * 1000).Milliseconds(), OnSwapTick);
 
 		SendChatAll($"[ItemRotation] Game started! Sets rotate every {Config.SwapIntervalSeconds}s. Mode: {Config.SelectionMode}.");
-		return HookResult.Handled;
 	}
 
-	[ChatCommand("ir_swap")]
-	public HookResult CmdSwap(ChatCommandContext ctx)
+	[Command("ir_swap", Description = "Force an immediate item-set rotation")]
+	public void CmdSwap(CCitadelPlayerController? caller)
 	{
 		if (!_running)
-		{
-			SendChat(ctx.Message.SenderSlot, "[ItemRotation] No game is running.");
-			return HookResult.Handled;
-		}
+			throw new CommandException("[ItemRotation] No game is running.");
 
 		OnSwapTick();
-		SendChat(ctx.Message.SenderSlot, "[ItemRotation] Forced a swap.");
-		return HookResult.Handled;
+		Reply(caller, "[ItemRotation] Forced a swap.");
 	}
 
-	[ChatCommand("ir_reset")]
-	public HookResult CmdReset(ChatCommandContext ctx)
+	[Command("ir_reset", Description = "Stop the item-rotation game and clear all items")]
+	public void CmdReset(CCitadelPlayerController? caller)
 	{
 		if (!_running)
-		{
-			SendChat(ctx.Message.SenderSlot, "[ItemRotation] No game is running.");
-			return HookResult.Handled;
-		}
+			throw new CommandException("[ItemRotation] No game is running.");
 
 		StopGame();
 		ClearAllPlayerItems();
 		SendChatAll("[ItemRotation] Game stopped. All items cleared.");
-		return HookResult.Handled;
+	}
+
+	private static void Reply(CCitadelPlayerController? to, string text)
+	{
+		if (to != null) SendChat(to.EntityIndex - 1, text);
+		else Console.WriteLine(text);
 	}
 
 	#endregion

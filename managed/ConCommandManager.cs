@@ -18,6 +18,7 @@ internal static class ConCommandManager
     {
         RegisterBuiltInCommand("dw_reloadconfig", "Reload plugin configs. Usage: dw_reloadconfig [PluginName]", true, OnReloadConfig);
         RegisterBuiltInCommand("dw_plugin", "Manage plugins. Usage: dw_plugin <list|enable|disable|commands> [PluginName]", true, OnPluginCommand);
+        RegisterBuiltInCommand("dw_help", "List all available commands.", false, OnHelp);
     }
 
     private static void OnReloadConfig(ConCommandContext ctx)
@@ -102,6 +103,54 @@ internal static class ConCommandManager
         }
     }
 
+    private static void OnHelp(ConCommandContext ctx)
+    {
+        var entries = PluginRegistrationTracker.GetAllEntries();
+
+        var consoleCmds = entries
+            .Where(e => e.Kind == "command" && !e.Hidden)
+            .OrderBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        var chatCmds = entries
+            .Where(e => e.Kind == "chat" && !e.Hidden)
+            .OrderBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        var to = ctx.Controller;
+        Reply(to, "Available commands:");
+
+        if (consoleCmds.Count > 0)
+        {
+            Reply(to, "Console:");
+            foreach (var e in consoleCmds)
+            {
+                var desc = string.IsNullOrEmpty(e.Description) ? "" : $" - {e.Description}";
+                Reply(to, $"  {e.Name}{desc}");
+            }
+        }
+
+        if (chatCmds.Count > 0)
+        {
+            Reply(to, "Chat:");
+            foreach (var e in chatCmds)
+            {
+                var desc = string.IsNullOrEmpty(e.Description) ? "" : $" - {e.Description}";
+                Reply(to, $"  {e.Name}{desc}");
+            }
+        }
+
+        if (consoleCmds.Count == 0 && chatCmds.Count == 0)
+            Reply(to, "  (none)");
+    }
+
+    private static void Reply(CCitadelPlayerController? to, string message)
+    {
+        if (to != null)
+            to.PrintToConsole(message);
+        else
+            Console.WriteLine(message);
+    }
+
     private static void ListPluginCommands(string pluginName)
     {
         var normalizedPath = PluginLoader.ResolvePluginPath(pluginName);
@@ -142,10 +191,7 @@ internal static class ConCommandManager
 
         AddHandler(name, wrapped);
 
-        ulong flags = 0x1; // FCVAR_LINKED_CONCOMMAND
-        if (!serverOnly)
-            flags |= (1UL << 25); // FCVAR_CLIENT_CAN_EXECUTE
-        NativeRegisterConCommand(name, description, flags);
+        NativeRegisterConCommand(name, description, BuildConCommandFlags(serverOnly));
 
         Console.WriteLine($"[ConCommandManager] Registered built-in concommand: {name}{(serverOnly ? " (server-only)" : "")}");
     }
@@ -243,7 +289,9 @@ internal static class ConCommandManager
 
         foreach (var method in methods)
         {
+#pragma warning disable CS0618 // ConCommandAttribute is obsolete; intentionally scanned for back-compat
             var attrs = method.GetCustomAttributes<ConCommandAttribute>();
+#pragma warning restore CS0618
             foreach (var attr in attrs)
             {
                 var del = (Action<ConCommandContext>)Delegate.CreateDelegate(
@@ -266,10 +314,7 @@ internal static class ConCommandManager
                 registered.Add((attr.Name, handler));
                 PluginRegistrationTracker.Add(normalizedPath, "command", attr.Name, attr.Description);
 
-                ulong flags = 0x1; // FCVAR_LINKED_CONCOMMAND
-                if (!serverOnly)
-                    flags |= (1UL << 25); // FCVAR_CLIENT_CAN_EXECUTE
-                NativeRegisterConCommand(attr.Name, attr.Description, flags);
+                NativeRegisterConCommand(attr.Name, attr.Description, BuildConCommandFlags(serverOnly));
 
                 Console.WriteLine($"[ConCommandManager] Registered concommand: {plugin.Name} -> {attr.Name}{(serverOnly ? " (server-only)" : "")}");
             }
@@ -336,10 +381,7 @@ internal static class ConCommandManager
                 _conVars[attr.Name] = (plugin, prop);
             }
 
-            ulong flags = 0x1; // FCVAR_LINKED_CONCOMMAND
-            if (!serverOnly)
-                flags |= (1UL << 25); // FCVAR_CLIENT_CAN_EXECUTE
-            NativeRegisterConCommand(attr.Name, attr.Description, flags);
+            NativeRegisterConCommand(attr.Name, attr.Description, BuildConCommandFlags(serverOnly));
 
             Console.WriteLine($"[ConCommandManager] Registered convar: {plugin.Name} -> {attr.Name} ({prop.PropertyType.Name}){(serverOnly ? " (server-only)" : "")}");
         }
@@ -358,7 +400,7 @@ internal static class ConCommandManager
         }
     }
 
-    private static object ConvertValue(string arg, Type type)
+    internal static object ConvertValue(string arg, Type type)
     {
         if (type == typeof(int)) return int.Parse(arg);
         if (type == typeof(float)) return float.Parse(arg);
@@ -372,10 +414,48 @@ internal static class ConCommandManager
         if (type == typeof(string)) return arg;
         if (type == typeof(long)) return long.Parse(arg);
 
-        throw new NotSupportedException($"ConVar type '{type.Name}' is not supported");
+        throw new NotSupportedException($"Type '{type.Name}' is not supported");
     }
 
-    private static unsafe void NativeRegisterConCommand(string name, string description, ulong flags)
+    /// <summary>Registers a console command from outside this manager; tracked for plugin-scoped cleanup.</summary>
+    internal static void RegisterExternal(
+        string normalizedPath,
+        string name,
+        string description,
+        bool serverOnly,
+        Action<ConCommandContext> handler,
+        bool hidden = false)
+    {
+        Action<ConCommandContext> wrapped = serverOnly
+            ? ctx =>
+            {
+                if (!ctx.IsServerCommand)
+                {
+                    Console.WriteLine($"[ConCommandManager] Command '{name}' is server-only");
+                    return;
+                }
+                handler(ctx);
+            }
+            : handler;
+
+        AddHandler(name, wrapped);
+
+        lock (_lock)
+        {
+            if (!_pluginHandlers.TryGetValue(normalizedPath, out var registered))
+            {
+                registered = new List<(string name, Action<ConCommandContext> handler)>();
+                _pluginHandlers[normalizedPath] = registered;
+            }
+            registered.Add((name, wrapped));
+        }
+
+        PluginRegistrationTracker.Add(normalizedPath, "command", name, description, hidden);
+
+        NativeRegisterConCommand(name, description, BuildConCommandFlags(serverOnly));
+    }
+
+    private static unsafe void NativeRegisterConCommand(string name, string description, FCVar flags)
     {
         if (NativeInterop.RegisterConCommand == null)
             return;
@@ -386,8 +466,16 @@ internal static class ConCommandManager
         fixed (byte* namePtr = nameUtf8)
         fixed (byte* descPtr = descUtf8)
         {
-            NativeInterop.RegisterConCommand(namePtr, descPtr, flags);
+            NativeInterop.RegisterConCommand(namePtr, descPtr, (ulong)flags);
         }
+    }
+
+    private static FCVar BuildConCommandFlags(bool serverOnly)
+    {
+        var flags = FCVar.Unregistered;
+        if (!serverOnly)
+            flags |= FCVar.AccessibleFromThreads;
+        return flags;
     }
 
     private static unsafe void NativeUnregisterConCommand(string name)

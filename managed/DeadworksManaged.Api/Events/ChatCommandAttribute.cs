@@ -1,6 +1,7 @@
 namespace DeadworksManaged.Api;
 
-/// <summary>Marks a plugin method as a handler for a chat command (e.g. <c>"!mycommand"</c>). Can be applied multiple times to map multiple commands to the same method.</summary>
+/// <summary>Marks a plugin method as a handler for a chat command. Can be applied multiple times.</summary>
+[Obsolete("Use [Command] instead.", error: false)]
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class ChatCommandAttribute : Attribute
 {

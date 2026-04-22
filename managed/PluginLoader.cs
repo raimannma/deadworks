@@ -250,6 +250,7 @@ internal static partial class PluginLoader
             RegisterPluginNetMessageHandlers(normalizedPath, plugins);
             RegisterPluginChatCommands(normalizedPath, plugins);
             ConCommandManager.RegisterPlugin(normalizedPath, plugins);
+            Commands.CommandRegistration.RegisterPluginCommands(normalizedPath, plugins, _chatCommandRegistry);
         }
     }
 

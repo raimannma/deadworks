@@ -1,9 +1,7 @@
 namespace DeadworksManaged.Api;
 
-/// <summary>
-/// Marks a method as a console command handler. The method must have
-/// signature <c>void Handler(ConCommandContext ctx)</c>.
-/// </summary>
+/// <summary>Marks a method as a console command handler with signature <c>void Handler(ConCommandContext ctx)</c>.</summary>
+[Obsolete("Use [Command] instead.", error: false)]
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public sealed class ConCommandAttribute : Attribute
 {

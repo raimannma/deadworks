@@ -23,10 +23,10 @@ public sealed unsafe class ConVar {
 		Span<byte> defUtf8 = Utf8.Encode(defaultValue, stackalloc byte[Utf8.Size(defaultValue)]);
 		Span<byte> descUtf8 = Utf8.Encode(description, stackalloc byte[Utf8.Size(description)]);
 
-		ulong flags = serverOnly ? 0x200UL : 0UL; // FCVAR_GAMEDLL
+		FCVar flags = serverOnly ? FCVar.UserInfo : FCVar.None;
 
 		fixed (byte* namePtr = nameUtf8, defPtr = defUtf8, descPtr = descUtf8) {
-			ulong handle = NativeInterop.CreateConVar(namePtr, defPtr, descPtr, flags);
+			ulong handle = NativeInterop.CreateConVar(namePtr, defPtr, descPtr, (ulong)flags);
 			return handle != 0 ? new ConVar(handle) : null;
 		}
 	}

@@ -16,11 +16,11 @@ public class SetModelPlugin : DeadworksPluginBase
 		Precache.AddResource(WerewolfModel);
 	}
 
-	[ChatCommand("werewolf")]
-	public HookResult CmdWerewolf(ChatCommandContext ctx)
+	[Command("werewolf", Description = "Turn yourself into a werewolf")]
+	public void CmdWerewolf(CCitadelPlayerController caller)
 	{
-		var pawn = ctx.Controller?.GetHeroPawn();
-		if (pawn == null) return HookResult.Handled;
+		var pawn = caller.GetHeroPawn();
+		if (pawn == null) return;
 
 		pawn.SetModel(WerewolfModel);
 
@@ -29,8 +29,6 @@ public class SetModelPlugin : DeadworksPluginBase
 			TitleLocstring = "MODEL SWAP",
 			DescriptionLocstring = "You are now a werewolf!"
 		};
-		NetMessages.Send(msg, RecipientFilter.Single(ctx.Message.SenderSlot));
-
-		return HookResult.Handled;
+		NetMessages.Send(msg, RecipientFilter.Single(caller.EntityIndex - 1));
 	}
 }

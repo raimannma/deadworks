@@ -8,12 +8,12 @@ namespace DeadworksManaged;
 /// </summary>
 internal static class PluginRegistrationTracker
 {
-    public readonly record struct Entry(string Kind, string Name, string Description);
+    public readonly record struct Entry(string Kind, string Name, string Description, bool Hidden = false);
 
     private static readonly Dictionary<string, List<Entry>> _entries = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Lock _lock = new();
 
-    public static void Add(string normalizedPath, string kind, string name, string description = "")
+    public static void Add(string normalizedPath, string kind, string name, string description = "", bool hidden = false)
     {
         lock (_lock)
         {
@@ -22,7 +22,19 @@ internal static class PluginRegistrationTracker
                 list = [];
                 _entries[normalizedPath] = list;
             }
-            list.Add(new Entry(kind, name, description));
+            list.Add(new Entry(kind, name, description, hidden));
+        }
+    }
+
+    /// <summary>Returns a flat snapshot of every registered entry across every plugin.</summary>
+    public static List<Entry> GetAllEntries()
+    {
+        lock (_lock)
+        {
+            var all = new List<Entry>();
+            foreach (var list in _entries.Values)
+                all.AddRange(list);
+            return all;
         }
     }
 
