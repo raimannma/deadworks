@@ -63,6 +63,8 @@ internal static partial class PluginLoader
 
     private static readonly HandlerRegistry<string, GameEventHandler> _eventRegistry = new(StringComparer.Ordinal);
     private static readonly HandlerRegistry<string, Func<ChatCommandContext, HookResult>> _chatCommandRegistry = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly HandlerRegistry<string, CustomEventSubscription> _customEventRegistry = new(StringComparer.Ordinal);
+    private static readonly Dictionary<AssemblyLoadContext, string> _contextToPluginName = new();
 
     // Net message hooks: msgId -> list of handler delegates
     private static readonly Dictionary<int, List<Delegate>> _outgoingNetMsgHandlers = new();
@@ -124,6 +126,11 @@ internal static partial class PluginLoader
 
         GameEvents.OnAddListener = OnManualAddListenerWithHandle;
         GameEvents.OnRemoveListener = OnManualRemoveListener;
+
+        CustomEvents.OnSubscribe = OnCustomEventSubscribe;
+        CustomEvents.OnUnsubscribe = OnCustomEventUnsubscribe;
+        CustomEvents.OnPublish = OnCustomEventPublish;
+        CustomEvents.OnSubscriberCount = OnCustomEventSubscriberCount;
 
         NetMessageRegistry.EnsureInitialized();
         NetMessages.OnSend = OnNetMessageSend;
@@ -288,10 +295,12 @@ internal static partial class PluginLoader
         lock (_lock)
         {
             _loaded[normalizedPath] = new PluginEntry { Context = context, Plugins = plugins };
+            _contextToPluginName[context] = normalizedPath;
             RebuildSnapshot();
             RegisterPluginEventHandlers(normalizedPath, plugins);
             RegisterPluginNetMessageHandlers(normalizedPath, plugins);
             RegisterPluginChatCommands(normalizedPath, plugins);
+            RegisterPluginCustomEventHandlers(normalizedPath, plugins);
             ConCommandManager.RegisterPlugin(normalizedPath, plugins);
             Commands.CommandRegistration.RegisterPluginCommands(normalizedPath, plugins, _chatCommandRegistry);
         }
@@ -317,6 +326,8 @@ internal static partial class PluginLoader
             _eventRegistry.UnregisterPlugin(normalizedPath);
             UnregisterPluginNetMessageHandlers(normalizedPath);
             _chatCommandRegistry.UnregisterPlugin(normalizedPath);
+            _customEventRegistry.UnregisterPlugin(normalizedPath);
+            _contextToPluginName.Remove(entry.Context);
             ConCommandManager.UnregisterPlugin(normalizedPath);
             PluginRegistrationTracker.Remove(normalizedPath);
         }
@@ -604,6 +615,8 @@ internal static partial class PluginLoader
             _pluginSnapshot = [];
             _eventRegistry.Clear();
             _chatCommandRegistry.Clear();
+            _customEventRegistry.Clear();
+            _contextToPluginName.Clear();
             _outgoingNetMsgHandlers.Clear();
             _incomingNetMsgHandlers.Clear();
             _pluginNetMsgHandlers.Clear();
