@@ -2,22 +2,6 @@ using System.Runtime.InteropServices;
 
 namespace DeadworksManaged.Api.Sounds;
 
-internal enum SosFieldType : byte
-{
-	Bool   = 1,
-	Int32  = 2,
-	UInt32 = 3,
-	UInt64 = 4,
-	Float  = 8,
-	Float3 = 0xA,
-}
-
-internal static class SosHashSeeds
-{
-	public const uint SoundeventName = 0x53524332u;
-	public const uint FieldName = 0x31415926u;
-}
-
 [StructLayout(LayoutKind.Sequential)]
 internal struct SoundEventField
 {

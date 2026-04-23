@@ -3,35 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace DeadworksManaged.Api;
 
-// Native interop structs matching C++ layout (pointers valid only during the call)
-[StructLayout(LayoutKind.Sequential)]
-internal unsafe struct ConVarInfoNative
-{
-	public byte* Name;
-	public byte* TypeName;
-	public byte* Value;
-	public byte* DefaultValue;
-	public byte* Description;
-	public ulong Flags;
-	public byte* MinValue;   // null when absent
-	public byte* MaxValue;   // null when absent
-}
-
-[StructLayout(LayoutKind.Sequential)]
-internal unsafe struct ConCommandInfoNative
-{
-	public byte* Name;
-	public byte* Description;
-	public ulong Flags;
-}
-
-// Public API types
-public record ConVarEntry(
-	string Name, string Type, string Value, string DefaultValue,
-	string Description, ulong Flags, string? Min, string? Max);
-
-public record ConCommandEntry(string Name, string Description, ulong Flags);
-
 /// <summary>Server-side utilities for sending commands to player clients.</summary>
 public static unsafe class Server {
 	/// <summary>The current map name, set when the server starts up.</summary>
