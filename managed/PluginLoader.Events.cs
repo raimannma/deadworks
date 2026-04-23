@@ -51,7 +51,7 @@ internal static partial class PluginLoader
                         del = (GameEventHandler)Delegate.CreateDelegate(typeof(GameEventHandler), plugin, method);
                     }
 
-                    if (_eventRegistry.AddForPlugin(normalizedPath, attr.EventName, del))
+                    if (_gameEventRegistry.AddForPlugin(normalizedPath, attr.EventName, del))
                         RegisterEventWithNative(attr.EventName);
 
                     PluginRegistrationTracker.Add(normalizedPath, "event", attr.EventName);
@@ -65,7 +65,7 @@ internal static partial class PluginLoader
     {
         lock (_lock)
         {
-            if (_eventRegistry.Add(eventName, handler))
+            if (_gameEventRegistry.Add(eventName, handler))
                 RegisterEventWithNative(eventName);
         }
 
@@ -73,7 +73,7 @@ internal static partial class PluginLoader
         {
             lock (_lock)
             {
-                _eventRegistry.Remove(eventName, handler);
+                _gameEventRegistry.Remove(eventName, handler);
             }
         });
     }
@@ -82,7 +82,7 @@ internal static partial class PluginLoader
     {
         lock (_lock)
         {
-            _eventRegistry.Remove(eventName, handler);
+            _gameEventRegistry.Remove(eventName, handler);
         }
     }
 
@@ -91,7 +91,7 @@ internal static partial class PluginLoader
         List<GameEventHandler>? handlers;
         lock (_lock)
         {
-            handlers = _eventRegistry.Snapshot(name);
+            handlers = _gameEventRegistry.Snapshot(name);
         }
 
         if (handlers == null)
