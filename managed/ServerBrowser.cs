@@ -245,6 +245,8 @@ internal static class ServerBrowser
 
         foreach (var controller in Players.GetAll())
         {
+            if (controller.IsBot) continue;
+
             var pawn = controller.GetHeroPawn();
             var stats = pawn?.PlayerData;
 
