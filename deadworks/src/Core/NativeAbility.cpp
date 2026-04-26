@@ -387,11 +387,11 @@ static void *__cdecl NativeAddModifier(void *entity, const char *modifierName, v
                 ov.clonedVDataHash = CloneAbilityVDataWithOverrides(
                     ov.abilityHash, overrideNames, overrideValues, overrideCount);
             }
-            g_Log->Info("AddModifier: parent='{}' hash=0x{:X} cloneHash=0x{:X} hookValid={}",
+            /* g_Log->Info("AddModifier: parent='{}' hash=0x{:X} cloneHash=0x{:X} hookValid={}",
                         parentName, ov.abilityHash, ov.clonedVDataHash,
-                        static_cast<bool>(g_Hook_LookupVDataByHash));
+                        static_cast<bool>(g_Hook_LookupVDataByHash));*/
         } else {
-            g_Log->Info("AddModifier: no scope in '{}', overrides={}", modifierName, overrideCount);
+            // g_Log->Info("AddModifier: no scope in '{}', overrides={}", modifierName, overrideCount);
         }
     }
 
