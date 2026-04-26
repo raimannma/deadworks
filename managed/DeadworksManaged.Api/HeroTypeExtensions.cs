@@ -9,9 +9,7 @@ public static class HeroTypeExtensions {
 		_toName = new Dictionary<Heroes, string>();
 		_fromName = new Dictionary<string, Heroes>(StringComparer.OrdinalIgnoreCase);
 		foreach (var value in Enum.GetValues<Heroes>()) {
-			// Convert PascalCase enum name to hero_lowercase format
-			var name = "hero_" + System.Text.RegularExpressions.Regex.Replace(
-				value.ToString(), "(?<!^)([A-Z])", "_$1").ToLowerInvariant();
+			var name = "hero_" + value.ToString().ToLowerInvariant();
 			_toName[value] = name;
 			_fromName[name] = value;
 		}
