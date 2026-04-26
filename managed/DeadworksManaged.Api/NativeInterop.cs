@@ -89,6 +89,7 @@ internal static unsafe class NativeInterop
 	public static delegate* unmanaged[Cdecl]<byte*, byte*, byte*, ulong, ulong> CreateConVar => (delegate* unmanaged[Cdecl]<byte*, byte*, byte*, ulong, ulong>)_cb.CreateConVar;
 	public static delegate* unmanaged[Cdecl]<byte*, void> ExecuteServerCommand => (delegate* unmanaged[Cdecl]<byte*, void>)_cb.ExecuteServerCommand;
 	public static delegate* unmanaged[Cdecl]<void*, byte*, void> SetModel => (delegate* unmanaged[Cdecl]<void*, byte*, void>)_cb.SetModel;
+	public static delegate* unmanaged[Cdecl]<void*, byte*> GetModelName => (delegate* unmanaged[Cdecl]<void*, byte*>)_cb.GetModelName;
 	public static nint TraceShapeFn => _cb.TraceShapeFn;
 	public static void** PhysicsQueryPtr => (void**)_cb.PhysicsQueryPtr;
 	public static delegate* unmanaged[Cdecl]<ushort, ConVarInfoNative*, byte> GetConVarAt => (delegate* unmanaged[Cdecl]<ushort, ConVarInfoNative*, byte>)_cb.GetConVarAt;

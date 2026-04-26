@@ -89,6 +89,7 @@ internal struct NativeCallbacks
 	public nint CreateConVar;
 	public nint ExecuteServerCommand;
 	public nint SetModel;
+	public nint GetModelName;
 	public nint TraceShapeFn;
 	public nint PhysicsQueryPtr;
 	public nint GetConVarAt;

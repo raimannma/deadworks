@@ -426,6 +426,17 @@ static void __cdecl NativeSetModel(void *entity, const char *modelName) {
     fn(entity, modelName);
 }
 
+static const char *__cdecl NativeGetModelName(void *entity) {
+    if (!entity)
+        return nullptr;
+    using GetModelNameFn = void(__thiscall *)(void *, const char **);
+    static const auto fn = reinterpret_cast<GetModelNameFn>(
+        MemoryDataLoader::Get().GetOffset("CBaseModelEntity::GetModelName").value());
+    const char *out = nullptr;
+    fn(entity, &out);
+    return out;
+}
+
 static void __cdecl NativeRemoveEntity(void *entity) {
     if (!entity)
         return;
@@ -1001,6 +1012,7 @@ void deadworks::PopulateNativeCallbacks(NativeCallbacks &callbacks) {
 
     // SetModel
     callbacks.SetModel = &NativeSetModel;
+    callbacks.GetModelName = &NativeGetModelName;
 
     callbacks.TraceShapeFn = reinterpret_cast<void *>(
         MemoryDataLoader::Get().GetOffset("TraceShape").value());

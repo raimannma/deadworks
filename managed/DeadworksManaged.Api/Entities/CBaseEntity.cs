@@ -397,6 +397,14 @@ public unsafe class CBaseEntity : NativeEntity, IEquatable<CBaseEntity> {
 		}
 	}
 
+	/// <summary>The current model path for this entity (e.g. "models/heroes_wip/werewolf/werewolf.vmdl"), or empty if unset.</summary>
+	public string ModelName {
+		get {
+			byte* ptr = NativeInterop.GetModelName((void*)Handle);
+			return System.Runtime.InteropServices.Marshal.PtrToStringUTF8((nint)ptr) ?? "";
+		}
+	}
+
 	/// <summary>Sets this entity's model scale (1.0 = default).</summary>
 	public void SetScale(float scale) {
 		NativeInterop.SetScale((void*)Handle, scale);

@@ -99,6 +99,7 @@ struct NativeCallbacks {
     uint64_t(__cdecl *CreateConVar)(const char *name, const char *defaultValue, const char *description, uint64_t flags);
     void(__cdecl *ExecuteServerCommand)(const char *command);
     void(__cdecl *SetModel)(void *entity, const char *modelName);
+    const char *(__cdecl *GetModelName)(void *entity);
     void *TraceShapeFn;   // Raw function pointer to TraceShape (called directly from C#)
     void **PhysicsQueryPtr; // Pointer to g_pPhysicsQuery (C# dereferences to get current value)
     uint8_t(__cdecl *GetConVarAt)(uint16_t index, void *result);      // ConVarInfoResult*
