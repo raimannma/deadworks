@@ -249,7 +249,6 @@ static uint8_t RemoveAbilityImpl(CCitadelPlayerPawn *pPawn, CCitadelBaseAbility 
     auto compAddr = reinterpret_cast<uintptr_t>(comp);
 
     uint32_t rawHandle = static_cast<uint32_t>(ability->GetRefEHandle().ToInt());
-    g_Log->Info("RemoveAbility: handle=0x{:X}", rawHandle);
 
     static FindSlotEntryFn findSlotFn = nullptr;
     static RemoveSlotEntryFn removeSlotFn = nullptr;
@@ -258,7 +257,6 @@ static uint8_t RemoveAbilityImpl(CCitadelPlayerPawn *pPawn, CCitadelBaseAbility 
     uint16_t slot = ability->m_eAbilitySlot.Get();
     auto *slotTable = reinterpret_cast<void *>(compAddr + kAbilityCompSlotTable);
     int entryIdx = findSlotFn(slotTable, &slot);
-    g_Log->Info("RemoveAbility: slot={} entry={}", slot, entryIdx);
     if (entryIdx != -1)
         removeSlotFn(slotTable, entryIdx);
 
@@ -282,7 +280,6 @@ static uint8_t RemoveAbilityImpl(CCitadelPlayerPawn *pPawn, CCitadelBaseAbility 
     comp->m_vecThinkableAbilities.NetworkStateChanged();
 
     UTIL_Remove(static_cast<CEntityInstance *>(ability));
-    g_Log->Info("RemoveAbility: done handle=0x{:X}", rawHandle);
     return 1;
 }
 
@@ -294,10 +291,8 @@ static uint8_t __cdecl NativeRemoveAbility(void *pawn, const char *abilityName) 
     auto *comp = pPawn->m_CCitadelAbilityComponent.Get();
 
     auto *ability = static_cast<CCitadelBaseAbility *>(comp->FindAbilityByName(abilityName));
-    if (!ability) {
-        g_Log->Info("RemoveAbility: FindAbilityByName('{}') returned null", abilityName);
+    if (!ability)
         return 0;
-    }
 
     return RemoveAbilityImpl(pPawn, ability);
 }
