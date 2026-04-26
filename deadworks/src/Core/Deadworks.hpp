@@ -74,7 +74,6 @@ public:
     void OnStartTouch(CBaseEntity *entity, CBaseEntity *other);
     void OnEndTouch(CBaseEntity *entity, CBaseEntity *other);
     // Entity I/O
-    void OnEntityFireOutput(void *entity, void *activator, void *caller, const char *outputName);
     void OnEntityAcceptInput(void *entity, void *activator, void *caller, const char *inputName, const char *value);
     // Usercmds
     void OnPre_ProcessUsercmds(int playerSlot, const uint8_t *batchBytes, int batchLen, int numCmds, bool paused, float margin, uint8_t *outBytes, int *outLen);

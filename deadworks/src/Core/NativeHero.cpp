@@ -150,30 +150,16 @@ static void __cdecl NativeTeleport(void *entity, const float *position, const fl
 // ---------------------------------------------------------------------------
 
 void deadworks::ResolveHeroStatics() {
-    {
-        auto opt = MemoryDataLoader::Get().GetOffset("CCitadelPlayerPawn::ResetHero");
-        if (opt) g_pPawnResetHero = reinterpret_cast<PawnResetHeroFn>(opt.value());
-    }
+    g_pPawnResetHero = reinterpret_cast<PawnResetHeroFn>(
+        MemoryDataLoader::Get().GetOffset("CCitadelPlayerPawn::ResetHero").value());
 
-    {
-        auto opt = MemoryDataLoader::Get().GetOffset("CBaseEntity::EmitSoundParams");
-        if (opt) {
-            g_pEmitSoundParams = reinterpret_cast<EmitSoundParamsFn>(opt.value());
-            g_Log->Info("Resolved CBaseEntity::EmitSoundParams: {:p}", reinterpret_cast<void *>(g_pEmitSoundParams));
-        } else {
-            g_Log->Error("Failed to find CBaseEntity::EmitSoundParams signature");
-        }
-    }
+    g_pEmitSoundParams = reinterpret_cast<EmitSoundParamsFn>(
+        MemoryDataLoader::Get().GetOffset("CBaseEntity::EmitSoundParams").value());
+    g_Log->Info("Resolved CBaseEntity::EmitSoundParams: {:p}", reinterpret_cast<void *>(g_pEmitSoundParams));
 
-    {
-        auto addResOpt = MemoryDataLoader::Get().GetOffset("AddResource");
-        if (addResOpt) {
-            g_pAddResource = reinterpret_cast<AddResourceFn>(addResOpt.value());
-            g_Log->Info("Resolved AddResource: {:p}", reinterpret_cast<void *>(g_pAddResource));
-        } else {
-            g_Log->Error("Failed to find AddResource signature");
-        }
-    }
+    g_pAddResource = reinterpret_cast<AddResourceFn>(
+        MemoryDataLoader::Get().GetOffset("AddResource").value());
+    g_Log->Info("Resolved AddResource: {:p}", reinterpret_cast<void *>(g_pAddResource));
 }
 
 void deadworks::ResolveHeroPrecacheFns() {

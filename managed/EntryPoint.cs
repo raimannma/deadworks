@@ -259,22 +259,6 @@ public static class EntryPoint
     }
 
     [UnmanagedCallersOnly]
-    public static unsafe void OnEntityFireOutput(void* entity, void* activator, void* caller, byte* outputNameUtf8)
-    {
-        if (entity == null) return;
-        var outputName = Marshal.PtrToStringUTF8((nint)outputNameUtf8) ?? "";
-        var ent = new CBaseEntity((nint)entity);
-        var evt = new EntityOutputEvent
-        {
-            Entity = ent,
-            Activator = activator != null ? new CBaseEntity((nint)activator) : null,
-            Caller = caller != null ? new CBaseEntity((nint)caller) : null,
-            OutputName = outputName
-        };
-        PluginLoader.DispatchEntityFireOutput(ent.DesignerName, evt);
-    }
-
-    [UnmanagedCallersOnly]
     public static unsafe void OnEntityAcceptInput(void* entity, void* activator, void* caller, byte* inputNameUtf8, byte* valueUtf8)
     {
         if (entity == null) return;

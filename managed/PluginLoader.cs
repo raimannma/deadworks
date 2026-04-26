@@ -54,8 +54,7 @@ internal static partial class PluginLoader
     private static readonly Dictionary<int, List<Delegate>> _incomingNetMsgHandlers = new();
     private static readonly Dictionary<string, List<(int msgId, NetMessageDirection dir, Delegate handler)>> _pluginNetMsgHandlers = new(StringComparer.OrdinalIgnoreCase);
 
-    // Entity IO hooks: "designerName:outputName" -> list of output handlers; "designerName:inputName" -> list of input handlers
-    private static readonly Dictionary<string, List<Action<EntityOutputEvent>>> _outputHooks = new(StringComparer.Ordinal);
+    // Entity IO hooks: "designerName:inputName" -> list of input handlers
     private static readonly Dictionary<string, List<Action<EntityInputEvent>>> _inputHooks = new(StringComparer.Ordinal);
 
     private static string _pluginsDir = "";
@@ -106,7 +105,6 @@ internal static partial class PluginLoader
         NetMessages.OnHookAdd = OnNetMessageHookAddWithHandle;
         NetMessages.OnHookRemove = OnNetMessageHookRemove;
 
-        EntityIO.OnHookOutput = OnEntityIOHookOutput;
         EntityIO.OnHookInput = OnEntityIOHookInput;
 
         var baseDir = Path.GetDirectoryName(typeof(PluginLoader).Assembly.Location);
@@ -500,7 +498,6 @@ internal static partial class PluginLoader
             _outgoingNetMsgHandlers.Clear();
             _incomingNetMsgHandlers.Clear();
             _pluginNetMsgHandlers.Clear();
-            _outputHooks.Clear();
             _inputHooks.Clear();
         }
 

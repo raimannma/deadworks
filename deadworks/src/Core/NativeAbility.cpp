@@ -482,20 +482,13 @@ void deadworks::PopulateAbilityNatives(NativeCallbacks &cb) {
     cb.ToggleActivate = &NativeToggleActivate;
     cb.SetUpgradeBits = &NativeSetUpgradeBits;
 
-    // Install hooks for modifier ability value overrides (optional)
-    auto opt = MemoryDataLoader::Get().GetOffset("CCitadelModifier::AutoRegisterAbilityValues");
-    if (opt) {
-        g_Hook_AutoRegisterValues = safetyhook::create_inline(opt.value(), &Hook_AutoRegisterValues);
-        g_Log->Info("Hooked CCitadelModifier::AutoRegisterAbilityValues");
-    } else {
-        g_Log->Warning("CCitadelModifier::AutoRegisterAbilityValues signature not found");
-    }
+    g_Hook_AutoRegisterValues = safetyhook::create_inline(
+        MemoryDataLoader::Get().GetOffset("CCitadelModifier::AutoRegisterAbilityValues").value(),
+        &Hook_AutoRegisterValues);
+    g_Log->Info("Hooked CCitadelModifier::AutoRegisterAbilityValues");
 
-    auto opt2 = MemoryDataLoader::Get().GetOffset("LookupVDataByHash");
-    if (opt2) {
-        g_Hook_LookupVDataByHash = safetyhook::create_inline(opt2.value(), &Hook_LookupVDataByHash);
-        g_Log->Info("Hooked LookupVDataByHash for per-instance modifier value overrides");
-    } else {
-        g_Log->Warning("LookupVDataByHash signature not found - per-instance overrides unavailable");
-    }
+    g_Hook_LookupVDataByHash = safetyhook::create_inline(
+        MemoryDataLoader::Get().GetOffset("LookupVDataByHash").value(),
+        &Hook_LookupVDataByHash);
+    g_Log->Info("Hooked LookupVDataByHash for per-instance modifier value overrides");
 }

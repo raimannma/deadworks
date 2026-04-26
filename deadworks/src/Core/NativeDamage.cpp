@@ -52,10 +52,10 @@ static void __cdecl NativeTakeDamage(void *victim, void *info) {
 // ---------------------------------------------------------------------------
 
 void deadworks::ResolveDamageStatics() {
-    auto opt = MemoryDataLoader::Get().GetOffset("CTakeDamageInfo::Ctor");
-    if (opt) g_pCTakeDamageInfoCtor = reinterpret_cast<CTakeDamageInfoCtorFn>(opt.value());
-    auto opt2 = MemoryDataLoader::Get().GetOffset("CTakeDamageInfo::Dtor");
-    if (opt2) g_pCTakeDamageInfoDtor = reinterpret_cast<CTakeDamageInfoDtorFn>(opt2.value());
+    g_pCTakeDamageInfoCtor = reinterpret_cast<CTakeDamageInfoCtorFn>(
+        MemoryDataLoader::Get().GetOffset("CTakeDamageInfo::Ctor").value());
+    g_pCTakeDamageInfoDtor = reinterpret_cast<CTakeDamageInfoDtorFn>(
+        MemoryDataLoader::Get().GetOffset("CTakeDamageInfo::Dtor").value());
 }
 
 void deadworks::PopulateDamageNatives(NativeCallbacks &cb) {

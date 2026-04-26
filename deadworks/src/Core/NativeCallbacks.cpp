@@ -507,22 +507,15 @@ static LookupVDataByHashFn g_LookupVDataByHash = nullptr;
 static void ResolveSubclassStatics() {
     auto &mem = deadworks::MemoryDataLoader::Get();
 
-    auto lookupOpt = mem.GetOffset("SubclassRegistry::Lookup");
-    if (lookupOpt)
-        g_SubclassLookup = reinterpret_cast<SubclassLookupFn>(lookupOpt.value());
+    g_SubclassLookup = reinterpret_cast<SubclassLookupFn>(
+        mem.GetOffset("SubclassRegistry::Lookup").value());
 
-    auto refOpt = mem.GetOffset("SubclassRegistry::GlobalRef");
-    if (refOpt) {
-        auto match = refOpt.value();
-        // 48 8B 0D [disp32] = mov rcx, [rip+disp]
-        // Store pointer TO the global, deref lazily (null during early init)
-        auto disp = *reinterpret_cast<int32_t *>(match + 3);
-        g_ppSubclassRegistry = reinterpret_cast<void **>(match + 7 + disp);
-    }
+    auto refMatch = mem.GetOffset("SubclassRegistry::GlobalRef").value();
+    auto disp = *reinterpret_cast<int32_t *>(refMatch + 3);
+    g_ppSubclassRegistry = reinterpret_cast<void **>(refMatch + 7 + disp);
 
-    auto vdataOpt = mem.GetOffset("LookupVDataByHash");
-    if (vdataOpt)
-        g_LookupVDataByHash = reinterpret_cast<LookupVDataByHashFn>(vdataOpt.value());
+    g_LookupVDataByHash = reinterpret_cast<LookupVDataByHashFn>(
+        mem.GetOffset("LookupVDataByHash").value());
 }
 
 static void *__cdecl NativeLookupVDataByHash(int32_t typeFilter, uint32_t hash) {
@@ -887,12 +880,9 @@ static uint32_t __cdecl NativeTakeSoundEventGuid() {
     if (!g_pSoundSystem)
         return 0;
 
-    auto idx = MemoryDataLoader::Get().GetVirtual("CSoundSystem::TakeGuid");
-    if (!idx || *idx <= 0)
-        return 0;
-
+    auto idx = MemoryDataLoader::Get().GetVirtual("CSoundSystem::TakeGuid").value();
     uint32_t guid = 0;
-    CallVirtual<void>(g_pSoundSystem, static_cast<uint32_t>(*idx), &guid);
+    CallVirtual<void>(g_pSoundSystem, static_cast<uint32_t>(idx), &guid);
     return guid;
 }
 
@@ -1006,9 +996,8 @@ void deadworks::PopulateNativeCallbacks(NativeCallbacks &callbacks) {
     // SetModel
     callbacks.SetModel = &NativeSetModel;
 
-    // Pass raw TraceShape function pointer and physics query pointer to C#
-    auto traceShapeOpt = MemoryDataLoader::Get().GetOffset("TraceShape");
-    callbacks.TraceShapeFn = traceShapeOpt ? reinterpret_cast<void *>(traceShapeOpt.value()) : nullptr;
+    callbacks.TraceShapeFn = reinterpret_cast<void *>(
+        MemoryDataLoader::Get().GetOffset("TraceShape").value());
     callbacks.PhysicsQueryPtr = &g_pPhysicsQuery;
 
     // CVar / ConCommand index-based access

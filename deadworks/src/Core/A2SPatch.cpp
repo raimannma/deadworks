@@ -20,13 +20,9 @@ static bool PatchBytes(uint8_t *addr, const uint8_t *bytes, size_t len) {
 }
 
 bool Apply() {
-    auto match = MemoryDataLoader::Get().GetPatch("A2S Advertise Gate");
-    if (!match) {
-        g_Log->Error("[A2S] Advertise gate patch not found (not resolved by MemoryDataLoader)");
-        return false;
-    }
+    auto match = MemoryDataLoader::Get().GetPatch("A2S Advertise Gate").value();
 
-    auto *base = reinterpret_cast<uint8_t *>(*match);
+    auto *base = reinterpret_cast<uint8_t *>(match);
     uint8_t nops[2] = {kNop, kNop};
     bool allOk = true;
 

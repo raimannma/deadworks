@@ -58,18 +58,10 @@ public:
 static CEntityListener g_EntityListener;
 
 template <typename Fn>
-static bool HookInline(safetyhook::InlineHook &hook, const char *name, Fn detour, bool required = false) {
-    auto opt = MemoryDataLoader::Get().GetOffset(name);
-    if (!opt) {
-        if (required)
-            g_Log->Error("{} signature not found", name);
-        else
-            g_Log->Warning("{} signature not found - hook unavailable", name);
-        return false;
-    }
-    hook = safetyhook::create_inline(opt.value(), detour);
+static void HookInline(safetyhook::InlineHook &hook, const char *name, Fn detour) {
+    auto offset = MemoryDataLoader::Get().GetOffset(name).value();
+    hook = safetyhook::create_inline(offset, detour);
     g_Log->Info("Hooked {}", name);
-    return true;
 }
 
 void Deadworks::InitFromAppSystem(CAppSystemDict *pAppSystem) {
@@ -158,10 +150,9 @@ void Deadworks::PostInit() {
 
     ConVar_Register(FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL);
 
-    // Required inline hooks
     HookInline(hooks::g_CGCClientSystem_OnServerVersionCheck,
                "CGCClientSystem::OnServerVersionCheck",
-               &hooks::Hook_CGCClientSystem_OnServerVersionCheck, true);
+               &hooks::Hook_CGCClientSystem_OnServerVersionCheck);
 
     // VMT hooks - these use virtual indices, not signatures
     auto &mem = MemoryDataLoader::Get();
@@ -178,22 +169,21 @@ void Deadworks::PostInit() {
     hooks::g_NetworkServerServiceVmt = safetyhook::create_vmt(g_pNetworkServerService);
     hooks::g_NetworkServerService_StartupServer = safetyhook::create_vm(hooks::g_NetworkServerServiceVmt, mem.GetVirtual("INetworkServerService::StartupServer").value(), &hooks::NetworkServerServiceHook::Hook_StartupServer);
 
-    // Required inline hooks (crash if signature not found)
     HookInline(hooks::g_CServerSideClientBase_FilterMessage,
                "CServerSideClientBase::FilterMessage",
-               &hooks::Hook_CServerSideClientBase_FilterMessage, true);
+               &hooks::Hook_CServerSideClientBase_FilterMessage);
     HookInline(hooks::g_ReplyConnection,
                "CNetworkGameServerBase::ReplyConnection",
-               &hooks::Hook_ReplyConnection, true);
+               &hooks::Hook_ReplyConnection);
     HookInline(hooks::g_CBaseEntity_TakeDamageOld,
                "CBaseEntity::TakeDamageOld",
-               &hooks::Hook_CBaseEntity_TakeDamageOld, true);
+               &hooks::Hook_CBaseEntity_TakeDamageOld);
     HookInline(hooks::g_CCitadelPlayerPawn_ModifyCurrency,
                "CCitadelPlayerPawn::ModifyCurrency",
-               &hooks::Hook_CCitadelPlayerPawn_ModifyCurrency, true);
+               &hooks::Hook_CCitadelPlayerPawn_ModifyCurrency);
     HookInline(hooks::g_CCitadelPlayerController_ClientConCommand,
                "CCitadelPlayerController::ClientConCommand",
-               &hooks::Hook_CCitadelPlayerController_ClientConCommand, true);
+               &hooks::Hook_CCitadelPlayerController_ClientConCommand);
 
     // Resolve IGameEventManager2 from a known xref
     {
@@ -229,24 +219,19 @@ void Deadworks::PostInit() {
         }
     }
 
-    // Required feature hooks
     HookInline(hooks::g_BuildGameSessionManifest,
                "CCitadelGameRules::BuildGameSessionManifest",
-               &hooks::Hook_BuildGameSessionManifest, true);
+               &hooks::Hook_BuildGameSessionManifest);
     HookInline(hooks::g_TraceShape,
                "TraceShape",
-               &hooks::Hook_TraceShape, true);
+               &hooks::Hook_TraceShape);
 
     // Touch hooks (StartTouch / EndTouch) are initialized lazily in OnEntityCreated
     // because we need an entity vtable to resolve the virtual function addresses.
 
-    // Optional hooks - features degrade gracefully if signatures are missing
     HookInline(hooks::g_CEntityInstance_AcceptInput,
                "CEntityInstance::AcceptInput",
                &hooks::Hook_CEntityInstance_AcceptInput);
-    HookInline(hooks::g_CEntityInstance_FireOutput,
-               "CEntityInstance::FireOutput",
-               &hooks::Hook_CEntityInstance_FireOutput);
     HookInline(hooks::g_ProcessUsercmds,
                "CBasePlayerController::ProcessUsercmds",
                &hooks::Hook_ProcessUsercmds);
@@ -418,22 +403,14 @@ void Deadworks::OnEntityCreated(CEntityInstance *pEntity) {
         auto &mem = MemoryDataLoader::Get();
 
         auto *vtable = *reinterpret_cast<void ***>(pEntity);
-        auto startTouchIdx = mem.GetVirtual("CBaseEntity::StartTouch");
-        auto endTouchIdx = mem.GetVirtual("CBaseEntity::EndTouch");
+        auto startTouchIdx = mem.GetVirtual("CBaseEntity::StartTouch").value();
+        auto endTouchIdx = mem.GetVirtual("CBaseEntity::EndTouch").value();
 
-        if (startTouchIdx && vtable[*startTouchIdx]) {
-            hooks::g_CBaseEntity_StartTouch = safetyhook::create_inline(vtable[*startTouchIdx], &hooks::Hook_CBaseEntity_StartTouch);
-            g_Log->Info("Hooked CBaseEntity::StartTouch (vtable index {})", *startTouchIdx);
-        } else {
-            g_Log->Warning("CBaseEntity::StartTouch virtual index not configured - touch events unavailable");
-        }
+        hooks::g_CBaseEntity_StartTouch = safetyhook::create_inline(vtable[startTouchIdx], &hooks::Hook_CBaseEntity_StartTouch);
+        g_Log->Info("Hooked CBaseEntity::StartTouch (vtable index {})", startTouchIdx);
 
-        if (endTouchIdx && vtable[*endTouchIdx]) {
-            hooks::g_CBaseEntity_EndTouch = safetyhook::create_inline(vtable[*endTouchIdx], &hooks::Hook_CBaseEntity_EndTouch);
-            g_Log->Info("Hooked CBaseEntity::EndTouch (vtable index {})", *endTouchIdx);
-        } else {
-            g_Log->Warning("CBaseEntity::EndTouch virtual index not configured - touch events unavailable");
-        }
+        hooks::g_CBaseEntity_EndTouch = safetyhook::create_inline(vtable[endTouchIdx], &hooks::Hook_CBaseEntity_EndTouch);
+        g_Log->Info("Hooked CBaseEntity::EndTouch (vtable index {})", endTouchIdx);
     }
 
     if (m_managed.onEntityCreated && pEntity)
@@ -564,11 +541,6 @@ void Deadworks::OnStartTouch(CBaseEntity *entity, CBaseEntity *other) {
 void Deadworks::OnEndTouch(CBaseEntity *entity, CBaseEntity *other) {
     if (m_managed.onEntityEndTouch && entity && other)
         m_managed.onEntityEndTouch(entity, other);
-}
-
-void Deadworks::OnEntityFireOutput(void *entity, void *activator, void *caller, const char *outputName) {
-    if (m_managed.onEntityFireOutput)
-        m_managed.onEntityFireOutput(entity, activator, caller, outputName);
 }
 
 void Deadworks::OnEntityAcceptInput(void *entity, void *activator, void *caller, const char *inputName, const char *value) {
