@@ -866,6 +866,12 @@ static int32_t __cdecl NativeHeal(void *entity, float amount) {
     return GetVFunc<int(__thiscall *)(void *, float)>(entity, offsets::kVtblHeal)(entity, amount);
 }
 
+static void __cdecl NativeSetScale(void *entity, float scale) {
+    if (!entity)
+        return;
+    GetVFunc<void(__thiscall *)(void *, float)>(entity, offsets::kVtblSetScale)(entity, scale);
+}
+
 static void *__cdecl NativeGetGlobalVars() {
     if (!g_pEngineServer)
         return nullptr;
@@ -1007,6 +1013,7 @@ void deadworks::PopulateNativeCallbacks(NativeCallbacks &callbacks) {
     // Entity virtual function wrappers
     callbacks.GetMaxHealth = &NativeGetMaxHealth;
     callbacks.Heal = &NativeHeal;
+    callbacks.SetScale = &NativeSetScale;
 
     // Global vars
     callbacks.GetGlobalVars = &NativeGetGlobalVars;

@@ -100,6 +100,7 @@ internal struct NativeCallbacks
 	public nint ToggleActivate;
 	public nint GetMaxHealth;
 	public nint Heal;
+	public nint SetScale;
 	public nint GetGlobalVars;
 	public nint SetEngineLogCallback;
 	public nint SetUpgradeBits;

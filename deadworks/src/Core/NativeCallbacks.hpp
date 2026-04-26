@@ -110,6 +110,7 @@ struct NativeCallbacks {
     void(__cdecl *ToggleActivate)(void *ability, uint8_t activate);
     int32_t(__cdecl *GetMaxHealth)(void *entity);
     int32_t(__cdecl *Heal)(void *entity, float amount);
+    void(__cdecl *SetScale)(void *entity, float scale);
     void *(__cdecl *GetGlobalVars)();
     void(__cdecl *SetEngineLogCallback)(void(__cdecl *callback)(const char *message));
     void(__cdecl *SetUpgradeBits)(void *ability, int32_t newBits);

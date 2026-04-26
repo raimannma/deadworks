@@ -397,6 +397,11 @@ public unsafe class CBaseEntity : NativeEntity, IEquatable<CBaseEntity> {
 		}
 	}
 
+	/// <summary>Sets this entity's model scale (1.0 = default).</summary>
+	public void SetScale(float scale) {
+		NativeInterop.SetScale((void*)Handle, scale);
+	}
+
 	/// <summary>Read any schema field by class and field name. For repeated access, prefer a static <see cref="SchemaAccessor{T}"/> instead.</summary>
 	public T GetField<T>(ReadOnlySpan<byte> className, ReadOnlySpan<byte> fieldName) where T : unmanaged
 		=> new SchemaAccessor<T>(className, fieldName).Get(Handle);

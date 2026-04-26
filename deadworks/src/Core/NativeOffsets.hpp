@@ -19,6 +19,7 @@ constexpr int kVtblTeleport = 163;
 // CBaseEntity
 constexpr int kVtblHeal = 123;
 constexpr int kVtblGetMaxHealth = 181;
+constexpr int kVtblSetScale = 246;
 
 // CBaseModifier
 constexpr int kVtblModifierDestroy = 22;
