@@ -87,12 +87,7 @@ fn find_game_dir() -> Result<PathBuf, String> {
     if let Some(override_dir) = crate::connect::get_game_dir_override() {
         return Ok(override_dir);
     }
-    let cfg_dir = crate::connect::find_deadlock_cfg_dir()?;
-    cfg_dir
-        .parent()
-        .and_then(|p| p.parent())
-        .map(|p| p.to_path_buf())
-        .ok_or_else(|| "Could not determine game directory".into())
+    crate::connect::find_deadlock_game_dir()
 }
 
 fn ensure_dir(path: &Path) -> Result<(), String> {

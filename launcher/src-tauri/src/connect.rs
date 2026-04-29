@@ -31,59 +31,130 @@ fn find_steam_path() -> Result<PathBuf, String> {
     Ok(PathBuf::from(install_path))
 }
 
-/// Parse libraryfolders.vdf to find all Steam library paths.
-fn find_library_folders(steam_path: &PathBuf) -> Result<Vec<PathBuf>, String> {
+/// Parse libraryfolders.vdf and return the library path whose `apps` block
+/// lists `app_id`. Returns an error if no library claims that app.
+fn find_library_for_app(steam_path: &PathBuf, app_id: &str) -> Result<PathBuf, String> {
     let vdf_path = steam_path.join("steamapps").join("libraryfolders.vdf");
     let content = fs::read_to_string(&vdf_path)
         .map_err(|e| format!("Failed to read {}: {}", vdf_path.display(), e))?;
 
-    let mut folders = Vec::new();
+    // libraryfolders.vdf nesting:
+    //   depth 1: "libraryfolders" block
+    //   depth 2: each "<index>" library entry — has "path" and "apps"
+    //   depth 3: entries inside "apps" (the only nested block at depth 2)
+    let mut depth: u32 = 0;
+    let mut current_path: Option<String> = None;
+    let mut found_app = false;
+
     for line in content.lines() {
         let trimmed = line.trim();
-        if trimmed.starts_with("\"path\"") {
-            if let Some(val) = extract_vdf_value(trimmed) {
-                folders.push(PathBuf::from(val));
+        if trimmed.is_empty() {
+            continue;
+        }
+        if trimmed == "{" {
+            depth += 1;
+            continue;
+        }
+        if trimmed == "}" {
+            if depth == 2 {
+                if found_app {
+                    if let Some(p) = current_path.take() {
+                        return Ok(PathBuf::from(p));
+                    }
+                }
+                current_path = None;
+                found_app = false;
             }
+            depth = depth.saturating_sub(1);
+            continue;
+        }
+
+        let Some((key, value)) = parse_vdf_kv(trimmed) else { continue };
+        match depth {
+            2 if key == "path" => current_path = value,
+            3 if key == app_id => found_app = true,
+            _ => {}
         }
     }
 
-    folders.push(steam_path.clone());
-    Ok(folders)
+    Err(format!("App ID {} not found in any Steam library", app_id))
 }
 
-fn extract_vdf_value(line: &str) -> Option<String> {
-    let mut parts = line.splitn(2, "\"path\"");
-    parts.next()?;
-    let rest = parts.next()?.trim();
-    let start = rest.find('"')? + 1;
-    let end = rest[start..].find('"')? + start;
-    Some(rest[start..end].replace("\\\\", "\\"))
+/// Parse a single VDF key/value line: `"key"` or `"key" "value"`.
+fn parse_vdf_kv(line: &str) -> Option<(String, Option<String>)> {
+    let (key, rest) = read_quoted(line)?;
+    let value = read_quoted(rest).map(|(v, _)| v);
+    Some((key, value))
 }
 
-/// Find Deadlock's cfg directory across all Steam libraries.
+/// Read the next `"..."` token (with `\\`, `\"`, `\n`, `\t` escapes) and return
+/// the unescaped contents plus the slice that follows the closing quote.
+fn read_quoted(s: &str) -> Option<(String, &str)> {
+    let open = s.find('"')?;
+    let body_start = open + 1;
+    let body = &s[body_start..];
+
+    let bytes = body.as_bytes();
+    let mut i = 0;
+    while i < bytes.len() {
+        match bytes[i] {
+            b'\\' if i + 1 < bytes.len() => i += 2,
+            b'"' => {
+                let raw = &body[..i];
+                let after = &body[i + 1..];
+                return Some((unescape_vdf(raw), after));
+            }
+            _ => i += 1,
+        }
+    }
+    None
+}
+
+fn unescape_vdf(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    let mut chars = s.chars();
+    while let Some(c) = chars.next() {
+        if c != '\\' {
+            out.push(c);
+            continue;
+        }
+        match chars.next() {
+            Some('\\') => out.push('\\'),
+            Some('"') => out.push('"'),
+            Some('n') => out.push('\n'),
+            Some('t') => out.push('\t'),
+            Some(other) => {
+                out.push('\\');
+                out.push(other);
+            }
+            None => out.push('\\'),
+        }
+    }
+    out
+}
+
+/// Find Deadlock's `game` directory (parent of `citadel/`) in the Steam library
+/// that owns the app. Callers append whatever subpath they need.
 #[cfg(windows)]
-pub(crate) fn find_deadlock_cfg_dir() -> Result<PathBuf, String> {
+pub(crate) fn find_deadlock_game_dir() -> Result<PathBuf, String> {
     let steam_path = find_steam_path()?;
-    let libraries = find_library_folders(&steam_path)?;
-
-    for lib in &libraries {
-        let cfg_dir = lib
-            .join("steamapps")
-            .join("common")
-            .join("Deadlock")
-            .join("game")
-            .join("citadel")
-            .join("cfg");
-        if cfg_dir.exists() {
-            return Ok(cfg_dir);
-        }
+    let library = find_library_for_app(&steam_path, DEADLOCK_APP_ID)?;
+    let game_dir = library
+        .join("steamapps")
+        .join("common")
+        .join("Deadlock")
+        .join("game");
+    if !game_dir.join("citadel").exists() {
+        return Err(format!(
+            "Deadlock game directory not found at {}",
+            game_dir.display()
+        ));
     }
-
-    Err("Deadlock installation not found in any Steam library".into())
+    Ok(game_dir)
 }
 
 #[cfg(not(windows))]
-pub(crate) fn find_deadlock_cfg_dir() -> Result<PathBuf, String> {
+pub(crate) fn find_deadlock_game_dir() -> Result<PathBuf, String> {
     Err("Deadlock detection is only supported on Windows".into())
 }
 
@@ -119,12 +190,7 @@ pub fn launch_deadlock() -> Result<(), String> {
 /// Returns the auto-detected game directory (ignoring any override).
 #[tauri::command]
 pub fn get_detected_game_dir() -> Result<String, String> {
-    let cfg_dir = find_deadlock_cfg_dir()?;
-    cfg_dir
-        .parent()
-        .and_then(|p| p.parent())
-        .map(|p| p.to_string_lossy().to_string())
-        .ok_or_else(|| "Could not determine game directory".into())
+    Ok(find_deadlock_game_dir()?.to_string_lossy().to_string())
 }
 
 /// Returns the current effective game directory (override or auto-detected).

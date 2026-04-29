@@ -13,13 +13,9 @@ fn patch_gameinfo_on_startup() {
         game_dir_buf = override_dir;
         &game_dir_buf
     } else {
-        let cfg_dir = match connect::find_deadlock_cfg_dir() {
+        game_dir_buf = match connect::find_deadlock_game_dir() {
             Ok(d) => d,
             Err(_) => return, // Deadlock not installed, nothing to do
-        };
-        game_dir_buf = match cfg_dir.parent().and_then(|p| p.parent()) {
-            Some(d) => d.to_path_buf(),
-            None => return,
         };
         &game_dir_buf
     };
