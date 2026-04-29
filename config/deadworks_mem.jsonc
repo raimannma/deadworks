@@ -96,6 +96,10 @@
 			"library": "server.dll",
 			"windows": "48 89 74 24 ?? 57 48 83 EC 20 0F B6 81 ?? ?? ?? ?? 0F B6 F2"
 		},
+		"CCitadelPlayerPawn::InitializeHeroOnPawn": {
+			"library": "server.dll",
+			"windows": "4C 8B DC 56 41 57 48 83 EC 58 0F B6 81 ?? ?? ?? ?? 44 0F B6 FA 83 C0 FE 48 8B F1"
+		},
 		"CCitadelAbilityComponent::FindAbilityByName": {
 			"library": "server.dll",
 			"windows": "40 57 48 83 EC ?? 48 8B F9 B9"

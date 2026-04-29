@@ -368,6 +368,15 @@ public static class EntryPoint
     }
 
     [UnmanagedCallersOnly]
+    public static unsafe void OnPawnHeroInitialized(void* pawn)
+    {
+        if (pawn == null) return;
+        var p = new CCitadelPlayerPawn((nint)pawn);
+        CCitadelPlayerPawn.DrainHeroInitializedContinuations(p);
+        PluginLoader.DispatchPawnHeroInitialized(p);
+    }
+
+    [UnmanagedCallersOnly]
     public static unsafe int OnAddModifier(void* modifierProp, void** pCaster, uint* pHAbility, int* pITeam, void* vdata, void* modifierParams, void* kv)
     {
         if (modifierProp == null || vdata == null)

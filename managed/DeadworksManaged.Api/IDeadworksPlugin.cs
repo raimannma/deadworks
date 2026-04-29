@@ -122,4 +122,9 @@ public interface IDeadworksPlugin {
 	/// Use <see cref="CheckTransmitEvent.Hide"/> to prevent entities from being networked to this player.
 	/// </summary>
 	void OnCheckTransmit(CheckTransmitEvent args) { }
+
+	/// <summary>
+	/// Called whenever a pawn's hero abilities and modifiers have just been (re)populated server-side.
+	/// </summary>
+	void OnPawnHeroInitialized(CCitadelPlayerPawn pawn) { }
 }

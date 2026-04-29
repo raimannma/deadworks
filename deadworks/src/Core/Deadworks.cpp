@@ -21,6 +21,7 @@
 #include "Hooks/AddModifier.hpp"
 #include "Hooks/ReplyConnection.hpp"
 #include "Hooks/CheckTransmit.hpp"
+#include "Hooks/InitializeHeroOnPawn.hpp"
 #include "A2SPatch.hpp"
 
 #include "../Memory/MemoryDataLoader.hpp"
@@ -241,6 +242,9 @@ void Deadworks::PostInit() {
     HookInline(hooks::g_CModifierProperty_AddModifier,
                "CModifierProperty::AddModifier",
                &hooks::Hook_CModifierProperty_AddModifier);
+    HookInline(hooks::g_InitializeHeroOnPawn,
+               "CCitadelPlayerPawn::InitializeHeroOnPawn",
+               &hooks::Hook_InitializeHeroOnPawn);
 
     // Enable A2S_INFO responses on community servers
     A2SPatch::Apply();
@@ -582,6 +586,11 @@ void Deadworks::OnPost_CheckTransmit(CCheckTransmitInfo **ppInfoList, int nInfoC
         int playerSlot = pInfo->m_nPlayerSlot.Get();
         m_managed.onCheckTransmit(playerSlot, pInfo->m_pTransmitEntity);
     }
+}
+
+void Deadworks::OnPost_InitializeHeroOnPawn(void *pawn) {
+    if (m_managed.onPawnHeroInitialized && pawn)
+        m_managed.onPawnHeroInitialized(pawn);
 }
 
 void Deadworks::GetInterfaceFactories() {

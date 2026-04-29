@@ -141,6 +141,9 @@
     <ClCompile Include="src\Core\Hooks\AddModifier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\Hooks\InitializeHeroOnPawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Lib\Module.hpp">
@@ -333,6 +336,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Hooks\AddModifier.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Hooks\InitializeHeroOnPawn.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

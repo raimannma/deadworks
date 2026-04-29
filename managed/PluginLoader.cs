@@ -449,6 +449,7 @@ internal static partial class PluginLoader
         GameRules.OnEntityDeleted(args.Entity);
         DispatchToPlugins(p => p.OnEntityDeleted(args), nameof(IDeadworksPlugin.OnEntityDeleted));
         EntityDataRegistry.OnEntityDeleted(args.Entity.EntityHandle);
+        CCitadelPlayerPawn.OnEntityDeleted(args.Entity.Handle);
     }
 
     public static HookResult DispatchTakeDamage(TakeDamageEvent args)
@@ -477,6 +478,9 @@ internal static partial class PluginLoader
 
     public static void DispatchCheckTransmit(CheckTransmitEvent args)
         => DispatchToPlugins(p => p.OnCheckTransmit(args), nameof(IDeadworksPlugin.OnCheckTransmit));
+
+    public static void DispatchPawnHeroInitialized(CCitadelPlayerPawn pawn)
+        => DispatchToPlugins(p => p.OnPawnHeroInitialized(pawn), nameof(IDeadworksPlugin.OnPawnHeroInitialized));
 
     public static void UnloadAll()
     {

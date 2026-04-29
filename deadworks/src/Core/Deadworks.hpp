@@ -84,6 +84,9 @@ public:
                            void *vdata, void *pParams, void *pKV);
     // CheckTransmit - dispatches per-player to managed code
     void OnPost_CheckTransmit(CCheckTransmitInfo **ppInfoList, int nInfoCount);
+    // InitializeHeroOnPawn - dispatched after the pawn's hero abilities/modifiers
+    // have been (re)populated server-side, regardless of which path got us here
+    void OnPost_InitializeHeroOnPawn(void *pawn);
 
     template <typename T>
     T *GetEntity(CEntityIndex index) {

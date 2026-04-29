@@ -85,6 +85,65 @@ public sealed unsafe class CCitadelPlayerPawn : CBasePlayerPawn {
 			NativeInterop.ResetHero((void*)Handle, resetAbilities ? (byte)1 : (byte)0);
 	}
 
+	/// <summary>
+	/// Ensures this pawn is on <paramref name="hero"/> with a fresh ability loadout.
+	/// Swaps via <see cref="CCitadelPlayerController.SelectHero"/> if currently on a different hero
+	/// (queues the async GC swap), or calls <see cref="ResetHero"/> if already on that hero
+	/// (synchronous teardown + re-init). If <paramref name="onReady"/> is supplied it is registered
+	/// via <see cref="OnceHeroInitialized"/> and runs once the new ability slots are populated
+	/// server-side - synchronously inside this call for the same-hero path, or later (when
+	/// <c>OnHeroLoaded</c> lands) for the async path.
+	/// </summary>
+	public void SwapOrReset(Heroes hero, Action? onReady = null) {
+		if (onReady != null)
+			OnceHeroInitialized(onReady);
+		if (HeroID == hero)
+			ResetHero();
+		else
+			Controller?.SelectHero(hero);
+	}
+
+	// Per-pawn one-shot continuations fired by Hook_InitializeHeroOnPawn ->
+	// EntryPoint.OnPawnHeroInitialized. Keyed by raw pawn pointer (Handle) since
+	// the same pointer survives across hero swaps (only the contents change).
+	private static readonly Dictionary<nint, List<Action>> _heroInitContinuations = new();
+
+	/// <summary>
+	/// Runs <paramref name="action"/> the next time the server populates this pawn's
+	/// abilities — i.e. after <see cref="CCitadelPlayerController.SelectHero"/> settles,
+	/// after <see cref="ResetHero"/>, on initial spawn, or after the <c>resethero</c> command.
+	/// Fires exactly once. Multiple registrations are queued and dispatched in order.
+	/// </summary>
+	/// <remarks>
+	/// The action runs synchronously inside the native InitializeHeroOnPawn return path.
+	/// For the same-hero <c>ResetHero</c> case this means re-entrantly during the C# call.
+	/// </remarks>
+	public void OnceHeroInitialized(Action action) {
+		ArgumentNullException.ThrowIfNull(action);
+		if (!_heroInitContinuations.TryGetValue(Handle, out var list))
+			_heroInitContinuations[Handle] = list = [];
+		list.Add(action);
+	}
+
+	/// <summary>Internal: invoked from EntryPoint.OnPawnHeroInitialized before plugin dispatch.</summary>
+	internal static void DrainHeroInitializedContinuations(CCitadelPlayerPawn pawn) {
+		if (!_heroInitContinuations.Remove(pawn.Handle, out var pending)) return;
+		foreach (var action in pending) {
+			try { action(); }
+			catch (Exception ex) {
+				Console.WriteLine($"[CCitadelPlayerPawn.OnceHeroInitialized] {ex}");
+			}
+		}
+	}
+
+	/// <summary>Internal: invoked from PluginLoader.DispatchEntityDeleted to drop continuations
+	/// queued for a pawn that's about to be destroyed. Without this, an entry sits forever, and
+	/// when the entity system reuses the pointer for a future pawn the stale continuations would
+	/// fire against the wrong player.</summary>
+	internal static void OnEntityDeleted(nint pawnHandle) {
+		_heroInitContinuations.Remove(pawnHandle);
+	}
+
 	/// <summary>Removes an ability from this pawn by internal ability name. Returns true on success.</summary>
 	public bool RemoveAbility(string abilityName) {
 		Span<byte> utf8 = Utf8.Encode(abilityName, stackalloc byte[Utf8.Size(abilityName)]);

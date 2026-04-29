@@ -33,6 +33,7 @@ struct ManagedCallbacks {
     using OnAbilityAttemptFn = uint64_t(CORECLR_DELEGATE_CALLTYPE *)(int playerSlot, void *pawnEntity, uint64_t heldButtons, uint64_t changedButtons, uint64_t scrollButtons, uint64_t *outForcedButtons);
     using OnAddModifierFn = int(CORECLR_DELEGATE_CALLTYPE *)(void *modifierProp, void **pCaster, uint32_t *pHAbility, int32_t *pITeam, void *vdata, void *params, void *kv);
     using OnCheckTransmitFn = void(CORECLR_DELEGATE_CALLTYPE *)(int playerSlot, void *transmitBits);
+    using OnPawnHeroInitializedFn = void(CORECLR_DELEGATE_CALLTYPE *)(void *pawn);
 
     OnStartupServerFn onStartupServer = nullptr;
     OnTakeDamageOldFn onTakeDamageOld = nullptr;
@@ -57,6 +58,7 @@ struct ManagedCallbacks {
     OnAbilityAttemptFn onAbilityAttempt = nullptr;
     OnAddModifierFn onAddModifier = nullptr;
     OnCheckTransmitFn onCheckTransmit = nullptr;
+    OnPawnHeroInitializedFn onPawnHeroInitialized = nullptr;
 };
 
 void InitializeManagedCallbacks(DotNetHost &host, ManagedCallbacks &managed);
