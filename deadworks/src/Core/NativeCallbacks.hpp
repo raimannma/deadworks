@@ -124,6 +124,9 @@ struct NativeCallbacks {
     void(__cdecl *EKVSetStringToken)(void *ekv, const char *key, const char *tokenString);
     const char *(__cdecl *ResolveDesignerName)(const char *designerName, uint32_t *outSubclassId);
     void *(__cdecl *LookupVDataByHash)(int32_t typeFilter, uint32_t hash);
+    void(__cdecl *SpawnObserverPawn)(void *controller);
+    uint8_t(__cdecl *ObserverServicesSetTarget)(void *observerServices, void *target);
+    void(__cdecl *ObserverServicesSetMode)(void *observerServices, int32_t mode);
     uint32_t(__cdecl *TakeSoundEventGuid)();
 };
 

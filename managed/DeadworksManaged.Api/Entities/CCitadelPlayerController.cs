@@ -19,6 +19,15 @@ public sealed unsafe class CCitadelPlayerController : CBasePlayerController {
 		NativeInterop.ChangeTeam((void*)Handle, teamNum);
 	}
 
+	/// <summary>
+	/// Forcibly removes the player's current pawn, spawns an observer pawn, and attaches it.
+	/// </summary>
+	public void MakeObserver() {
+		Pawn?.Remove();
+		SetPawn(null, retainOldPawnTeam: true);
+		NativeInterop.SpawnObserverPawn((void*)Handle);
+	}
+
 	/// <summary>Forces the player to select the specified hero.</summary>
 	public void SelectHero(Heroes hero) {
 		var name = hero.ToHeroName();

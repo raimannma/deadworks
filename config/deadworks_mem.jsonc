@@ -18,7 +18,7 @@
 		},
 		"CBasePlayerController::SetPawn": {
 			"library": "server.dll",
-			"windows": "44 88 4C 24 ? 53"
+			"windows": "44 88 4C 24 ?? 53 57"
 		},
 		"CGCClientSystem::OnServerVersionCheck": {
 			"library": "server.dll",
@@ -47,6 +47,10 @@
 		"CCitadelPlayerController::CreateHeroPawn": {
 			"library": "server.dll",
 			"windows": "48 8B C4 48 89 48 ?? 55 57 48 8D 68 ?? 48 81 EC ?? ?? ?? ?? 48 89 58 ?? 48 8B F9 48 8B 0D"
+		},
+		"CCitadelPlayerController::SpawnObserverPawn": {
+			"library": "server.dll",
+			"windows": "48 8B C4 55 53 48 8D 68 ?? 48 81 EC ?? ?? ?? ?? 48 89 78 ?? 4C 89 60"
 		},
 		"CModifierProperty::AddModifier": {
 			"library": "server.dll",
@@ -205,6 +209,8 @@
 		"CBaseEntity::Touch": 149,
 		"CBaseEntity::EndTouch": 150,
 		"ISource2GameEntities::CheckTransmit": 12,
-		"CSoundSystem::TakeGuid": 77
+		"CSoundSystem::TakeGuid": 77,
+		"CPlayer_ObserverServices::SetObserverTarget": 25,
+		"CPlayer_ObserverServices::SetObserverMode": 28
 	}
 }

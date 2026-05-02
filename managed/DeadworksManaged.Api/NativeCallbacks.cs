@@ -114,5 +114,8 @@ internal struct NativeCallbacks
 	public nint EKVSetStringToken;
 	public nint ResolveDesignerName;
 	public nint LookupVDataByHash;
+	public nint SpawnObserverPawn;
+	public nint ObserverServicesSetTarget;
+	public nint ObserverServicesSetMode;
 	public nint TakeSoundEventGuid;
 }

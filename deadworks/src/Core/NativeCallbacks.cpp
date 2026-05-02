@@ -449,6 +449,29 @@ static void __cdecl NativeSetPawn(void *controller, void *pawn, uint8_t bRetainO
     static_cast<CBasePlayerController *>(controller)->SetPawn(static_cast<CBasePlayerPawn *>(pawn), bRetainOldPawnTeam != 0, bCopyMovementState != 0, bAllowTeamMismatch != 0, bPreserveMovementState != 0);
 }
 
+static void __cdecl NativeSpawnObserverPawn(void *controller) {
+    if (!controller)
+        return;
+    using SpawnObserverPawnFn = void *(__thiscall *)(void *);
+    static const auto fn = reinterpret_cast<SpawnObserverPawnFn>(
+        MemoryDataLoader::Get().GetOffset("CCitadelPlayerController::SpawnObserverPawn").value());
+    fn(controller);
+}
+
+static uint8_t __cdecl NativeObserverServicesSetTarget(void *observerServices, void *target) {
+    if (!observerServices)
+        return 0;
+    auto idx = MemoryDataLoader::Get().GetVirtual("CPlayer_ObserverServices::SetObserverTarget").value();
+    return CallVirtual<uint8_t>(observerServices, static_cast<uint32_t>(idx), target);
+}
+
+static void __cdecl NativeObserverServicesSetMode(void *observerServices, int32_t mode) {
+    if (!observerServices)
+        return;
+    auto idx = MemoryDataLoader::Get().GetVirtual("CPlayer_ObserverServices::SetObserverMode").value();
+    CallVirtual<void>(observerServices, static_cast<uint32_t>(idx), mode);
+}
+
 // --- KV3 ---
 
 static void *__cdecl NativeKV3Create() {
@@ -1046,6 +1069,11 @@ void deadworks::PopulateNativeCallbacks(NativeCallbacks &callbacks) {
     // Subclass resolution
     callbacks.ResolveDesignerName = &NativeResolveDesignerName;
     callbacks.LookupVDataByHash = &NativeLookupVDataByHash;
+
+    // Observer/spectate
+    callbacks.SpawnObserverPawn = &NativeSpawnObserverPawn;
+    callbacks.ObserverServicesSetTarget = &NativeObserverServicesSetTarget;
+    callbacks.ObserverServicesSetMode = &NativeObserverServicesSetMode;
 
     // Sound events
     callbacks.TakeSoundEventGuid = &NativeTakeSoundEventGuid;
