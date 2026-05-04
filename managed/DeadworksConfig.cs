@@ -33,29 +33,8 @@ internal class TelemetryConfig
     public double TraceSamplingRatio { get; set; } = 1.0;
 }
 
-internal class ServerBrowserConfig
-{
-    [JsonPropertyName("api_url")]
-    public string ApiUrl { get; set; } = "https://api.deadworks.net";
-
-    [JsonPropertyName("heartbeat_interval_seconds")]
-    public int HeartbeatIntervalSeconds { get; set; } = 30;
-
-    [JsonPropertyName("content_addons")]
-    public List<string> ContentAddons { get; set; } = [];
-
-    [JsonPropertyName("extra_maps")]
-    public List<string> ExtraMaps { get; set; } = [];
-
-    [JsonPropertyName("unlisted")]
-    public bool Unlisted { get; set; } = false;
-}
-
 internal class DeadworksConfigRoot
 {
-    [JsonPropertyName("serverbrowser")]
-    public ServerBrowserConfig ServerBrowser { get; set; } = new();
-
     [JsonPropertyName("telemetry")]
     public TelemetryConfig Telemetry { get; set; } = new();
 }
@@ -72,7 +51,6 @@ internal static class DeadworksConfig
     private static DeadworksConfigRoot _root = new();
     private static string _configPath = "";
 
-    public static ServerBrowserConfig ServerBrowser => _root.ServerBrowser;
     public static TelemetryConfig Telemetry => _root.Telemetry;
 
     public static void Initialize()
