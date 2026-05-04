@@ -121,7 +121,6 @@ internal static partial class PluginLoader
         TimerRegistry.Initialize();
         ConfigManager.Initialize();
         ConCommandManager.Initialize();
-        ServerBrowser.Initialize();
         PluginStateManager.Initialize();
         PluginRegistry.Resolve = () => _pluginSnapshot.Select(p => p.Name).ToArray();
 
@@ -476,7 +475,6 @@ internal static partial class PluginLoader
         activity?.SetTag("map.name", Server.MapName);
 
         TimerRegistry.CancelAllMapChangeTimers();
-        ServerBrowser.OnStartupServer();
         DispatchToPlugins(p => p.OnStartupServer(), nameof(IDeadworksPlugin.OnStartupServer));
         _logger.LogInformation("Server started on map {MapName}", Server.MapName);
     }
@@ -604,8 +602,6 @@ internal static partial class PluginLoader
 
     public static void UnloadAll()
     {
-        ServerBrowser.Shutdown();
-
         _watcher?.Dispose();
         _watcher = null;
         _debounceTimer?.Dispose();
