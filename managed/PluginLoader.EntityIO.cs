@@ -36,31 +36,6 @@ internal static partial class PluginLoader
     }
 
 
-    public static void DispatchEntityFireOutput(string designerName, EntityOutputEvent evt)
-    {
-        var key = $"{designerName}:{evt.OutputName}";
-        List<Action<EntityOutputEvent>>? handlers;
-        lock (_lock)
-        {
-            if (!_outputHooks.TryGetValue(key, out handlers))
-                return;
-            handlers = [.. handlers]; // snapshot
-        }
-
-        foreach (var handler in handlers)
-        {
-            try
-            {
-                handler(evt);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Entity output hook {Key} threw", key);
-            }
-        }
-    }
-
-
     public static void DispatchEntityAcceptInput(string designerName, EntityInputEvent evt)
     {
         var key = $"{designerName}:{evt.InputName}";
