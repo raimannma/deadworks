@@ -158,8 +158,9 @@ RUN mkdir -p \
     /home/steam/server \
     /opt/proton \
     /opt/gamefiles \
+    /opt/live-plugins \
     /opt/deadworks && \
-    chown -R steam:steam /home/steam/.steam /home/steam/server /opt/gamefiles
+    chown -R steam:steam /home/steam/.steam /home/steam/server /opt/gamefiles /opt/live-plugins
 
 # Copy build artifacts
 COPY --from=native-builder /build/out/deadworks.exe /opt/deadworks/game/bin/win64/

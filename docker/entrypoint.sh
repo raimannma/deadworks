@@ -186,6 +186,19 @@ rm -rf "${WIN64_DIR}/managed"
 mkdir -p "${WIN64_DIR}/managed/plugins"
 cp -rf "${DEADWORKS_SRC}/game/bin/win64/managed/"* "${WIN64_DIR}/managed/"
 
+# Hot-reload dev mode: replace the watched plugins directory with a symlink to
+# the bind-mounted live-plugins folder. Host-built plugin DLLs dropped there are
+# picked up live by PluginLoader's FileSystemWatcher and hot-reloaded without a
+# server restart. Enabled via DEADWORKS_LIVE_PLUGINS=1 (see docker-compose.dev.yaml).
+LIVE_PLUGINS_DIR="/opt/live-plugins"
+if [ "${DEADWORKS_LIVE_PLUGINS:-0}" = "1" ]; then
+    echo "[phase 5] Plugin hot-reload enabled -> watching ${LIVE_PLUGINS_DIR}"
+    mkdir -p "${LIVE_PLUGINS_DIR}"
+    chown steam:steam "${LIVE_PLUGINS_DIR}" 2>/dev/null || true
+    rm -rf "${WIN64_DIR}/managed/plugins"
+    ln -sfn "${LIVE_PLUGINS_DIR}" "${WIN64_DIR}/managed/plugins"
+fi
+
 # Copy config
 mkdir -p "${INSTALL_DIR}/game/citadel/cfg"
 cp -f "${DEADWORKS_SRC}/game/citadel/cfg/deadworks_mem.jsonc" "${INSTALL_DIR}/game/citadel/cfg/"

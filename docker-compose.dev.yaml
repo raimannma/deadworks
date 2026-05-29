@@ -1,0 +1,19 @@
+# Development override for plugin hot-reload.
+#
+# Usage:
+#   docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build
+#
+# Then, on the host, build your plugin(s) into ./plugins-live and they will be
+# hot-reloaded into the running server without a restart:
+#
+#   ./scripts/dev-plugins.sh examples/plugins/RollTheDicePlugin
+#
+# Anything dropped into ./plugins-live (PluginName.dll + its deps) is picked up
+# by the server's FileSystemWatcher. Editing + rebuilding triggers a live reload;
+# deleting a DLL unloads that plugin.
+services:
+  deadworks:
+    environment:
+      DEADWORKS_LIVE_PLUGINS: "1"
+    volumes:
+      - ./plugins-live:/opt/live-plugins

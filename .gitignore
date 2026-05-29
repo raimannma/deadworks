@@ -13,5 +13,6 @@ examples/**/obj/
 cvarlist.md
 dlw/
 deps/
+plugins-live/
 .env
 .idea

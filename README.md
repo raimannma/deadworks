@@ -146,3 +146,46 @@ services:
 ```
 
 Each subdirectory under the extra-plugins path should contain a `.csproj` that references `DeadworksManaged.Api`.
+
+### Plugin hot-reload (Linux dev workflow)
+
+For iterating on plugins without rebuilding the image or restarting the server, run the
+server in dev mode and build your plugins on the host. The server's `PluginLoader` watches
+its plugins directory and live-reloads any DLL that changes (load / reload / unload).
+
+**Requirements:** Docker + Docker Compose, and the [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+on the host (`dotnet --version` should report `10.x`).
+
+1. Start the server with the dev override. This bind-mounts `./plugins-live` into the
+   container as the live plugins directory and enables hot-reload:
+
+   ```
+   docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build
+   ```
+
+2. In a second terminal, build a plugin into `./plugins-live` and watch for changes:
+
+   ```
+   ./scripts/dev-plugins.sh examples/plugins/RollTheDicePlugin
+   ```
+
+   You can point the script at any plugin project, including your own outside the repo
+   (it just needs a `.csproj` that references `DeadworksManaged.Api`):
+
+   ```
+   ./scripts/dev-plugins.sh ../my-plugins/CoolPlugin
+   ```
+
+   Edit and save a `.cs` file — the script rebuilds the DLL into `./plugins-live` and the
+   running server reloads it within ~1s. Delete a DLL to unload its plugin. To build once
+   without watching, set `ONESHOT=1`.
+
+Notes:
+
+- In dev mode the live folder is the **only** source of plugins — the example plugins baked
+  into the image are not loaded. Build whichever plugins you want into `./plugins-live`
+  (you can build several into the same folder; each lands as its own DLL).
+- Plugins are platform-agnostic managed assemblies, so they build on Linux and run under the
+  Windows .NET runtime inside Proton. `DeadworksManaged.Api` is referenced with
+  `<Private>false</Private>`, so the host supplies it at runtime — keep the repo you build
+  plugins from in sync with the image (rebuild the image when you change the framework/API).
