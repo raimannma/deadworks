@@ -11,9 +11,17 @@
 # Anything dropped into ./plugins-live (PluginName.dll + its deps) is picked up
 # by the server's FileSystemWatcher. Editing + rebuilding triggers a live reload;
 # deleting a DLL unloads that plugin.
+#
+# To reuse an existing local Deadlock install and skip the ~40GB SteamCMD
+# download, set GAMEFILES_MOUNT to a bind mount (the entrypoint auto-detects the
+# present game files and skips SteamCMD), e.g. in your shell or .env:
+#   GAMEFILES_MOUNT=/home/you/.steam/steam/steamapps/common/Deadlock:/opt/gamefiles:ro
 services:
   deadworks:
     environment:
       DEADWORKS_LIVE_PLUGINS: "1"
     volumes:
       - ./plugins-live:/opt/live-plugins
+      # Overrides the base compose's gamefiles mount (same target). Default keeps
+      # the named volume + SteamCMD download.
+      - ${GAMEFILES_MOUNT:-gamefiles:/opt/gamefiles}

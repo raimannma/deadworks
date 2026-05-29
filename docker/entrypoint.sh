@@ -57,29 +57,40 @@ WINE64="${PROTON_DIR}/files/bin/wine64"
 # Phase 2: Download game files via SteamCMD (shared volume)
 # =============================================================================
 echo "[phase 2] Updating Deadlock server files..."
-mkdir -p "${GAME_BASE_DIR}" "${COMPAT_DATA}"
-chown steam:steam "${GAME_BASE_DIR}" "${INSTALL_DIR}"
+mkdir -p "${COMPAT_DATA}"
+chown steam:steam "${INSTALL_DIR}" 2>/dev/null || true
 
-# Use flock to prevent concurrent SteamCMD downloads to the shared volume
-(
-    flock -x 200
-    MAX_RETRIES=3
-    for attempt in $(seq 1 $MAX_RETRIES); do
-        echo "[phase 2] SteamCMD attempt ${attempt}/${MAX_RETRIES}..."
-        gosu steam /home/steam/steamcmd/steamcmd.sh \
-            +@sSteamCmdForcePlatformType windows \
-            +force_install_dir "$GAME_BASE_DIR" \
-            +login "$STEAM_LOGIN" "$STEAM_PASSWORD" \
-            +app_update "$APP_ID" \
-            +quit && break
-        echo "[phase 2] WARNING: attempt ${attempt} failed, retrying..."
-        sleep 5
-    done
-) 200>"${GAME_BASE_DIR}/.download.lock"
+# If game files are already present in ${GAME_BASE_DIR}, skip SteamCMD entirely.
+# This lets you bind-mount an existing local Deadlock install (e.g. your Steam
+# library) read-only at /opt/gamefiles — no ~40GB re-download, and it works even
+# when the Steam account can't pull app ${APP_ID}.
+if [ -f "${GAME_BASE_DIR}/game/bin/win64/deadlock.exe" ]; then
+    echo "[phase 2] Game files already present in ${GAME_BASE_DIR} — skipping SteamCMD."
+else
+    mkdir -p "${GAME_BASE_DIR}"
+    chown steam:steam "${GAME_BASE_DIR}"
 
-if [ ! -f "${GAME_BASE_DIR}/game/bin/win64/deadlock.exe" ]; then
-    echo "[phase 2] ERROR: deadlock.exe not found after download"
-    exit 1
+    # Use flock to prevent concurrent SteamCMD downloads to the shared volume
+    (
+        flock -x 200
+        MAX_RETRIES=3
+        for attempt in $(seq 1 $MAX_RETRIES); do
+            echo "[phase 2] SteamCMD attempt ${attempt}/${MAX_RETRIES}..."
+            gosu steam /home/steam/steamcmd/steamcmd.sh \
+                +@sSteamCmdForcePlatformType windows \
+                +force_install_dir "$GAME_BASE_DIR" \
+                +login "$STEAM_LOGIN" "$STEAM_PASSWORD" \
+                +app_update "$APP_ID" \
+                +quit && break
+            echo "[phase 2] WARNING: attempt ${attempt} failed, retrying..."
+            sleep 5
+        done
+    ) 200>"${GAME_BASE_DIR}/.download.lock"
+
+    if [ ! -f "${GAME_BASE_DIR}/game/bin/win64/deadlock.exe" ]; then
+        echo "[phase 2] ERROR: deadlock.exe not found after download"
+        exit 1
+    fi
 fi
 echo "[phase 2] Game files verified."
 
