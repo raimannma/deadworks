@@ -44,6 +44,7 @@ fi
 
 CSPROJ="$(cd "$(dirname "$CSPROJ")" && pwd)/$(basename "$CSPROJ")"
 mkdir -p "$OUT"
+OUT="$(cd "$OUT" && pwd)"   # absolutize: watch runs from the project dir
 
 echo "Plugin:  $CSPROJ"
 echo "Output:  $OUT  (bind-mounted to the container as /opt/live-plugins)"
@@ -59,11 +60,16 @@ echo
 #     "DeployToGame" copy target succeeds quietly instead of erroring on /plugins.
 #   NoWarn=CS1591      -> silence the API project's missing-XML-doc warnings.
 DEPLOY_NOOP="${TMPDIR:-/tmp}/deadworks-deploy-noop"
-PUBLISH_ARGS=(-o "$OUT" --nologo -p:DeadlockManagedDir="$DEPLOY_NOOP" -p:NoWarn=CS1591)
+# Use MSBuild's /p: form (not -p:): `dotnet watch` parses -p as --project and
+# rejects two of them; /p: tokens are forwarded straight to the build.
+PUBLISH_ARGS=(-o "$OUT" --nologo /p:DeadlockManagedDir="$DEPLOY_NOOP" /p:NoWarn=CS1591)
 
 if [ "${ONESHOT:-0}" = "1" ]; then
     exec dotnet publish "$CSPROJ" "${PUBLISH_ARGS[@]}"
 else
     echo "Watching for changes — edit + save to rebuild and hot-reload. Ctrl-C to stop."
-    exec dotnet watch --project "$CSPROJ" publish "${PUBLISH_ARGS[@]}"
+    # cd into the project dir so watch auto-detects it; `dotnet watch --project`
+    # leaks the flag through to MSBuild (MSB1001) on current SDKs.
+    cd "$(dirname "$CSPROJ")"
+    exec dotnet watch --non-interactive publish "${PUBLISH_ARGS[@]}"
 fi
