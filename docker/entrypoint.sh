@@ -145,6 +145,8 @@ for dll in steamclient64.dll steamclient.dll; do
     if [ -f "$SRC" ]; then
         mkdir -p "${PFXDIR}/drive_c/Program Files (x86)/Steam"
         cp -f "$SRC" "${PFXDIR}/drive_c/Program Files (x86)/Steam/${dll}"
+        # rm -f first: ${dll} may be a symlink into a read-only gamefiles mount.
+        rm -f "${WIN64_DIR}/${dll}"
         cp -f "$SRC" "${WIN64_DIR}/${dll}"
         cp -f "$SRC" "${PFXDIR}/drive_c/windows/system32/${dll}"
     fi
@@ -210,11 +212,16 @@ if [ "${DEADWORKS_LIVE_PLUGINS:-0}" = "1" ]; then
     ln -sfn "${LIVE_PLUGINS_DIR}" "${WIN64_DIR}/managed/plugins"
 fi
 
-# Copy config
+# Copy config. rm -f first: with a read-only gamefiles mount these targets may
+# be symlinks into it (the cp -rs farm links existing game files), and an
+# in-place write would hit "Read-only file system". Removing the symlink first
+# lets us create a real file in the writable instance layer.
 mkdir -p "${INSTALL_DIR}/game/citadel/cfg"
+rm -f "${INSTALL_DIR}/game/citadel/cfg/deadworks_mem.jsonc"
 cp -f "${DEADWORKS_SRC}/game/citadel/cfg/deadworks_mem.jsonc" "${INSTALL_DIR}/game/citadel/cfg/"
 
-# Write steam_appid.txt
+# Write steam_appid.txt (same symlink-into-RO concern as above)
+rm -f "${WIN64_DIR}/steam_appid.txt" "${INSTALL_DIR}/game/citadel/steam_appid.txt"
 echo "$APP_ID" > "${WIN64_DIR}/steam_appid.txt"
 echo "$APP_ID" > "${INSTALL_DIR}/game/citadel/steam_appid.txt"
 
