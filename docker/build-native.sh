@@ -161,6 +161,7 @@ for f in \
     ${SRC}/Core/Hooks/InitializeHeroOnPawn.cpp \
     ${SRC}/Core/A2SPatch.cpp \
     ${SRC}/Core/Deadworks.cpp \
+    ${SRC}/Core/UsercmdVisitorRuntime.cpp \
     ${SRC}/Core/NativeCallbacks.cpp \
     ${SRC}/Core/NativeAbility.cpp \
     ${SRC}/Core/NativeDamage.cpp \
